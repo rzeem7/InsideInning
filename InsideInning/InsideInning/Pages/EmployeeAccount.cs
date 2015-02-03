@@ -32,17 +32,16 @@ namespace InsideInning.Pages
                     GenGrid(),
                     {iiControls.CreateEntryFor("EmailAddress",Color.White)},
                     {iiControls.CreateEntryFor("Password",Color.White,true)},
-                    {iiControls.CreateEntryFor("ConfirmPassword",Color.White,true)},
+                   // {iiControls.CreateEntryFor("ConfirmPassword",Color.White,true)},
                     GenGridForSwitch(),
                     new Button
                     {
                         Text="Submit",TextColor=Color.White.ToFormsColor(),BackgroundColor=Color.Gray.ToFormsColor(),BorderWidth=1,HorizontalOptions=LayoutOptions.Center,TranslationY=40,
                         HeightRequest=40,
-                        Command=ViewModel.AddUpdateCommand
+                        Command=ViewModel.AddUpdateCommand, CommandParameter=(Employee)BindingContext
                     }                   
                 }
             };
-            ViewModel.EmployeeInfo = (Employee)BindingContext;
         }
         private Grid GenGrid()
         {

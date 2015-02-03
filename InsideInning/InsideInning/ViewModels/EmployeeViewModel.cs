@@ -12,7 +12,7 @@ namespace InsideInning.ViewModels
     {
         public EmployeeViewModel()
         {
-
+            App.DataBase.CreateTables<Employee>();
         }
 
         #region Peoperties
@@ -21,7 +21,7 @@ namespace InsideInning.ViewModels
         public Employee EmployeeInfo
         {
             get { return _employeeInfo; }
-            set { _employeeInfo = value; OnPropertyChanged("EmployeeDetail"); }
+            set { _employeeInfo = value; OnPropertyChanged("EmployeeInfo"); }
         }
 
         private ObservableCollection<Employee> _employeeList;
@@ -48,25 +48,26 @@ namespace InsideInning.ViewModels
         {
             get
             {
-                return addUpdateCommand ?? (addUpdateCommand = new Command(async () => await ExecuteAddUpdateCommand()));
+                return addUpdateCommand ?? (addUpdateCommand = new Command(async (param) => await ExecuteAddUpdateCommand(param)));
             }
         }
 
-        private Task ExecuteAddUpdateCommand()
+        private async Task ExecuteAddUpdateCommand(object param)
         {
             try
             {
+                EmployeeInfo = (Employee)param;
                 if (EmployeeInfo == null)
-                    return null;
+                    return;
 
                 int id = App.DataBase.SaveItem<Employee>(EmployeeInfo);
                 Console.WriteLine("Fetched ID {0}", id);
-                return null;
+                return;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("An Exception Occured During Save Record {0}", ex.Message);
-                return null;
+                return;
             }
         }
 

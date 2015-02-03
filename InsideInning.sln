@@ -17,11 +17,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsideInning.Web.Core", "In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsideInning.Web", "InsideInning.Web\InsideInning.Web.csproj", "{4E70C0E5-C565-4628-97CE-DD41EA0A9480}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{90561D68-8C13-41C6-88B6-837FDFDEA224}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		InsideInning\InsideInning\InsideInning.projitems*{a214c3d5-277a-4eff-a5dd-18730f168efb}*SharedItemsImports = 4
 		InsideInning\InsideInning\InsideInning.projitems*{0a5e8d27-e5fb-49f3-a71f-20d07d852665}*SharedItemsImports = 4
-		InsideInning\InsideInning\InsideInning.projitems*{138adcfb-527a-4d22-a024-25a717ca46a6}*SharedItemsImports = 4
 		InsideInning\InsideInning\InsideInning.projitems*{2665fcbc-6113-416f-99bb-2d587e581e70}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

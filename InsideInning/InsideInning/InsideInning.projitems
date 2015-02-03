@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>2665fcbc-6113-416f-99bb-2d587e581e70</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>InsideInning</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Class.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\InsideInningData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\SQLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Color.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\iiControls.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListImageCell.cs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\BaseModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Employee.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EmployeeDetails.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\HomeMenuItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\IBusinessBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\LeaveDetails.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MailSummary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Setting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EmployeeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\HomeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\BaseView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\DashboardView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\EmployeeAccount.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\EmployeeDetails.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\HomeView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\LeaveDetails.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\LeaveRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Login.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service\Class.cs" />
+  </ItemGroup>
+</Project>

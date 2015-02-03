@@ -6,7 +6,7 @@ using System.Text;
 
 namespace InsideInning.Models
 {
-    public class BaseModel : IBusinessBase,INotifyPropertyChanged, INotifyPropertyChanging
+    public class BaseModel : IBusinessBase, INotifyPropertyChanged, INotifyPropertyChanging
     {
         #region Constructor
         public BaseModel()
@@ -14,7 +14,7 @@ namespace InsideInning.Models
 
         }
         #endregion
-       
+
         #region IBusinessBase implementation
         [PrimaryKey, AutoIncrement]
         public int ItemID
@@ -48,7 +48,7 @@ namespace InsideInning.Models
 
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
-        
+
 
         #region INotifyPropertyChanging implementation
         public event PropertyChangingEventHandler PropertyChanging;

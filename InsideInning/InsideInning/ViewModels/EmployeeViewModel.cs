@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace InsideInning.ViewModels
 {
@@ -12,53 +15,62 @@ namespace InsideInning.ViewModels
 
         }
 
-        private string firstname = string.Empty;
-        public const string FirstNamePropertyName = "FirstName";
-        public string FirstName
+        #region Peoperties
+
+        private Employee _employeeInfo;
+        public Employee EmployeeInfo
         {
-            get { return firstname; }
-            set { SetProperty(ref firstname, value, FirstNamePropertyName); }
+            get { return _employeeInfo; }
+            set { _employeeInfo = value; OnPropertyChanged("EmployeeDetail"); }
         }
 
-        private string lastname = string.Empty;
-        public const string LastNamePropertyName = "LastName";
-        public string LastName
+        private ObservableCollection<Employee> _employeeList;
+
+        public ObservableCollection<Employee> EmployeeList
         {
-            get { return lastname; }
-            set { SetProperty(ref lastname, value, LastNamePropertyName); }
+            get { return _employeeList; }
+            set { _employeeList = value; OnPropertyChanged("EmployeeList"); }
         }
 
-        private string emailAddress = string.Empty;
-        public const string EmailAddressPropertyName = "EmailAddress";
-        public string EmailAddress
+        #endregion
+
+        #region Commands
+        //Save/Update
+        //Delete
+        //Search
+
+        private Command addUpdateCommand;
+
+        /// <summary>
+        /// Command to Save/Update items
+        /// </summary>
+        public Command AddUpdateCommand
         {
-            get { return emailAddress; }
-            set { SetProperty(ref emailAddress, value, EmailAddressPropertyName); }
+            get
+            {
+                return addUpdateCommand ?? (addUpdateCommand = new Command(async () => await ExecuteAddUpdateCommand()));
+            }
         }
 
-
-        private string password = string.Empty;
-        public const string PasswordPropertyName = "Password";
-        public string Password
+        private Task ExecuteAddUpdateCommand()
         {
-            get { return password; }
-            set { SetProperty(ref password, value, PasswordPropertyName); }
+            try
+            {
+                if (EmployeeInfo == null)
+                    return null;
+
+                int id = App.DataBase.SaveItem<Employee>(EmployeeInfo);
+                Console.WriteLine("Fetched ID {0}", id);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An Exception Occured During Save Record {0}", ex.Message);
+                return null;
+            }
         }
 
-        private string employeeType = string.Empty;
-        public const string EmployeeTypePropertyName = "EmployeeType";
-        public string EmployeeType
-        {
-            get { return employeeType; }
-            set { SetProperty(ref employeeType, value, EmployeeTypePropertyName); }
-        }
+        #endregion
 
-        private string isActive = string.Empty;
-        public const string IsActivePropertyName = "IsActive";
-        public string IsActive
-        {
-            get { return isActive; }
-            set { SetProperty(ref isActive, value, IsActivePropertyName); }
-        }
     }
 }

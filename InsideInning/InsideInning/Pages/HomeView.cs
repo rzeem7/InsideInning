@@ -11,10 +11,10 @@ namespace InsideInning.Pages
 {
     public class HomeView : MasterDetailPage
     {
-        private HomeViewModel ViewModel
-        {
-            get { return BindingContext as HomeViewModel; } //Type cast BindingContex as HomeViewModel to access binded properties
-        }
+            private HomeViewModel ViewModel
+            {
+                get { return BindingContext as HomeViewModel; } //Type cast BindingContex as HomeViewModel to access binded properties
+            }
 
         private Dictionary<MenuType, NavigationPage> pages;
         HomeMasterPage _master;

@@ -1,4 +1,5 @@
 ﻿using InsideInning.Helper;
+using InsideInning.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,20 @@ namespace InsideInning.Pages
 {
     public class EmployeeAccount : ContentPage
     {
+        private EmployeeViewModel ViewModel
+        {
+            get { return new EmployeeViewModel(); } //Type cast BindingContex as HomeViewModel to access binded properties
+        }
+
         public EmployeeAccount()
         {
+            BindingContext = new Employee();
 
             Content = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                HeightRequest = 50,Padding=new Thickness(10,10,10,10),
+                HeightRequest = 50,
+                Padding = new Thickness(10, 10, 10, 10),
                 BackgroundColor = Color.Blue.ToFormsColor(),
                 Children = 
                 {
@@ -26,10 +34,15 @@ namespace InsideInning.Pages
                     {iiControls.CreateEntryFor("Password",Color.White,true)},
                     {iiControls.CreateEntryFor("ConfirmPassword",Color.White,true)},
                     GenGridForSwitch(),
-                    new Button{Text="Submit",TextColor=Color.White.ToFormsColor(),BackgroundColor=Color.Gray.ToFormsColor(),BorderWidth=1,HorizontalOptions=LayoutOptions.Center,TranslationY=40,
-                        HeightRequest=40}                         
+                    new Button
+                    {
+                        Text="Submit",TextColor=Color.White.ToFormsColor(),BackgroundColor=Color.Gray.ToFormsColor(),BorderWidth=1,HorizontalOptions=LayoutOptions.Center,TranslationY=40,
+                        HeightRequest=40,
+                        Command=ViewModel.AddUpdateCommand
+                    }                   
                 }
             };
+            ViewModel.EmployeeInfo = (Employee)BindingContext;
         }
         private Grid GenGrid()
         {

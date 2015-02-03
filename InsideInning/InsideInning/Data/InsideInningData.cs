@@ -107,7 +107,7 @@ namespace InsideInning.Data
         {
             lock (locker)
             {
-                if (item.ItemID != 0)
+                if (item.ItemID > 0)
                 {
                     iiDatabase.Update(item);
                     return item.ItemID;

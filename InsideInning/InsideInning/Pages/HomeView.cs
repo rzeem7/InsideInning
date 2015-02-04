@@ -78,7 +78,7 @@ namespace InsideInning.Pages
                 }
             }
 
-            private EmployeeDetails EmployeeDetails;
+            private EmployeeDetailsPage EmployeeDetails;
             private LeaveDetails LeaveDetails;
             private LeaveRequest LeaveRequest;
             public HomeMasterPage(HomeViewModel viewModel)
@@ -107,7 +107,7 @@ namespace InsideInning.Pages
                 listView.ItemsSource = viewModel.MenuItems;
 
                 if (EmployeeDetails == null)   //Making First view page selection
-                    EmployeeDetails = new EmployeeDetails();
+                    EmployeeDetails = new EmployeeDetailsPage();
                 PageSelection = EmployeeDetails;
 
                 listView.ItemSelected += (sender, args) =>
@@ -118,7 +118,7 @@ namespace InsideInning.Pages
                     {
                         case MenuType.EmployeeDetails:
                             if (EmployeeDetails == null)
-                                EmployeeDetails = new EmployeeDetails();
+                                EmployeeDetails = new EmployeeDetailsPage();
                             PageSelection = EmployeeDetails;
                             break;
 

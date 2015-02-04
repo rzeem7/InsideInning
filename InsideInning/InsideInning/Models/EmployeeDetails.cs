@@ -6,30 +6,86 @@ namespace InsideInning.Models
 {
     public class EmployeeDetails : BaseModel
     {
-        #region Public Properties
-        public Int32 EmployeeDetailsID { get; set; }
+     #region Full Property
 
-        public String EmpProfileImage { get; set; }
+        private string _EmpProfileImage = string.Empty;
+        public string EmpProfileImage
+        {
+            get { return _EmpProfileImage; }
+            set { _EmpProfileImage = value; OnPropertyChanged("EmpProfileImage"); }
+        }
 
-        public Int32 EmployeeID { get; set; }
+        private int _EmployeeID;
+        public int EmployeeID
+        {
+            get { return _EmployeeID; }
+            set { _EmployeeID = value; OnPropertyChanged("EmployeeID"); }
+        }
 
-        public String gender { get; set; }
+        private string _gender = string.Empty;
+        public string gender
+        {
+            get { return _gender; }
+            set { _gender = value; OnPropertyChanged("gender"); }
+        }
 
-        public String MaritalStatus { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
+        private string _MaritalStatus = string.Empty;
+        public string MaritalStatus
+        {
+            get { return _MaritalStatus; }
+            set { _MaritalStatus = value; OnPropertyChanged("MaritalStatus"); }
+        }
 
-        public DateTime DateOfAniversary { get; set; }
+        private DateTime _DateOfBirth ;
+        public DateTime DateOfBirth
+        {
+            get { return _DateOfBirth; }
+            set { _DateOfBirth = value; OnPropertyChanged("DateOfBirth"); }
+        }
 
-        public Int32 ContactNumber { get; set; }
+        private DateTime _DateOfAniversary;
+        public DateTime DateOfAniversary
+        {
+            get { return _DateOfAniversary; }
+            set { _DateOfAniversary = value; OnPropertyChanged("DateOfAniversary"); }
+        }
 
-        public Int32 Landline { get; set; }
+        private Int32 _ContactNumber;
+        public Int32 ContactNumber
+        {
+            get { return _ContactNumber; }
+            set { _ContactNumber = value; OnPropertyChanged("ContactNumber"); }
+        }
 
-        public String CompanyProfile { get; set; }
+        private Int32 _Landline;
+        public Int32 Landline
+        {
+            get { return _Landline; }
+            set { _Landline = value; OnPropertyChanged("Landline"); }
+        }
 
-        public DateTime JoinningDate { get; set; }
+        private string _CompanyProfile=string.Empty;
+        public string CompanyProfile
+        {
+            get { return _CompanyProfile; }
+            set { _CompanyProfile = value; OnPropertyChanged("Landline"); }
+        }
 
-        public Boolean IsActive { get; set; }
+        private DateTime _JoinningDate;
+        public DateTime JoinningDate
+        {
+            get { return _JoinningDate; }
+            set { _JoinningDate = value; OnPropertyChanged("JoinningDate"); }
+        }
+
+        private DateTime _IsActive;
+        public DateTime IsActive
+        {
+            get { return _IsActive; }
+            set { _IsActive = value; OnPropertyChanged("IsActive"); }
+        }
+       
 
         #endregion
     }

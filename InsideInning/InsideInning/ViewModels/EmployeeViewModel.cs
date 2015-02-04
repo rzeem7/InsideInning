@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InsideInning.Models;
+using InsideInning.Pages;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -13,6 +15,7 @@ namespace InsideInning.ViewModels
         public EmployeeViewModel()
         {
             App.DataBase.CreateTables<Employee>();
+            App.DataBase.CreateTables<EmployeeDetails>();
         }
 
         #region Peoperties
@@ -71,6 +74,50 @@ namespace InsideInning.ViewModels
             }
         }
 
+        #endregion
+
+        #region EmployeeDetails Properties
+
+
+        private EmployeeDetails _employeedetail;
+
+        public EmployeeDetails EmployeeDetail
+        {
+            get { return _employeedetail; }
+            set { _employeedetail = value; OnPropertyChanged("EmployeeDetail"); }
+        }
+
+        #endregion
+
+        #region EmployeeDetails Command
+
+        private Command _addUpdateCommand;
+        public Command AddUpdateEmployeeDetailsCommand
+        {
+            get
+            {
+                return _addUpdateCommand ?? (_addUpdateCommand = new Command(async (param) => await ExecuteAddUpdateEmployeeDetailsCommand(param)));
+            }
+        }
+
+        private async Task ExecuteAddUpdateEmployeeDetailsCommand(object param)
+        {
+            try
+            {
+                EmployeeDetail = (EmployeeDetails)param;
+                if (EmployeeDetail == null)
+                    return;
+
+                int id = App.DataBase.SaveItem<EmployeeDetails>(EmployeeDetail);
+                Console.WriteLine("Fetched ID {0}", id);
+                return;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An Exception Occured During Save Record {0}", ex.Message);
+                return;
+            }
+        }
         #endregion
 
     }

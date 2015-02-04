@@ -22,7 +22,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\HomeMenuItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\IBusinessBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LeaveDetails.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\MailSummary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\LeaveRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\LeaveRequestPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Setting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EmployeeViewModel.cs" />
@@ -33,8 +34,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\EmployeeDetails.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\HomeView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LeaveDetails.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\LeaveRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Login.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service\Class.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LeaveRequestViewModel.cs" />
   </ItemGroup>
 </Project>

@@ -38,7 +38,7 @@ namespace InsideInning.Pages
         {
             var grid = new Grid();
             grid.Children.Add(CreateButtonFor("Employee Details", "Employee128.png","3"), 0, 0);
-            grid.Children.Add(CreateButtonFor("Request Leave", "NotePad128.png","4"), 1, 0);
+            grid.Children.Add(CreateButtonFor("Leave Details", "NotePad128.png","4"), 1, 0);
             return grid;
         }
         public View CreateButtonFor(string propertyName,string imgSrc,string _id)

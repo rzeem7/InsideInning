@@ -13,7 +13,7 @@ namespace InsideInning
         private static Page homeView;
         public static Page RootPage
         {
-            get { return homeView ?? (homeView = new LeaveRequestPage()); }
+            get { return homeView ?? (homeView = new iiEmployeeList()); }
         }
 
         #region Database Instance

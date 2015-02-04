@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\IBusinessBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LeaveDetails.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LeaveRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\iiEmployeeList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LeaveRequestPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Setting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />

@@ -1,6 +1,7 @@
 ﻿using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -78,12 +79,18 @@ namespace InsideInning.Data
 
         #region Get All Items
 
-        public IEnumerable<T> GetItems<T>() where T : IBusinessBase, new()
+        public ObservableCollection<T> GetItems<T>() where T : IBusinessBase, new()
         {
+            ObservableCollection<T> data = new ObservableCollection<T>();
             lock (locker)
             {
-                return (from i in iiDatabase.Table<T>()
-                        select i).ToList();
+                var dt = (from i in iiDatabase.Table<T>()
+                          select i).ToList();
+                dt.ForEach((x) =>
+                {
+                    data.Add(x);
+                });
+                return data;
             }
         }
 

@@ -80,7 +80,7 @@ namespace InsideInning.Pages
 
             private EmployeeDetailsPage EmployeeDetails;
             private LeaveDetails LeaveDetails;
-            private LeaveRequest LeaveRequest;
+            private LeaveRequestPage LeaveRequest;
             public HomeMasterPage(HomeViewModel viewModel)
             {
                 this.Icon = "slideout.png";
@@ -131,7 +131,7 @@ namespace InsideInning.Pages
 
                         case MenuType.LeaveRequest:
                             if (LeaveRequest == null)
-                                LeaveRequest = new LeaveRequest();
+                                LeaveRequest = new LeaveRequestPage();
 
                             PageSelection = LeaveRequest;
                             break;

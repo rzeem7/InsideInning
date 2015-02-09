@@ -27,7 +27,7 @@ namespace InsideInning.Pages
 
             var homeNav = new NavigationPage(_master.PageSelection)
             {
-                BackgroundColor = Helper.Color.Green.ToFormsColor(),
+                BackgroundColor = Helper.Color.Lime.ToFormsColor(),
                 BarTextColor = Helper.Color.LightGray.ToFormsColor()
             };
             Detail = homeNav;
@@ -79,10 +79,12 @@ namespace InsideInning.Pages
             }
 
             private EmployeeDetailsPage EmployeeDetails;
+            private DashboardView DashBoard;
             private LeaveDetails LeaveDetails;
             private LeaveRequestPage LeaveRequest;
             public HomeMasterPage(HomeViewModel viewModel)
             {
+
                 this.Icon = "slideout.png";
                 Title = "test";
                 var layout = new StackLayout { Spacing = 0 };
@@ -105,13 +107,14 @@ namespace InsideInning.Pages
                 listView.ItemTemplate = cell;
 
                 listView.ItemsSource = viewModel.MenuItems;
-
-                if (EmployeeDetails == null)   //Making First view page selection
-                    EmployeeDetails = new EmployeeDetailsPage();
-                PageSelection = EmployeeDetails;
+                listView.BackgroundColor= Xamarin.Forms.Color.Gray;
+                if (DashBoard == null)   //Making First view page selection
+                    DashBoard = new DashboardView();
+                PageSelection = DashBoard;
 
                 listView.ItemSelected += (sender, args) =>
                 {
+                    
                     var menuItem = listView.SelectedItem as HomeMenuItem;
                     menuType = menuItem.MenuType;
                     switch (menuItem.MenuType)

@@ -85,17 +85,17 @@
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\Icon.png" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
-    <AndroidResource Include="Resources\Drawable\index.jpg" />
-    <AndroidResource Include="Resources\Drawable\slideout.png" />
-    <AndroidResource Include="Resources\Drawable\facebook.png" />
-    <AndroidResource Include="Resources\Drawable\googleplus.png" />
-    <AndroidResource Include="Resources\Drawable\instagram.png" />
-    <AndroidResource Include="Resources\Drawable\scott.png" />
-    <AndroidResource Include="Resources\Drawable\twitter.png" />
+    <AndroidResource Include="Resources\drawable\index.jpg" />
+    <AndroidResource Include="Resources\drawable\slideout.png" />
+    <AndroidResource Include="Resources\drawable\facebook.png" />
+    <AndroidResource Include="Resources\drawable\googleplus.png" />
+    <AndroidResource Include="Resources\drawable\instagram.png" />
+    <AndroidResource Include="Resources\drawable\scott.png" />
+    <AndroidResource Include="Resources\drawable\twitter.png" />
     <AndroidResource Include="Resources\drawable-hdpi\about.png" />
     <AndroidResource Include="Resources\drawable-hdpi\blog.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
@@ -129,25 +129,30 @@
     <AndroidResource Include="Resources\drawable-xhdpi\Employee128.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Notify128.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Balance128.png" />
-    <AndroidResource Include="Resources\Drawable\image.png" />
-    <AndroidResource Include="Resources\Drawable\Background.png" />
-    <AndroidResource Include="Resources\Drawable\iiTextBox.xml" />
-    <AndroidResource Include="Resources\Drawable\email.png" />
-    <AndroidResource Include="Resources\Drawable\name.png" />
-    <AndroidResource Include="Resources\Drawable\MaritalStatus.png" />
-    <AndroidResource Include="Resources\Drawable\Gender.png" />
-    <AndroidResource Include="Resources\Drawable\Birthday.png" />
-    <AndroidResource Include="Resources\Drawable\Joinning.png" />
-    <AndroidResource Include="Resources\Drawable\back.png" />
-    <Content Include="Resources\Drawable\NotePad.png" />
-    <AndroidResource Include="Resources\Drawable\ProfilePicture.png" />
-    <AndroidResource Include="Resources\Drawable\password.png" />
-    <AndroidResource Include="Resources\Drawable\SelectedButton.png" />
-    <AndroidResource Include="Resources\Drawable\UnselectedButton.png" />
-    <AndroidResource Include="Resources\Drawable\SelectedFemale.png" />
-    <AndroidResource Include="Resources\Drawable\SelectedMale.png" />
-    <AndroidResource Include="Resources\Drawable\UnselectedFemale.png" />
-    <AndroidResource Include="Resources\Drawable\UnselectedMale.png" />
+    <AndroidResource Include="Resources\drawable\image.png" />
+    <AndroidResource Include="Resources\drawable\Background.png" />
+    <AndroidResource Include="Resources\drawable\iiTextBox.xml" />
+    <AndroidResource Include="Resources\drawable\email.png" />
+    <AndroidResource Include="Resources\drawable\name.png" />
+    <AndroidResource Include="Resources\drawable\MaritalStatus.png" />
+    <AndroidResource Include="Resources\drawable\Gender.png" />
+    <AndroidResource Include="Resources\drawable\Birthday.png" />
+    <AndroidResource Include="Resources\drawable\Joinning.png" />
+    <AndroidResource Include="Resources\drawable\back.png" />
+    <AndroidResource Include="Resources\drawable\Calendar.png" />
+    <AndroidResource Include="Resources\drawable\leaves.png" />
+    <AndroidResource Include="Resources\drawable\NotePad.png" />
+    <AndroidResource Include="Resources\drawable\ProfilePicture.png" />
+    <AndroidResource Include="Resources\drawable\password.png" />
+    <AndroidResource Include="Resources\drawable\SelectedButton.png" />
+    <AndroidResource Include="Resources\drawable\UnselectedButton.png" />
+    <AndroidResource Include="Resources\drawable\SelectedFemale.png" />
+    <AndroidResource Include="Resources\drawable\SelectedMale.png" />
+    <AndroidResource Include="Resources\drawable\UnselectedFemale.png" />
+    <AndroidResource Include="Resources\drawable\UnselectedMale.png" />
+    <AndroidResource Include="Resources\drawable\summary.png" />
+    <AndroidResource Include="Resources\drawable\notify.png" />
+    <AndroidResource Include="Resources\drawable\persons.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="..\InsideInning\InsideInning.projitems" Label="Shared" Condition="Exists('..\InsideInning\InsideInning.projitems')" />

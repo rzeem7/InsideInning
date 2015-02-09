@@ -7,15 +7,17 @@ using Xamarin.Forms;
 
 namespace InsideInning.Pages
 {
-    public class iiEmployeeList : ContentPage
+    public class EmployeeListPage : ContentPage
     {
         private EmployeeViewModel ViewModel
         {
-            get { return new EmployeeViewModel(); } //Type cast BindingContex as HomeViewModel to access binded properties
+            get;
+            set;//Type cast BindingContex as HomeViewModel to access binded properties
         }
         ListView _iiEmpList = null;
-        public iiEmployeeList()
+        public EmployeeListPage()
         {
+            ViewModel = ViewModel ?? new EmployeeViewModel();
             ViewModel.LoadAllEmployees.Execute(null);
             _iiEmpList = new ListView()
             {

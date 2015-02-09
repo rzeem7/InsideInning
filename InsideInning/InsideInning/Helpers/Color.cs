@@ -19,6 +19,7 @@ namespace InsideInning.Helper
         public static readonly Color iiEditTextColor = 0x2d5be3;
         public static readonly Color iiTextColor = 0x86a183;
         public static readonly Color Transparent = 0x0000ffff;
+        public static readonly Color Lime = 0x6bf215;
 
 
         public double R, G, B;

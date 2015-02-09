@@ -33,6 +33,22 @@ namespace InsideInning.Droid.Renderer
                     case "2":
                         Control.SetBackgroundResource(Resource.Drawable.UnselectedMale);
                         break;
+                    case "3":
+                        Control.SetBackgroundResource(Resource.Drawable.UnselectedMale);
+                        break;
+                    case "4":
+                        Control.SetBackgroundResource(Resource.Drawable.UnselectedMale);
+                        break;
+                    case "5":
+                        Control.SetBackgroundResource(Resource.Drawable.UnselectedMale);
+                        break;
+                    case "6":
+                        Control.SetBackgroundResource(Resource.Drawable.UnselectedMale);
+                        break;
+                    case "7":
+                        Control.SetBackgroundResource(Resource.Drawable.UnselectedMale);
+                        break;
+                        break;
                     default:
                         break;
                 }

@@ -1,1 +1,1 @@
-# InsideInning : Internal leave applicateion for ii Employees and managment. 
+# InsideInning : Internal leave application for ii Employees and managment. 

@@ -7,18 +7,27 @@ namespace InsideInning.Helper
 {
     public class iiControls
     {
-        public static View CreateEntryFor(string propertyName, Color color, bool IsPassword = false)
+        public static View CreateEntryFor(string propertyName, Color color, string id="", bool IsPassword = false)
         {
-            Entry iiEditTextBox = new Entry
+            iiTextBox iiEditTextBox = new iiTextBox
             {
-                HorizontalOptions = LayoutOptions.FillAndExpand,
+               // HorizontalOptions = LayoutOptions.FillAndExpand,
                 TextColor = color.ToFormsColor(),
                 IsPassword = IsPassword,
-                Placeholder = propertyName
+                Placeholder = propertyName,
+                BackgroundColor = Xamarin.Forms.Color.Transparent, //Color.iiEditTextColor.ToFormsColor(),
+                ClassId = id,
+                TranslationY = 2,     
+
             };
-            iiEditTextBox.SetBinding(Entry.TextProperty, propertyName);
+            if (id == "1")
+                iiEditTextBox.HorizontalOptions = LayoutOptions.EndAndExpand;
+            else if(id == "2")
+                iiEditTextBox.HorizontalOptions = LayoutOptions.StartAndExpand;
+
+            iiEditTextBox.HorizontalOptions = LayoutOptions.FillAndExpand;
+            iiEditTextBox.SetBinding(iiTextBox.TextProperty, propertyName);
             return iiEditTextBox;
         }
-
     }
 }

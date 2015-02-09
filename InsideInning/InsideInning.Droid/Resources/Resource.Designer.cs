@@ -48,58 +48,112 @@ namespace InsideInning.Droid
 			public const int about = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int Balance128 = 2130837505;
+			public const int back = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int blog = 2130837506;
+			public const int Background = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int Calendar128 = 2130837507;
+			public const int Balance128 = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int Employee128 = 2130837508;
+			public const int Birthday = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int facebook = 2130837509;
+			public const int blog = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int googleplus = 2130837510;
+			public const int Calendar128 = 2130837510;
 			
 			// aapt resource value: 0x7f020007
-			public const int ic_launcher = 2130837511;
+			public const int email = 2130837511;
 			
 			// aapt resource value: 0x7f020008
-			public const int Icon = 2130837512;
+			public const int Employee128 = 2130837512;
 			
 			// aapt resource value: 0x7f020009
-			public const int index = 2130837513;
+			public const int facebook = 2130837513;
 			
 			// aapt resource value: 0x7f02000a
-			public const int instagram = 2130837514;
+			public const int Gender = 2130837514;
 			
 			// aapt resource value: 0x7f02000b
-			public const int NotePad = 2130837515;
+			public const int googleplus = 2130837515;
 			
 			// aapt resource value: 0x7f02000c
-			public const int NotePad128 = 2130837516;
+			public const int ic_launcher = 2130837516;
 			
 			// aapt resource value: 0x7f02000d
-			public const int Notify128 = 2130837517;
+			public const int Icon = 2130837517;
 			
 			// aapt resource value: 0x7f02000e
-			public const int refresh = 2130837518;
+			public const int iiTextBox = 2130837518;
 			
 			// aapt resource value: 0x7f02000f
-			public const int scott = 2130837519;
+			public const int image = 2130837519;
 			
 			// aapt resource value: 0x7f020010
-			public const int slideout = 2130837520;
+			public const int index = 2130837520;
 			
 			// aapt resource value: 0x7f020011
-			public const int twitter = 2130837521;
+			public const int instagram = 2130837521;
 			
 			// aapt resource value: 0x7f020012
-			public const int twitternav = 2130837522;
+			public const int Joinning = 2130837522;
+			
+			// aapt resource value: 0x7f020013
+			public const int MaritalStatus = 2130837523;
+			
+			// aapt resource value: 0x7f020014
+			public const int name = 2130837524;
+			
+			// aapt resource value: 0x7f020015
+			public const int NotePad = 2130837525;
+			
+			// aapt resource value: 0x7f020016
+			public const int NotePad128 = 2130837526;
+			
+			// aapt resource value: 0x7f020017
+			public const int Notify128 = 2130837527;
+			
+			// aapt resource value: 0x7f020018
+			public const int password = 2130837528;
+			
+			// aapt resource value: 0x7f020019
+			public const int ProfilePicture = 2130837529;
+			
+			// aapt resource value: 0x7f02001a
+			public const int refresh = 2130837530;
+			
+			// aapt resource value: 0x7f02001b
+			public const int scott = 2130837531;
+			
+			// aapt resource value: 0x7f02001c
+			public const int SelectedButton = 2130837532;
+			
+			// aapt resource value: 0x7f02001d
+			public const int SelectedFemale = 2130837533;
+			
+			// aapt resource value: 0x7f02001e
+			public const int SelectedMale = 2130837534;
+			
+			// aapt resource value: 0x7f02001f
+			public const int slideout = 2130837535;
+			
+			// aapt resource value: 0x7f020020
+			public const int twitter = 2130837536;
+			
+			// aapt resource value: 0x7f020021
+			public const int twitternav = 2130837537;
+			
+			// aapt resource value: 0x7f020022
+			public const int UnselectedButton = 2130837538;
+			
+			// aapt resource value: 0x7f020023
+			public const int UnselectedFemale = 2130837539;
+			
+			// aapt resource value: 0x7f020024
+			public const int UnselectedMale = 2130837540;
 			
 			static Drawable()
 			{

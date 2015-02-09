@@ -19,19 +19,19 @@ namespace InsideInning.Pages
         public EmployeeAccount()
         {
             BindingContext = new Employee();
-
+            BackgroundImage = "back";
             Content = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                HeightRequest = 50,
-                Padding = new Thickness(10, 10, 10, 10),
-                BackgroundColor = Color.Blue.ToFormsColor(),
+                Padding = new Thickness(30, 0, 30, 0),
+                Spacing=5,
+                
                 Children = 
                 {
-                    new Image{Source="index.jpg",Aspect=Aspect.Fill},
+                    new Image{Source="ProfilePicture.jpg",Aspect=Aspect.Fill},
                     GenGrid(),
-                    {iiControls.CreateEntryFor("EmailAddress",Color.White)},
-                    {iiControls.CreateEntryFor("Password",Color.White,true)},
+                    {iiControls.CreateEntryFor("EmailAddress",Color.iiTextColor,"3")},
+                    {iiControls.CreateEntryFor("Password",Color.iiTextColor, "4", true)},
                    // {iiControls.CreateEntryFor("ConfirmPassword",Color.White,true)},
                     GenGridForSwitch(),
                     new Button
@@ -45,18 +45,23 @@ namespace InsideInning.Pages
         }
         private Grid GenGrid()
         {
-            var grid = new Grid();
-            grid.Children.Add(iiControls.CreateEntryFor("FirstName", Color.White), 0, 0);
-            grid.Children.Add(iiControls.CreateEntryFor("LastName", Color.White), 1, 0);
+            var grid = new Grid()
+            {
+                RowSpacing=5,
+                ColumnSpacing=5
+                
+            };
+            grid.Children.Add(iiControls.CreateEntryFor("FirstName", Color.White,"1"), 0, 0);
+            grid.Children.Add(iiControls.CreateEntryFor("LastName", Color.White,"2"), 1, 0);
             return grid;
         }
         private Grid GenGridForSwitch()
         {
-            var _switchGrid = new Grid();
-            _switchGrid.Children.Add(new Label { Text = "IsAdmin", TextColor = Color.White.ToFormsColor(), HorizontalOptions = LayoutOptions.Start, TranslationX = 70, TranslationY = 5 }, 0, 0);
-            _switchGrid.Children.Add(new Switch { HorizontalOptions = LayoutOptions.Start  }, 1, 0);
-            _switchGrid.Children.Add(new Label { Text = "IsActive", TextColor = Color.White.ToFormsColor(), HorizontalOptions = LayoutOptions.Start, TranslationX = 70, TranslationY = 5 }, 0, 1);
-            _switchGrid.Children.Add(new Switch { HorizontalOptions = LayoutOptions.Start }, 1, 1);
+            var _switchGrid = new Grid();            
+            _switchGrid.Children.Add(new Label { Text = "Admin", TextColor = Color.iiTextColor.ToFormsColor(),FontSize=20,BackgroundColor=Xamarin.Forms.Color.Transparent, HorizontalOptions = LayoutOptions.Start, TranslationX = 0, TranslationY = 5 }, 0, 0);
+            _switchGrid.Children.Add(new Switch { HorizontalOptions = LayoutOptions.End  }, 1, 0);
+            _switchGrid.Children.Add(new Label { Text = "Active", TextColor = Color.iiTextColor.ToFormsColor(), FontSize = 20, BackgroundColor = Xamarin.Forms.Color.Transparent, HorizontalOptions = LayoutOptions.Start, TranslationX = 0, TranslationY = 5 }, 0, 1);
+            _switchGrid.Children.Add(new Switch { HorizontalOptions = LayoutOptions.End }, 1, 1);
             return _switchGrid;
         }
     }

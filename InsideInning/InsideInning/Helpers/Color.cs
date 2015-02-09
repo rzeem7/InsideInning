@@ -15,8 +15,10 @@ namespace InsideInning.Helper
         public static readonly Color Pink = 0xFF0040;
         public static readonly Color White = 0xFFFFFF;
         public static readonly Color iiGreen = 0x7BA203;
-        public static readonly Color iiPurple = 0x940D5B;
-
+        public static readonly Color iiPurple = 0x0732a2;
+        public static readonly Color iiEditTextColor = 0x2d5be3;
+        public static readonly Color iiTextColor = 0x86a183;
+        public static readonly Color Transparent = 0x0000ffff;
 
 
         public double R, G, B;

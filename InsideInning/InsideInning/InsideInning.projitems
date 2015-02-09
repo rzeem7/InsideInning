@@ -10,7 +10,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Class.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\iiButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\iiDatePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\iiLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\iiTextBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\InsideInningData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\SQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Color.cs" />
@@ -23,8 +26,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\IBusinessBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LeaveDetails.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LeaveRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MyEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\iiEmployeeList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LeaveRequestPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\NotificationPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\NotificationPageCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Setting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EmployeeViewModel.cs" />
@@ -32,7 +38,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\BaseView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\DashboardView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\EmployeeAccount.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\EmployeeDetails.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\EmployeeDetailsPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\HomeView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LeaveDetails.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Login.cs" />

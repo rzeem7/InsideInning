@@ -29,5 +29,6 @@ namespace InsideInning.Helper
             iiEditTextBox.SetBinding(iiTextBox.TextProperty, propertyName);
             return iiEditTextBox;
         }
+
     }
 }

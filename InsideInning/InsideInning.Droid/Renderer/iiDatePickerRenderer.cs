@@ -21,13 +21,26 @@ namespace InsideInning.Droid.Renderer
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.DatePicker> e)
         {
             base.OnElementChanged(e);
-            if(Control!=null)
+            if (Control != null)
             {
                 Control.SetBackgroundResource(Resource.Drawable.iiTextBox);
-                if (e.NewElement.ClassId=="1")
-                Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.Birthday, 0, 0, 0);
-                else
-                    Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.Joinning, 0, 0, 0);
+                switch (e.NewElement.ClassId)//Set icon on datepicker through Id
+                {
+                    case "1":
+                        Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.Birthday, 0, 0, 0);
+                        break;
+                    case "2":
+                        Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.Joinning, 0, 0, 0);
+                        break;
+                    case "3":
+                        Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.ToDate, 0, 0, 0);
+                        break;
+                    case "4":
+                        Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.FromDate, 0, 0, 0);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }

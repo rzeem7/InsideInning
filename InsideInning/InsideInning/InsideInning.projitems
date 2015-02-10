@@ -12,7 +12,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\iiButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\iiDatePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\iiEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\iiLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\iiPicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\iiTextBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\InsideInningData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\SQLite.cs" />
@@ -26,8 +28,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\IBusinessBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LeaveDetails.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LeaveRequest.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MyEntry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\iiEmployeeList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\EmployeeListPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LeaveRequestPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\NotificationPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\NotificationPageCell.cs" />

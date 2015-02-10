@@ -13,28 +13,23 @@ using Xamarin.Forms;
 using InsideInning;
 using InsideInning.Droid.Renderer;
 using Xamarin.Forms.Platform.Android;
+[assembly: ExportRenderer(typeof(iiEditor), typeof(iiEditTextRenderer))]
 
-[assembly: ExportRenderer(typeof(iiLabel), typeof(iiLabelRenderer))]
 namespace InsideInning.Droid.Renderer
 {
-   public class iiLabelRenderer : LabelRenderer
+   public class iiEditTextRenderer : EditorRenderer
     {
-       protected override void OnElementChanged(ElementChangedEventArgs<Label> e)
+       protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)
        {
            base.OnElementChanged(e);
-           
-
            if (Control != null)
            {
-               switch (e.NewElement.ClassId)
+               Control.SetBackgroundResource(Resource.Drawable.iiTextBox);
+               if (e.NewElement.ClassId == "1")
                {
-                   case "1":
-                       Control.SetBackgroundResource(Resource.Drawable.iiTextBox);
-                       break;
-                   default:
-                       break;
+                   Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.Notes, 0, 0, 0);
                }
            }
-       }   
+       }
     }
 }

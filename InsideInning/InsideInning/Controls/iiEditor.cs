@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace InsideInning
 {
-    public class MyEntry:Entry
+   public class iiEditor:Editor
     {
     }
 }

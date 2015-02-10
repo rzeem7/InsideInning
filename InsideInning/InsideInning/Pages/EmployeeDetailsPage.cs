@@ -53,19 +53,7 @@ namespace InsideInning.Pages
             return grid;
         }
 
-        public View CreateDatePickerFor(string propertyName, string bindProperty,string id="")
-        {
-            iiDatePicker iiDatePicker = new iiDatePicker
-            {
-                HorizontalOptions=LayoutOptions.FillAndExpand,
-                BackgroundColor = Xamarin.Forms.Color.Transparent,
-                //Color.iiEditTextColor.ToFormsColor(),
-                ClassId=id,
-                
-           };
-            iiDatePicker.SetBinding(iiDatePicker.DateProperty, bindProperty);
-            return iiDatePicker;
-        }
+
         public View CreateButtonFor(string propertyName, Color color, LayoutOptions layout, string id="")
         {
             iiButton iiButton = new iiButton
@@ -82,6 +70,19 @@ namespace InsideInning.Pages
             };
            //iiButton.SetBinding(Button.TextColorProperty, propertyName);
             return iiButton;
+        }
+        public View CreateDatePickerFor(string propertyName, string bindProperty, string id = "")
+        {
+            iiDatePicker iiDatePicker = new iiDatePicker
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
+                //Color.iiEditTextColor.ToFormsColor(),
+                ClassId = id,
+
+            };
+            iiDatePicker.SetBinding(iiDatePicker.DateProperty, bindProperty);
+            return iiDatePicker;
         }
         
     }

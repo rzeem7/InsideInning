@@ -12,105 +12,112 @@ namespace InsideInning.Pages
 {
     public class LeaveRequestPage : ContentPage
     {
+        #region Type cast BindingContex 
         private LeaveRequestViewModel ViewModel
         {
             get { return new LeaveRequestViewModel(); } //Type cast BindingContex as HomeViewModel to access binded properties
         }
+        #endregion
+
+        #region Bind all contols in stack layout
         public LeaveRequestPage()
         {
+            BackgroundImage = "back";
             BindingContext = new LeaveRequest();
             Content = new StackLayout
             {
-                // HorizontalOptions = LayoutOptions.FillAndExpand,
-                //HeightRequest = 50,
-                BackgroundColor = Color.iiGreen.ToFormsColor(),
-                Padding = new Thickness(10, 10, 10, 10),
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                HeightRequest = 50,
+                Padding = new Thickness(30, 20, 30, 0),
                 Children = 
                 {
-                    GenCalGrid(),
-                    {iiControls. CreateEntryFor("To",Color.White)},
-                    {CreateLabelFor("Notes", LayoutOptions.Start)},
-                    {CreateEditorFor("Notes", LayoutOptions.Start)},                       
+                    {(CreatePickerFor("Laeve Type", LayoutOptions.FillAndExpand))},
+                    {(CreateDatePickerFor("From Date", LayoutOptions.FillAndExpand, "3"))},
+                    {(CreateDatePickerFor("To Date", LayoutOptions.FillAndExpand, "4"))},
+                    {(CreateLabelFor("No. of days", LayoutOptions.FillAndExpand,"1"))},
+                    {CreateEditorFor("Notes", LayoutOptions.FillAndExpand,"1")},                       
                     new Button
                     {
-                        Text="Send",TextColor=Color.White.ToFormsColor(),BackgroundColor=Color.Gray.ToFormsColor(),BorderWidth=1,HorizontalOptions=LayoutOptions.Center,TranslationY=40,
+                        Text="Send",TextColor=Color.White.ToFormsColor(),BackgroundColor=Color.Gray.ToFormsColor(),BorderWidth=1,HorizontalOptions=LayoutOptions.FillAndExpand,TranslationY=40,
                         HeightRequest=40,
                         Command=ViewModel.AddCommand, CommandParameter=(LeaveRequest)BindingContext
                     }    
                 }
             };
         }
-        private Grid GenCalGrid()
+        #endregion
+
+        #region Custom Label
+        public View CreateLabelFor(string propertyName, LayoutOptions layout,string id ="")
         {
-            var grid = new Grid()
-            {
-                HeightRequest = 200,
-            };
-
-            grid.Children.Add(CreateLabelFor("From Date", LayoutOptions.Center), 0, 0);
-            grid.Children.Add(CreateDatePickerFor("From Date", LayoutOptions.Center), 0, 1);
-
-            grid.Children.Add(CreateLabelFor("To Date", LayoutOptions.Center), 1, 0);
-            grid.Children.Add(CreateDatePickerFor("To Date", LayoutOptions.Center), 1, 1);
-
-           // grid.Children.Add(CreateEntryFor("No. of days", Color.White, LayoutOptions.Center), 0, 2);
-            grid.Children.Add(CreatePickerFor("Laeve Type", LayoutOptions.Start), 1, 2);
-
-            return grid;
-        }
-        public View CreateLabelFor(string propertyName, LayoutOptions layout)
-        {
-            Label iiLabel = new Label
+            iiLabel iiLabel = new iiLabel
             {
                 TextColor = Color.White.ToFormsColor(),
                 Text = propertyName,
-                YAlign = TextAlignment.Center,
                 HorizontalOptions = layout,
-
-            };
+                HeightRequest=45,
+                FontSize=20,
+                ClassId=id,
+             };
             return iiLabel;
         }
-        public View CreateDatePickerFor(string propertyName, LayoutOptions layout)
-        {
-            DatePicker iiDatePicker = new DatePicker
-            {
-                HorizontalOptions = layout,
-                BackgroundColor = Helper.Color.iiGreen.ToFormsColor(),
+        
+        #endregion
 
-            };
-            iiDatePicker.SetBinding(DatePicker.DateProperty, propertyName);
-            return iiDatePicker;
-        }
-        //public View CreateButtonFor(string propertyName, Color color, LayoutOptions layout)
-        //{
-        //    Button iiButton = new Button
-        //    {
-        //        //HorizontalOptions = LayoutOptions.FillAndExpand,
-        //        TextColor = color.ToFormsColor(),
-        //        Text = "Send",
-        //        BorderWidth = 10,
-        //        WidthRequest = 100,
-        //        HeightRequest = 50,
-        //        HorizontalOptions = layout,
-        //        Command=ViewModel.AddCommand, CommandParameter=(LeaveRequest)BindingContext 
-        //    };
-        //    iiButton.SetBinding(Button.TextColorProperty, propertyName);
-        //    return iiButton;
-        //}
-        public static View CreateEditorFor(string propertyName, LayoutOptions layout)
+        #region Custom DropDown
+        public static View CreatePickerFor(string propertyName, LayoutOptions layout)
         {
-            Editor iiEditTextBox = new Editor
+            iiPicker iiPicker = new iiPicker
             {
                 HorizontalOptions = layout,
-                BackgroundColor = Helper.Color.iiPurple.ToFormsColor(),
+                Title = "Leave Type",
+                HeightRequest = 50,
+                WidthRequest = 50,
+            };
+            iiPicker.Items.Add("Leave Type");
+            iiPicker.Items.Add("Casual Leave");
+            iiPicker.Items.Add("Medical Leave");
+            iiPicker.Items.Add("Paid Leave");
+            iiPicker.SetBinding(Picker.TitleProperty, propertyName);
+            iiPicker.SelectedIndex = 0;
+            return iiPicker;
+        }
+
+        #endregion
+
+        #region Custom Editor(EditText box for multiple line)
+        public static View CreateEditorFor(string propertyName, LayoutOptions layout, string id = "")
+        {
+            iiEditor iiEditTextBox = new iiEditor
+            {
+                HorizontalOptions = layout,
                 HeightRequest = 200,
                 WidthRequest = 400,
+                ClassId=id,
 
             };
 
             iiEditTextBox.SetBinding(Editor.TextProperty, propertyName);
             return iiEditTextBox;
         }
+        #endregion
+
+        #region Custom DatePicker
+        public View CreateDatePickerFor(string propertyName, LayoutOptions layout, string id = "")
+        {
+            iiDatePicker iiDatePicker = new iiDatePicker
+            {
+                HorizontalOptions = layout,
+                ClassId=id,
+                //BackgroundColor = Helper.Color.iiGreen.ToFormsColor(),
+
+            };
+            iiDatePicker.SetBinding(DatePicker.DateProperty, propertyName);
+            return iiDatePicker;
+        }
+        #endregion
+
+        #region Custom Entry
         public static View CreateEntryFor(string propertyName, Color color, LayoutOptions layout)
         {
             Entry iiEditTextBox = new Entry
@@ -124,23 +131,7 @@ namespace InsideInning.Pages
             iiEditTextBox.SetBinding(Entry.TextProperty, propertyName);
             return iiEditTextBox;
         }
-        public static View CreatePickerFor(string propertyName, LayoutOptions layout)
-        {
-            Picker iiPicker = new Picker
-            {
-                HorizontalOptions = layout,
-                Title = "Leave Type",
-                HeightRequest = 150,
-                WidthRequest = 150,
-            };
-            iiPicker.Items.Add("Leave Type");
-            iiPicker.Items.Add("Casual Leave");
-            iiPicker.Items.Add("Medical Leave");
-            iiPicker.Items.Add("Paid Leave");
-            iiPicker.SetBinding(Picker.TitleProperty, propertyName);
-            iiPicker.SelectedIndex = 0;
-            return iiPicker;
-        }
+        #endregion
     }
 }
 

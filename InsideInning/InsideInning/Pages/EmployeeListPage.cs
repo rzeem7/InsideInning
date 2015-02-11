@@ -19,13 +19,13 @@ namespace InsideInning.Pages
         {
             ViewModel = ViewModel ?? new EmployeeViewModel();
             ViewModel.LoadAllEmployees.Execute(null);
-            _iiEmpList = new ListView()
+            _iiEmpList = new iiListView()
             {
-                BackgroundColor=Color.Red,
                 ItemTemplate = new DataTemplate(typeof(EmployeeViewCell))
             };
             Content = new StackLayout
             {
+
                 Children = {
 					_iiEmpList
 				}
@@ -39,30 +39,58 @@ namespace InsideInning.Pages
         }
     }
 
+    #region Custom View cell
+    /// <summary>
+    /// This class is a ViewCell that will be displayed for each Employee Cell.
+    /// </summary>
     class EmployeeViewCell : ViewCell
     {
         public EmployeeViewCell()
         {
+            var EmpImage = new Image()
+            {
+                HorizontalOptions = LayoutOptions.Start                
+            };
+            EmpImage.SetBinding(Image.SourceProperty, new Binding("ImageUri"));
+            EmpImage.WidthRequest = EmpImage.HeightRequest = 50;
+
             var nameLabel = new Label
             {
-                HorizontalOptions = LayoutOptions.FillAndExpand
+                HorizontalOptions = LayoutOptions.Start,
+
             };
+            nameLabel.FontSize = 15;
             nameLabel.SetBinding(Label.TextProperty, "FirstName");
+
             var Designation = new Label
             {
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-               
+                HorizontalOptions = LayoutOptions.Start,
+
             };
+            Designation.FontSize = 15;
             Designation.SetBinding(Label.TextProperty, "EmailAddress");
 
-            var nameLayout = new StackLayout()
+            View = new StackLayout
             {
+                Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.StartAndExpand,
-                Orientation = StackOrientation.Vertical,
-                Children = { nameLabel, Designation }
+                Padding = new Thickness(3, 3, 0, 2),
+               
+                Children = {
+                    //EmpImage,
+                    new Image{Source="index.jpg",HeightRequest=50,WidthRequest=50},
+					new StackLayout {
+                        Spacing=0,
+						Orientation = StackOrientation.Vertical,
+                        Padding=0,
+						Children = { nameLabel, Designation }
+					},
+					
+				}
             };
-            View = nameLayout;
+            
         }
     }
+    #endregion
     
 }

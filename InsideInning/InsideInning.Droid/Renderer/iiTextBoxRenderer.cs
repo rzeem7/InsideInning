@@ -38,6 +38,12 @@ namespace InsideInning.Droid.Renderer
                     case "4":
                         Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.password, 0, 0, 0);
                         break;
+                    case "5":
+                        Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.Usrename, 0, 0, 0);
+                        break;
+                    case "6":
+                        Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.password, 0, 0, 0);
+                        break;
                     default:
                         break;
                 }

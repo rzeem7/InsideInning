@@ -1,40 +1,52 @@
-﻿using System;
+﻿using InsideInning.Helper;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using Color = InsideInning.Helper.Color;
+
 
 namespace InsideInning.Pages
 {
-    class Login: BaseView
+   public class Login: BaseView
     {
         public Login()
         {
-            var stack = new StackLayout
+            BindingContext = new Employee();
+            BackgroundImage = "back";
+            Content = new StackLayout
             {
-                Orientation = StackOrientation.Vertical,
-                Spacing = 10
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                Padding = new Thickness(30, 180, 30, 100),             
+                Children = 
+                {      
+                    CreateStackfor(),
+                }
             };
-
-            var stack2 = new StackLayout
-            {
-                Orientation = StackOrientation.Vertical,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                Spacing = 10,
-                Padding = 10
-            };
-
-            var about = new Label
-            {
-                Font = Font.SystemFontOfSize(NamedSize.Medium),
-                Text = "Login",
-                LineBreakMode = LineBreakMode.WordWrap
-            };
-
-            stack2.Children.Add(about);
-            stack.Children.Add(new ScrollView { VerticalOptions = LayoutOptions.FillAndExpand, Content = stack2 });
-            Content = stack;
-
         }
+        private StackLayout CreateStackfor()
+        {
+            var layout = new StackLayout
+            {
+                HorizontalOptions = LayoutOptions.Center,
+                Padding = new Thickness(30,30, 30, 30),
+                Spacing = 10,
+                BackgroundColor=Color.Gray.ToFormsColor(),
+
+                Children = 
+                {
+                    {iiControls.CreateEntryFor("Username",Color.iiTextColor,"5")},
+                    {iiControls.CreateEntryFor("Password",Color.iiTextColor, "6", true)},
+                    new Button
+                    {
+                        Text="Login",TextColor=Color.White.ToFormsColor(),BackgroundColor=Color.Lime.ToFormsColor(),BorderWidth=1,HorizontalOptions=LayoutOptions.Center,
+                        HeightRequest=40,
+                   }                   
+                }
+            };
+            return layout;
+        }
+
     }
 }
 

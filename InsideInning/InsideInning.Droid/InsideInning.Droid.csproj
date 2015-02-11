@@ -165,6 +165,8 @@
     <AndroidResource Include="Resources\drawable\ToDate.png" />
     <AndroidResource Include="Resources\drawable\Notes.png" />
     <AndroidResource Include="Resources\drawable\back.png" />
+    <AndroidResource Include="Resources\drawable\Usrename.png" />
+    <AndroidResource Include="Resources\drawable\blur.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />

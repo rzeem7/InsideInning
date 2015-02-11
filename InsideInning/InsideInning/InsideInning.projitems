@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\InsideInningData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\SQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Color.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\iiControls.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListImageCell.cs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\BaseModel.cs" />

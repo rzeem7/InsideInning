@@ -138,8 +138,10 @@ namespace InsideInning.ViewModels
                 if (EmployeeDetail == null)
                     return;
 
-                int id = App.DataBase.SaveItem<EmployeeDetails>(EmployeeDetail);
-                Console.WriteLine("Fetched ID {0}", id);
+               // int id = App.DataBase.SaveItem<EmployeeDetails>(EmployeeDetail);
+                var dd = await ServiceHandler.PostDataAsync<int, EmployeeDetails>(EmployeeDetail, Constants.EmployeeDetails);
+
+                Console.WriteLine("Fetched ID {0}", dd);
                 return;
             }
             catch (Exception ex)

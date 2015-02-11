@@ -1,4 +1,6 @@
-﻿using InsideInning.Models;
+﻿using InsideInning.Helpers;
+using InsideInning.Models;
+using InsideInning.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -48,8 +50,9 @@ namespace InsideInning.ViewModels
                 if (LeaveRequestInfo == null)
                     return;
 
-                int id = App.DataBase.SaveItem<LeaveRequest>(LeaveRequestInfo);
-                Console.WriteLine("Fetched ID {0}", id);
+                //int id = App.DataBase.SaveItem<LeaveRequest>(LeaveRequestInfo);
+                var dd =await ServiceHandler.PostDataAsync<int, LeaveRequest>(LeaveRequestInfo, Constants.LeaveRequest);
+                Console.WriteLine("Fetched ID {0}", dd);
                 return;
             }
             catch (Exception ex)

@@ -8,5 +8,7 @@ namespace InsideInning.Helpers
     {
         public const string APIUrl = "OurApiUrl";
         public const string Employee = @"\Employee";
+        public const string EmployeeDetails = @"\EmployeeDetails";
+        public const string LeaveRequest = @"\LeaveRequest";
     }
 }

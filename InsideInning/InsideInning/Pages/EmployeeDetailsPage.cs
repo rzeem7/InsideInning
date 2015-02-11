@@ -39,7 +39,8 @@ namespace InsideInning.Pages
                         Text= "Submit",
                         TextColor=Color.White.ToFormsColor(),
                         Command=ViewModel.AddUpdateEmployeeDetailsCommand,
-                        CommandParameter=(EmployeeDetails)BindingContext
+                        CommandParameter=(EmployeeDetails)BindingContext,
+                        HorizontalOptions=LayoutOptions.FillAndExpand
                     },
                 }
            };
@@ -52,8 +53,6 @@ namespace InsideInning.Pages
 
             return grid;
         }
-
-
         public View CreateButtonFor(string propertyName, Color color, LayoutOptions layout, string id="")
         {
             iiButton iiButton = new iiButton
@@ -61,6 +60,8 @@ namespace InsideInning.Pages
                 //HorizontalOptions = LayoutOptions.FillAndExpand,
                 //Image=(FileImageSource)ImageSource.FromFile(imgscr),
                 TextColor = color.ToFormsColor(),
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
+
                 BorderWidth=10,
                 WidthRequest=55,
                 HeightRequest=55,

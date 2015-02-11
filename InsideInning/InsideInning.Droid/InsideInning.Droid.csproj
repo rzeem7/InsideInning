@@ -16,7 +16,8 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
+    <AndroidUseLatestPlatformSdk>
+    </AndroidUseLatestPlatformSdk>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
@@ -25,6 +26,7 @@
     <NuGetPackageImportStamp>16a07cab</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -140,7 +142,6 @@
     <AndroidResource Include="Resources\drawable\Gender.png" />
     <AndroidResource Include="Resources\drawable\Birthday.png" />
     <AndroidResource Include="Resources\drawable\Joinning.png" />
-    <AndroidResource Include="Resources\drawable\back.png" />
     <AndroidResource Include="Resources\drawable\Calendar.png" />
     <AndroidResource Include="Resources\drawable\leaves.png" />
     <AndroidResource Include="Resources\drawable\NotePad.png" />
@@ -158,6 +159,7 @@
     <AndroidResource Include="Resources\drawable\FromDate.png" />
     <AndroidResource Include="Resources\drawable\ToDate.png" />
     <AndroidResource Include="Resources\drawable\Notes.png" />
+    <AndroidResource Include="Resources\drawable\back.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />

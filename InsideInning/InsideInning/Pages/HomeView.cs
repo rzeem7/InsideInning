@@ -24,11 +24,11 @@ namespace InsideInning.Pages
             pages = new Dictionary<MenuType, NavigationPage>();
             BindingContext = new HomeViewModel();
             Master = _master = new HomeMasterPage(ViewModel);
-
             var homeNav = new NavigationPage(_master.PageSelection)
             {
-                BackgroundColor = Helper.Color.Lime.ToFormsColor(),
-                BarTextColor = Helper.Color.LightGray.ToFormsColor()
+                BackgroundColor = Helper.Color.Pink.ToFormsColor(),
+                BarTextColor = Helper.Color.White.ToFormsColor(),
+                BarBackgroundColor= Helper.Color.iiGreen.ToFormsColor()
             };
             Detail = homeNav;
             pages.Add(MenuType.EmployeeDetails, homeNav);
@@ -88,17 +88,6 @@ namespace InsideInning.Pages
                 this.Icon = "slideout.png";
                 Title = "test";
                 var layout = new StackLayout { Spacing = 0 };
-                //var label = new ContentView
-                //{
-                //    Padding = new Thickness(10, 36, 0, 5),
-                //    BackgroundColor = Xamarin.Forms.Color.Transparent,
-                //    Content = new Label
-                //    {
-                //        Text = "MENU",
-                //        Font = Font.SystemFontOfSize(NamedSize.Medium)
-                //    }
-                //};
-                //layout.Children.Add(label);
 
                 var listView = new ListView(); // Listview created for menu items
                 var cell = new DataTemplate(typeof(ListImageCell));

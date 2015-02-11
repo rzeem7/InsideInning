@@ -14,7 +14,7 @@ namespace InsideInning.Pages
     {
         public DashboardView()
         {
-            BackgroundImage = "back";
+            BackgroundImage = "back";            
             RelativeLayout relativeLayout = new RelativeLayout();
             relativeLayout.Children.Add(GridStackLayouts(), Constraint.Constant(0), Constraint.Constant(0),
                                    Constraint.RelativeToParent(parent =>
@@ -66,9 +66,25 @@ namespace InsideInning.Pages
         void DashboardBtn_Clicked(object sender, EventArgs e)
         {
             string id = ((Button)sender).ClassId;
-            if (id == "1")
+            switch (id)
             {
-
+                case "1":
+                    this.Navigation.PushAsync(new NotificationPage());
+                    break;
+                case "2":
+                    this.Navigation.PushAsync(new EmployeeListPage());
+                    break;
+                case "3":
+                    this.Navigation.PushAsync(new EmployeeDetailsPage());
+                    break;
+                case "4":
+                    this.Navigation.PushAsync(new LeaveRequestPage());
+                    break;
+                case "5":
+                    this.Navigation.PushAsync(new LeaveRequestPage());
+                    break;
+                default:
+                    break;
             }
         }
         public View CreateButtonForCalendar(string propertyName, string imgSrc)
@@ -91,7 +107,8 @@ namespace InsideInning.Pages
             var _gridLayout = new StackLayout
             {
                 BackgroundColor = Helper.Color.LightGray.ToFormsColor(),
-                Padding = new Thickness(10, 10, 10, 10),
+                Padding = new Thickness(20, 20, 20, 20),
+                Spacing=20,
                 Children = { 
                     GenGrid(),
                 	GenLowerGrid()
@@ -99,20 +116,22 @@ namespace InsideInning.Pages
             };
             return _gridLayout;
         }
-
         public StackLayout MainLayouts()
         {
             var _gridLayout = new StackLayout
             {
-                Padding = new Thickness(20, 10, 10, 20),
+                Padding = new Thickness(20, 70, 20, 20),
+                Spacing = 30,
                 Children = { CreateButtonFor("Notification", "notify.png", "1"),
-                    CreateButtonFor("Leave Balance", "leaves.png", "2"),
+                    CreateButtonFor("ii Employee List", "leaves.png", "2"),
                 CreateButtonFor("Emplyee Details", "persons.png", "3"),
-                CreateButtonFor("Leave Summary", "summary.png", "4"),
+                CreateButtonFor("Leave Request", "summary.png", "4"),
                 CreateButtonFor("Calender", "Calendar.png", "5"),
                 }
             };
+
             return _gridLayout;
+            
         }
     }
 }

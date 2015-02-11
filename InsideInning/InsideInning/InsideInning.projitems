@@ -30,7 +30,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\IBusinessBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LeaveDetails.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LeaveRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\BalanceLeavePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\CalendarPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\CalendarSummaryPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\EmployeeListPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\HolidayPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LeaveRequestPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\NotificationPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\NotificationPageCell.cs" />

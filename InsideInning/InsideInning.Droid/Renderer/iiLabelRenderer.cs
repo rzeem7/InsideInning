@@ -31,6 +31,12 @@ namespace InsideInning.Droid.Renderer
                    case "1":
                        Control.SetBackgroundResource(Resource.Drawable.iiTextBox);
                        break;
+                   case "2":
+                       Control.SetBackgroundResource(Resource.Drawable.LeftTopCorner);
+                       break;
+                   case "3":
+                       Control.SetBackgroundResource(Resource.Drawable.RigthTopCorner);
+                       break;
                    default:
                        break;
                }

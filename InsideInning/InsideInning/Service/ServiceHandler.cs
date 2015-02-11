@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using InsideInning.Helpers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,8 +33,8 @@ namespace InsideInning.Service
                     using (Stream data = response.GetResponseStream())
                     {
                         responseStr = new StreamReader(data).ReadToEnd();
-                        ObservableCollection<T> users = JsonConvert.DeserializeObject<ObservableCollection<T>>(responseStr);
-                        return users;
+                        ObservableCollection<T> resData = JsonConvert.DeserializeObject<ObservableCollection<T>>(responseStr);
+                        return resData;
                     }
                 }
             }

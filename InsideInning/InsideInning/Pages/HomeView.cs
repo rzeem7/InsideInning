@@ -31,7 +31,7 @@ namespace InsideInning.Pages
                 BarBackgroundColor= Helper.Color.iiGreen.ToFormsColor()
             };
             Detail = homeNav;
-            pages.Add(MenuType.EmployeeDetails, homeNav);
+            pages.Add(MenuType.Dashboard, homeNav);
             _master.PageSelectionChanged = async (menuType) =>
             {
 
@@ -65,7 +65,7 @@ namespace InsideInning.Pages
         {
             public Action<MenuType> PageSelectionChanged;
             private Page _pageSelection;
-            private MenuType menuType = MenuType.EmployeeDetails;
+            private MenuType menuType = MenuType.Dashboard;
 
             public Page PageSelection
             {
@@ -78,10 +78,10 @@ namespace InsideInning.Pages
                 }
             }
 
-            private EmployeeDetailsPage EmployeeDetails;
+            private EmployeeAccount EmployeeAccount;
             private DashboardView DashBoard;
-            private LeaveDetails LeaveDetails;
-            private LeaveRequestPage LeaveRequest;
+            private Login Setting;
+            private Login Logout;
             public HomeMasterPage(HomeViewModel viewModel)
             {
 
@@ -108,24 +108,30 @@ namespace InsideInning.Pages
                     menuType = menuItem.MenuType;
                     switch (menuItem.MenuType)
                     {
-                        case MenuType.EmployeeDetails:
-                            if (EmployeeDetails == null)
-                                EmployeeDetails = new EmployeeDetailsPage();
-                            PageSelection = EmployeeDetails;
+                        case MenuType.Dashboard:
+                            if (DashBoard == null)
+                                DashBoard = new DashboardView();
+
+                            PageSelection = DashBoard;
+                            break;
+                        case MenuType.EmployeeAccount:
+                            if (EmployeeAccount == null)
+                                EmployeeAccount = new EmployeeAccount();
+                            PageSelection = EmployeeAccount;
                             break;
 
-                        case MenuType.LeaveDetails:
-                            if (LeaveDetails == null)
-                                LeaveDetails = new LeaveDetails();
+                        case MenuType.Setting:
+                            if (Setting == null)
+                                Setting = new Login();
 
-                            PageSelection = LeaveDetails;
+                            PageSelection = Setting;
                             break;
 
-                        case MenuType.LeaveRequest:
-                            if (LeaveRequest == null)
-                                LeaveRequest = new LeaveRequestPage();
+                        case MenuType.Logout:
+                            if (Logout == null)
+                                Logout = new Login();
 
-                            PageSelection = LeaveRequest;
+                            PageSelection = Logout;
                             break;
                     }
                 };

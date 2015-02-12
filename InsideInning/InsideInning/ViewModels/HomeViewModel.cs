@@ -13,29 +13,29 @@ namespace InsideInning.ViewModels
         {
             Title = "Hello";
             MenuItems = new ObservableCollection<HomeMenuItem>();
+
             MenuItems.Add(new HomeMenuItem
             {
                 ID = 0,
-                Title = "Create an Account",
-                MenuType = MenuType.EmployeeDetails
-            });
-            MenuItems.Add(new HomeMenuItem
+                Title = "Dashboard",
+                MenuType = MenuType.Dashboard
+            }); MenuItems.Add(new HomeMenuItem
             {
                 ID = 1,
-                Title = "Leave Summary",
-                MenuType = MenuType.LeaveDetails
+                Title = "Create an Account",
+                MenuType = MenuType.EmployeeAccount
             });
-            MenuItems.Add(new HomeMenuItem
+           MenuItems.Add(new HomeMenuItem
             {
                 ID = 2,
                 Title = "Setting",
-                MenuType = MenuType.LeaveRequest
+                MenuType = MenuType.Setting
             });
             MenuItems.Add(new HomeMenuItem
             {
                 ID = 3,
-                Title = "LogOut",
-                MenuType = MenuType.LeaveRequest
+                Title = "Logout",
+                MenuType = MenuType.Logout
             });
         }
     }

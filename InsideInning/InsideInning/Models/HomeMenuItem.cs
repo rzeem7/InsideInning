@@ -7,9 +7,10 @@ namespace InsideInning.Models
 {
     public enum MenuType
     {
-        EmployeeDetails,
-        LeaveDetails,
-        LeaveRequest
+        Dashboard,
+        EmployeeAccount,
+        Setting,
+        Logout
 
     }
     
@@ -18,7 +19,7 @@ namespace InsideInning.Models
 
         public HomeMenuItem()
         {
-            MenuType = MenuType.EmployeeDetails;
+            MenuType = MenuType.Dashboard;
                 
         }
         public MenuType MenuType { get; set; }

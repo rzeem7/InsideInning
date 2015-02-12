@@ -9,6 +9,8 @@ using Android.OS;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
 
+using ImageCircle.Forms.Plugin.Abstractions;
+
 namespace InsideInning.Droid
 {
     [Activity(Label = "InsideInning", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -18,6 +20,7 @@ namespace InsideInning.Droid
         {
             base.OnCreate(bundle);
             Forms.Init(this, bundle);
+            
             SetPage(InsideInning.App.RootPage);
         }
     }

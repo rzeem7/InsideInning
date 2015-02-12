@@ -51,10 +51,10 @@ namespace InsideInning.Pages
                 Image = imgSrc,
                 ClassId = _id,
                 Text=propertyName,
-                BorderColor=Color.Lime.ToFormsColor(),
+                BorderColor=Color.White.ToFormsColor(),
                 BorderWidth=1,
                 
-                TextColor = Color.Lime.ToFormsColor(),
+                TextColor = Color.White.ToFormsColor(),
                 BackgroundColor =Xamarin.Forms.Color.Transparent,
                 //Text = propertyName,
                 HeightRequest = 50

@@ -22,6 +22,8 @@ namespace InsideInning.Droid
             Forms.Init(this, bundle);
             
             SetPage(InsideInning.App.RootPage);
+           // SetPage(App.GetMainPage());
+
         }
     }
 }

@@ -74,6 +74,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Xamarin.Android.Support.v4.21.0.3.0\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Forms.Calendar">
+      <HintPath>C:\Users\naina.sharma\Downloads\Xamarin.Forms.Calendar-master\Xamarin.Forms.Calendar-master\Xamarin.Forms.CalendarSampleApp\Xamarin.Forms.CalendarSampleApp\bin\Debug\Xamarin.Forms.Calendar.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=1.3.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Xamarin.Forms.1.3.3.6323\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
@@ -103,6 +106,9 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
+    <AndroidResource Include="Resources\layout\calendarPickerCopy.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Icon.png" />
@@ -180,11 +186,23 @@
     <AndroidResource Include="Resources\drawable\blur.png" />
     <AndroidResource Include="Resources\drawable\LeftTopCorner.xml" />
     <AndroidResource Include="Resources\drawable\RigthTopCorner.xml" />
-    <AndroidResource Include="Resources\drawable\Dummy.jpg" />
+    <AndroidResource Include="Resources\layout\calendarPicker.axml" />
+    <AndroidResource Include="Resources\layout\dialog.axml" />
+    <AndroidResource Include="Resources\layout\month.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\week.axml" />
+    <AndroidResource Include="Resources\drawable\calendar_bg_selector.xml" />
+    <AndroidResource Include="Resources\values\attrs.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\values\dimens.xml" />
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\values\styles.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\color\calendar_text_selector.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\layout\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="..\InsideInning\InsideInning.projitems" Label="Shared" Condition="Exists('..\InsideInning\InsideInning.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -25,15 +25,10 @@ namespace InsideInning.ViewModels
                 Title = "Create an Account",
                 MenuType = MenuType.EmployeeAccount
             });
-           MenuItems.Add(new HomeMenuItem
-            {
-                ID = 2,
-                Title = "Setting",
-                MenuType = MenuType.Setting
-            });
+
             MenuItems.Add(new HomeMenuItem
             {
-                ID = 3,
+                ID = 2,
                 Title = "Logout",
                 MenuType = MenuType.Logout
             });

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
+using ImageCircle.Forms.Plugin.Abstractions;
 namespace InsideInning.Pages
 {
     public class EmployeeListPage : ContentPage
@@ -25,7 +26,6 @@ namespace InsideInning.Pages
             };
             Content = new StackLayout
             {
-
                 Children = {
 					_iiEmpList
 				}
@@ -47,12 +47,16 @@ namespace InsideInning.Pages
     {
         public EmployeeViewCell()
         {
-            var EmpImage = new Image()
+            var EmpImage = new CircleImage()
             {
-                HorizontalOptions = LayoutOptions.Start                
+                HorizontalOptions = LayoutOptions.Start,
+                BorderThickness=5,
+                Source = "Dummy.jpg",
+                BorderColor=Color.White,
+                Aspect=Aspect.Fill,
             };
-            EmpImage.SetBinding(Image.SourceProperty, new Binding("ImageUri"));
-            EmpImage.WidthRequest = EmpImage.HeightRequest = 50;
+            //EmpImage.SetBinding(Image.SourceProperty, new Binding("ImageUri"));
+            EmpImage.WidthRequest = EmpImage.HeightRequest = 60;
 
             var nameLabel = new Label
             {
@@ -73,15 +77,17 @@ namespace InsideInning.Pages
             View = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
-                HorizontalOptions = LayoutOptions.StartAndExpand,
-                Padding = new Thickness(3, 3, 0, 2),
-               
+                HorizontalOptions = LayoutOptions.Start,
+                Padding = new Thickness(0,1.5,0,1.5),
+                HeightRequest=10,
+                Spacing=0,
                 Children = {
-                    //EmpImage,
-                    new Image{Source="index.jpg",HeightRequest=50,WidthRequest=50},
+                    EmpImage,
+                    //new Image{Source="index.jpg",HeightRequest=50,WidthRequest=50},
 					new StackLayout {
                         Spacing=0,
 						Orientation = StackOrientation.Vertical,
+                        VerticalOptions=LayoutOptions.Start,
                         Padding=0,
 						Children = { nameLabel, Designation }
 					},

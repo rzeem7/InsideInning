@@ -36,7 +36,7 @@ namespace InsideInning.Pages
                     GenGridForSwitch(),
                     new Button
                     {
-                        Text="Submit",TextColor=Color.White.ToFormsColor(),BackgroundColor=Color.Gray.ToFormsColor(),BorderWidth=1,HorizontalOptions=LayoutOptions.Center,TranslationY=40,
+                        Text="Submit",TextColor=Color.White.ToFormsColor(),BackgroundColor=Color.Gray.ToFormsColor(),BorderWidth=2,HorizontalOptions=LayoutOptions.Center,TranslationY=40,
                         HeightRequest=40,
                         Command=ViewModel.AddUpdateCommand, CommandParameter=(Employee)BindingContext
                     }                   
@@ -58,9 +58,9 @@ namespace InsideInning.Pages
         private Grid GenGridForSwitch()
         {
             var _switchGrid = new Grid();            
-            _switchGrid.Children.Add(new Label { Text = "Admin", TextColor = Color.iiTextColor.ToFormsColor(),FontSize=20,BackgroundColor=Xamarin.Forms.Color.Transparent, HorizontalOptions = LayoutOptions.Start, TranslationX = 0, TranslationY = 5 }, 0, 0);
+            _switchGrid.Children.Add(new Label { Text = "Admin", TextColor = Color.White.ToFormsColor(),FontSize=20,BackgroundColor=Xamarin.Forms.Color.Transparent, HorizontalOptions = LayoutOptions.Start, TranslationX = 0, TranslationY = 5 }, 0, 0);
             _switchGrid.Children.Add(new Switch { HorizontalOptions = LayoutOptions.End  }, 1, 0);
-            _switchGrid.Children.Add(new Label { Text = "Active", TextColor = Color.iiTextColor.ToFormsColor(), FontSize = 20, BackgroundColor = Xamarin.Forms.Color.Transparent, HorizontalOptions = LayoutOptions.Start, TranslationX = 0, TranslationY = 5 }, 0, 1);
+            _switchGrid.Children.Add(new Label { Text = "Active", TextColor = Color.White.ToFormsColor(), FontSize = 20, BackgroundColor = Xamarin.Forms.Color.Transparent, HorizontalOptions = LayoutOptions.Start, TranslationX = 0, TranslationY = 5 }, 0, 1);
             _switchGrid.Children.Add(new Switch { HorizontalOptions = LayoutOptions.End }, 1, 1);
             return _switchGrid;
         }

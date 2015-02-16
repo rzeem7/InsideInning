@@ -85,7 +85,7 @@ namespace InsideInning.ViewModels
         {
             get 
             {
-                return addUpdateCommand ?? (addUpdateCommand = new Command(async () => await ExecuteLoadCommand())); 
+                return _LoadAllEmployees ?? (_LoadAllEmployees = new Command(async () => await ExecuteLoadCommand())); 
             }
             
         }

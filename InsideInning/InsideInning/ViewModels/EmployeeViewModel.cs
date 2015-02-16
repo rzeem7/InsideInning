@@ -94,9 +94,10 @@ namespace InsideInning.ViewModels
         {
             try
             {
-
+                IsBusy = true;
                 //_employeeList = App.DataBase.GetItems<Employee>(); //From Local DB
                 _employeeList = await ServiceHandler.ProcessRequestAsync<Employee>(Constants.Employee); //Server Call
+                IsBusy = false;
             }
             catch (Exception ex)
             {

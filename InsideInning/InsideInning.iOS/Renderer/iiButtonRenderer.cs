@@ -43,7 +43,6 @@ namespace InsideInning.iOS.Renderer
                     case "7":
                         Control.SetBackgroundImage(UIImage.FromFile("UnselectedMale.png"), UIControlState.Normal);
                         break;
-                        break;
                     default:
                         break;
                 }

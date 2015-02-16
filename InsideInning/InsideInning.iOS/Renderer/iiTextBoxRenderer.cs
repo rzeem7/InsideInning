@@ -28,19 +28,19 @@ namespace InsideInning.iOS.Renderer
                 switch (e.NewElement.ClassId)
                 {
                     case "1":
-                        Control.LeftView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("name"));
+                        Control.LeftView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("name.png"));
                         break;
                     case "3":
-                        Control.LeftView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("email"));
+                        Control.LeftView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("email.png"));
                         break;
                     case "4":
-                        Control.LeftView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("password"));
+                        Control.LeftView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("password.png"));
                         break;
                     case "5":
-                        Control.LeftView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("Usrename"));
+                        Control.LeftView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("Usrename.png"));
                         break;
                     case "6":
-                        Control.LeftView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("password"));
+                        Control.LeftView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("password.png"));
                         break;
                     default:
                         break;

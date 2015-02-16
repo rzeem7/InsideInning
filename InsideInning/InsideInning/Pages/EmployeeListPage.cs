@@ -18,7 +18,16 @@ namespace InsideInning.Pages
         ListView _iiEmpList = null;
         public EmployeeListPage()
         {
-            ViewModel = ViewModel ?? new EmployeeViewModel();
+            BindingContext = new EmployeeViewModel();
+            var activity = new ActivityIndicator
+            {
+                Color = Color.White,
+                IsEnabled = true
+            };
+            activity.SetBinding(ActivityIndicator.IsVisibleProperty, "IsBusy");
+            activity.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
+
+            ViewModel = (EmployeeViewModel)BindingContext; //ViewModel ?? new EmployeeViewModel();
             ViewModel.LoadAllEmployees.Execute(null);
             _iiEmpList = new iiListView()
             {
@@ -27,6 +36,7 @@ namespace InsideInning.Pages
             Content = new StackLayout
             {
                 Children = {
+                    activity,
 					_iiEmpList
 				}
             };
@@ -51,7 +61,7 @@ namespace InsideInning.Pages
             {
                 HorizontalOptions = LayoutOptions.Start,
                 BorderThickness=5,
-                Source = "Dummy.jpg",
+                //Source = "Dummy.jpg",
                 BorderColor=Color.White,
                 Aspect=Aspect.Fill,
             };

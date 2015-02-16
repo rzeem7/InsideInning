@@ -1,0 +1,4 @@
+E:\Xamarin\InsideInning\InsideInning.Web.Core\bin\Release\InsideInning.Web.Core.dll
+E:\Xamarin\InsideInning\InsideInning.Web.Core\bin\Release\InsideInning.Web.Core.pdb
+E:\Xamarin\InsideInning\InsideInning.Web.Core\obj\Release\InsideInning.Web.Core.dll
+E:\Xamarin\InsideInning\InsideInning.Web.Core\obj\Release\InsideInning.Web.Core.pdb

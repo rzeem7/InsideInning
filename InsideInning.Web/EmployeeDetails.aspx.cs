@@ -30,7 +30,7 @@ namespace InsideInning.Web
             empDeatilsData.DateOfAniversary = DOACal.SelectedDate;
             empDeatilsData.ContactNumber = Convert.ToInt32(ContactTxtbox.Text);
             empDeatilsData.Landline = Convert.ToInt32(lanlinetxtbox.Text);
-            empDeatilsData.CompanyProfile = CpyProfiletxtbox.Text;
+            //empDeatilsData.CompanyProfile = CpyProfiletxtbox.Text;
             empDeatilsData.JoinningDate = JoinCal.SelectedDate;
             //empDeatilsData.IsActive = CheckIsActive.Checked;
             

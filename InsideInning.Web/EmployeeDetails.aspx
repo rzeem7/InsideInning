@@ -90,13 +90,8 @@
         <table class="auto-style1">
             <tr>
                 <td>
-<<<<<<< HEAD
                     <asp:Button ID="BtnSave" runat="server" Font-Bold="True" Text="Save" OnClick="BtnSave_Click" />
                     <asp:Button ID="BtnCancel" runat="server" Font-Bold="True" Text="Cancel" />
-=======
-                    <asp:Button ID="Button3" runat="server" Font-Bold="True" Text="SAVE" OnClick="Button3_Click" style="height: 26px" />
-                    <asp:Button ID="Button4" runat="server" Font-Bold="True" Text="Cancle" />
->>>>>>> 2d1f6f008d0f12a7d7f59de4e2e3deedad152995
                 </td>
             </tr>
         </table>

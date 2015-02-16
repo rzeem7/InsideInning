@@ -48,8 +48,7 @@ namespace InsideInning.Droid.Renderer
                     case "7":
                         Control.SetBackgroundResource(Resource.Drawable.UnselectedMale);
                         break;
-                        break;
-                    default:
+                     default:
                         break;
                 }
             }

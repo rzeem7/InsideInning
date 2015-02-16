@@ -40,13 +40,37 @@ namespace InsideInning.Pages
                     new Button
                     {
                         Text="Login",TextColor=Color.White.ToFormsColor(),BackgroundColor=Color.Lime.ToFormsColor(),BorderWidth=1,HorizontalOptions=LayoutOptions.Center,
-                        HeightRequest=40,
+                        HeightRequest=40, 
                    }                   
                 }
             };
+
             return layout;
         }
+        public View CreateButtonFor(string propertyName, string imgSrc, string _id)
+        {
+            Button iiButton = new Button
+            {
+                Image = imgSrc,
+                ClassId = _id,
+                Text = propertyName,
+                BorderColor = Color.White.ToFormsColor(),
+                BorderWidth = 1,
 
+                TextColor = Color.White.ToFormsColor(),
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
+                //Text = propertyName,
+                HeightRequest = 50
+            };
+
+            iiButton.Clicked += iiButton_Clicked;
+            return iiButton;
+        }
+        void iiButton_Clicked(object sender, EventArgs e)
+        {
+            this.Navigation.PushAsync(new DashboardView());
+
+        }
     }
 }
 

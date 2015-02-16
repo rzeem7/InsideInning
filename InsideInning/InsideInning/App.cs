@@ -15,6 +15,7 @@ namespace InsideInning
         {
             get { return homeView ?? (homeView = new EmployeeListPage()); }
         }
+        
 
         #region Database Instance
 

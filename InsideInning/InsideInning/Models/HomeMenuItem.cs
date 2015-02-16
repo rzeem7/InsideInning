@@ -9,7 +9,6 @@ namespace InsideInning.Models
     {
         Dashboard,
         EmployeeAccount,
-        Setting,
         Logout
 
     }

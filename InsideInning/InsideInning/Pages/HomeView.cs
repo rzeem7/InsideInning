@@ -80,7 +80,6 @@ namespace InsideInning.Pages
 
             private EmployeeAccount EmployeeAccount;
             private DashboardView DashBoard;
-            private Login Setting;
             private Login Logout;
             public HomeMasterPage(HomeViewModel viewModel)
             {
@@ -118,13 +117,6 @@ namespace InsideInning.Pages
                             if (EmployeeAccount == null)
                                 EmployeeAccount = new EmployeeAccount();
                             PageSelection = EmployeeAccount;
-                            break;
-
-                        case MenuType.Setting:
-                            if (Setting == null)
-                                Setting = new Login();
-
-                            PageSelection = Setting;
                             break;
 
                         case MenuType.Logout:

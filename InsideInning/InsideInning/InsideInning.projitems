@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calendar\CalendarView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\iiButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\iiDatePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\iiEditor.cs" />

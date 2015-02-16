@@ -24,17 +24,19 @@ namespace InsideInning.Web
         protected void Save_Click(object sender, EventArgs e)
         {
             var restClient = new RestClient("http://localhost:26197/api/");
-            var request = new RestRequest("CheckLogin/", Method.POST);
-
+            var request = new RestRequest("Employee/", Method.POST);
+            var txtFirstName = EmployeeFirstName.Text;
+            var txtLastName = EmployeeLastName.Text;
             var empData = new BOEmployee();
+            empData.FirstName = txtFirstName;
+            empData.LastName = txtLastName;
             empData.EmailAddress = EmployeeEmail.Text;
             empData.Password=EmployeePassword.Text;
             request.RequestFormat = RestSharp.DataFormat.Json;
             request.AddHeader("X-ApiKey", "XMLHttpRequest");
             request.AddBody(empData);
             var dd = restClient.Execute<BOEmployee>(request);
-            var txtFirstName = EmployeeFirstName.Text;
-            var txtLastName = EmployeeLastName.Text;
+            
         }
     }
 }

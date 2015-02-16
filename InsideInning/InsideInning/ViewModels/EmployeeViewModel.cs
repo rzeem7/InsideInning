@@ -67,9 +67,9 @@ namespace InsideInning.ViewModels
                 if (EmployeeInfo == null)
                     return;
 
-                int id = App.DataBase.SaveItem<Employee>(EmployeeInfo);
-                //var dd = await ServiceHandler.PostDataAsync<int, Employee>(EmployeeInfo, Constants.Employee);
-                Console.WriteLine("Fetched ID {0}", id);
+                //int id = App.DataBase.SaveItem<Employee>(EmployeeInfo);
+                var dd = await ServiceHandler.PostDataAsync<int, Employee>(EmployeeInfo, Constants.Employee);
+                Console.WriteLine("Fetched ID {0}", dd);
                 return;
             }
             catch (Exception ex)
@@ -95,8 +95,8 @@ namespace InsideInning.ViewModels
             try
             {
 
-                _employeeList = App.DataBase.GetItems<Employee>(); //From Local DB
-                //_employeeList = await ServiceHandler.ProcessRequestAsync<Employee>(Constants.Employee); //Server Call
+                //_employeeList = App.DataBase.GetItems<Employee>(); //From Local DB
+                _employeeList = await ServiceHandler.ProcessRequestAsync<Employee>(Constants.Employee); //Server Call
             }
             catch (Exception ex)
             {

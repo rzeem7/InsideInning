@@ -51,7 +51,7 @@ namespace InsideInning.Pages
             {
                 HorizontalOptions = LayoutOptions.Start,
                 BorderThickness=5,
-                Source = "Dummy.jpg",
+                //Source = "Dummy.jpg",
                 BorderColor=Color.White,
                 Aspect=Aspect.Fill,
             };

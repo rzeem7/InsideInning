@@ -10,13 +10,13 @@ namespace InsideInning.DAL
   public sealed class InsideInningDB
   {
 
-      public static string InsideInning_CONNECTIONSTRING = @"Data Source=192.168.0.133\iiSqlServer;User Id=sa;Password=IAm7MOM;Initial Catalog=InsideInning;";
+     // public static string InsideInning_CONNECTIONSTRING = @"Data Source=192.168.0.133\iiSqlServer;User Id=sa;Password=IAm7MOM;Initial Catalog=InsideInning;";
 
 
-      //public static string InsideInning_CONNECTIONSTRING
-      //{
-          //get { return ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString; }
-      //}
+      public static string InsideInning_CONNECTIONSTRING
+      {
+          get { return ConfigurationManager.ConnectionStrings["InsideInningConnection"].ConnectionString; }
+      }
   }
 
 }

@@ -111,9 +111,6 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Resources\drawable\index.jpg" />
     <AndroidResource Include="Resources\drawable\slideout.png" />
@@ -181,7 +178,6 @@
     <AndroidResource Include="Resources\drawable\FromDate.png" />
     <AndroidResource Include="Resources\drawable\ToDate.png" />
     <AndroidResource Include="Resources\drawable\Notes.png" />
-    <AndroidResource Include="Resources\drawable\back.png" />
     <AndroidResource Include="Resources\drawable\Usrename.png" />
     <AndroidResource Include="Resources\drawable\blur.png" />
     <AndroidResource Include="Resources\drawable\LeftTopCorner.xml" />
@@ -201,6 +197,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\color\calendar_text_selector.xml" />
+    <AndroidResource Include="Resources\drawable\back.jpg" />
+    <AndroidResource Include="Resources\drawable\cover.png" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="..\InsideInning\InsideInning.projitems" Label="Shared" Condition="Exists('..\InsideInning\InsideInning.projitems')" />

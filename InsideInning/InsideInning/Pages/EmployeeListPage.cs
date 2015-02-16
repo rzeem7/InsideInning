@@ -30,7 +30,7 @@ namespace InsideInning.Pages
 					_iiEmpList
 				}
             };
-
+            
         }
         protected override void OnAppearing()
         {

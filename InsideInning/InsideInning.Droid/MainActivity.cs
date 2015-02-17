@@ -14,14 +14,16 @@ using ImageCircle.Forms.Plugin.Abstractions;
 namespace InsideInning.Droid
 {
     [Activity(Label = "InsideInning", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : AndroidActivity
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            Forms.Init(this, bundle);
-            
-            SetPage(InsideInning.App.RootPage);
+           //Forms.Init(this, bundle);
+           //
+            global::Xamarin.Forms.Forms.Init(this, bundle);
+            LoadApplication(new InsideInning.App());
+            //SetPage(InsideInning.App.RootPage);
            // SetPage(App.GetMainPage());
 
         }

@@ -81,9 +81,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Xamarin.Forms.1.3.3.6323\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.iiCalendar.Droid">
-      <HintPath>..\..\Lib\Xamarin.Forms.iiCalendar.Droid.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Forms.Platform.Android, Version=1.3.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Xamarin.Forms.1.3.3.6323\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
@@ -95,6 +92,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="MonoDroid.TimesSquare\CalendarCellView.cs" />
+    <Compile Include="MonoDroid.TimesSquare\CalendarGridView.cs" />
+    <Compile Include="MonoDroid.TimesSquare\CalendarPickerView.cs" />
+    <Compile Include="MonoDroid.TimesSquare\CalendarRowView.cs" />
+    <Compile Include="MonoDroid.TimesSquare\Logr.cs" />
+    <Compile Include="MonoDroid.TimesSquare\MonthAdapter.cs" />
+    <Compile Include="MonoDroid.TimesSquare\MonthCellDescriptor.cs" />
+    <Compile Include="MonoDroid.TimesSquare\MonthDescriptor.cs" />
+    <Compile Include="MonoDroid.TimesSquare\MonthView.cs" />
+    <Compile Include="Renderer\CalendarViewRenderer.cs" />
     <Compile Include="Renderer\iiButtonRenderer.cs" />
     <Compile Include="Renderer\iiDatePickerRenderer.cs" />
     <Compile Include="Renderer\iiEditTextRenderer.cs" />
@@ -102,6 +109,7 @@
     <Compile Include="Renderer\iiListViewRenderer.cs" />
     <Compile Include="Renderer\iiPickerRenderer.cs" />
     <Compile Include="Renderer\iiTextBoxRenderer.cs" />
+    <Compile Include="ResourceIdManger.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -111,6 +119,7 @@
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MonoDroid.TimesSquare\License.txt" />
     <Content Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Resources\drawable\index.jpg" />
     <AndroidResource Include="Resources\drawable\slideout.png" />

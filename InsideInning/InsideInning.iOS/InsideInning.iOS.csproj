@@ -91,8 +91,10 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controls\CalendarMonthView.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderer\CalendarViewRenderer.cs" />
     <Compile Include="Renderer\iiButtonRenderer.cs" />
     <Compile Include="Renderer\iiTextBoxRenderer.cs" />
     <None Include="Entitlements.plist" />

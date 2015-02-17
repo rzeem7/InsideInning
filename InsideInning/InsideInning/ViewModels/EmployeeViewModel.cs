@@ -20,6 +20,7 @@ namespace InsideInning.ViewModels
             App.DataBase.CreateTables<Employee>();
             App.DataBase.CreateTables<EmployeeDetails>();
             _employeeList = new ObservableCollection<Employee>();
+            _employeeDetail = new EmployeeDetails();
         }
 
         #region Peoperties
@@ -110,12 +111,12 @@ namespace InsideInning.ViewModels
         #region EmployeeDetails Properties
 
 
-        private EmployeeDetails _employeedetail;
+        private EmployeeDetails _employeeDetail;
 
         public EmployeeDetails EmployeeDetail
         {
-            get { return _employeedetail; }
-            set { _employeedetail = value; OnPropertyChanged("EmployeeDetail"); }
+            get { return _employeeDetail; }
+            set { _employeeDetail = value; OnPropertyChanged("EmployeeDetail"); }
         }
 
         #endregion
@@ -151,6 +152,45 @@ namespace InsideInning.ViewModels
                 return;
             }
         }
+
+
+        private Command _loadEmpDetail;
+
+        public Command LoadEmpDetail
+        {
+            get
+            {
+                return _loadEmpDetail ?? (_loadEmpDetail = new Command(async (param) => await ExecuteLoadEmpDataCommand(param)));
+            }
+        }
+
+        private async  Task ExecuteLoadEmpDataCommand(object param)
+        {
+            try
+            {
+                var _EmpID = (Int32)param;
+                //if (EmployeeDetail == null)
+                //return;
+
+                // int id = App.DataBase.SaveItem<EmployeeDetails>(EmployeeDetail);
+                await ServiceHandler.ProcessRequestAsync<EmployeeDetails>(Constants.EmployeeDetails + _EmpID).ContinueWith(t =>
+                {
+                    if (t.Result.Count == 1)
+                    {
+                        _employeeDetail = t.Result[0];
+                    }
+                }); //Server Call
+
+               // Console.WriteLine("Fetched ID {0}", dd);
+                return;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An Exception Occured During getting the Record {0}", ex.Message);
+                return;
+            }
+        }
+        
         #endregion
 
     }

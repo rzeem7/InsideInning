@@ -75,7 +75,7 @@ namespace InsideInning.Pages
                     this.Navigation.PushAsync(new EmployeeListViewPage());
                     break;
                 case "3":
-                    this.Navigation.PushAsync(new EmployeeDetailsPage());
+                    this.Navigation.PushAsync(new EmployeeDetailsPage(1,null));
                     break;
                 case "4":
                     this.Navigation.PushAsync(new LeaveRequestViewPage());

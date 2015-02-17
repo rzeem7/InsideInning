@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace InsideInning.Pages
 {
-    class Setting : BaseView
+    class Setting : BaseViewPage
     {
         public Setting()
         {

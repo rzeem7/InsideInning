@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace InsideInning.Calendar
+namespace Xamarin.Forms.iiCalendar
 {
     public class CalendarView : View
     {

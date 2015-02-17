@@ -42,7 +42,6 @@ namespace InsideInning.Service
             {
                 throw;
             }
-            return null;
         }
 
         static string CreateURI(string res)
@@ -62,7 +61,7 @@ namespace InsideInning.Service
         /// <param name="resource"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static async Task<Tr> PostDataAsync<Tr, T>(T data, string resource, T value = default(T)) where T : class, new()
+        public static async Task<Tr> PostDataAsync<Tr, T>(T data, string resource, T value = default(T)) //where T : class, new()
         {
             var ser = new DataContractJsonSerializer(data.GetType());
             string reqUrl = CreateURI(resource);

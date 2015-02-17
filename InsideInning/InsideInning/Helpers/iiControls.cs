@@ -11,14 +11,12 @@ namespace InsideInning.Helper
         {
             iiTextBox iiEditTextBox = new iiTextBox
             {
-               // HorizontalOptions = LayoutOptions.FillAndExpand,
                 TextColor = color.ToFormsColor(),
                 IsPassword = IsPassword,
                 Placeholder = propertyName,
                 BackgroundColor = Xamarin.Forms.Color.Transparent, //Color.iiEditTextColor.ToFormsColor(),
                 ClassId = id,
                 TranslationY = 2,     
-
             };
             if (id == "1")
                 iiEditTextBox.HorizontalOptions = LayoutOptions.EndAndExpand;

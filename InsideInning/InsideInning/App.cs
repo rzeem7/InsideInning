@@ -8,15 +8,19 @@ using Xamarin.Forms;
 
 namespace InsideInning
 {
-    public static class App
+    public class App : Application
     {
         private static Page homeView;
         public static Page RootPage
         {
-            get { return homeView ?? (homeView = new HomeView()); }
+            get { return homeView ?? (homeView = new LoginPageView()); }
+        }
+
+        public App()
+        {
+            MainPage = homeView ?? (homeView = new LoginPageView());
         }
         
-
         #region Database Instance
 
         private static InsideInningData _database;

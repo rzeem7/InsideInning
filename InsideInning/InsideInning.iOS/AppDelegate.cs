@@ -21,14 +21,13 @@ namespace InsideInning.iOS
         //
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
-        Page page;
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+           
             global::Xamarin.Forms.Forms.Init();
-           // LoadApplication(new InsideInning.App());
-            page = InsideInning.App.RootPage;
-            Window.RootViewController = page.CreateViewController();
-            
+            LoadApplication(new InsideInning.App());
+          //  page = InsideInning.App.RootPage;
+            //Window.RootViewController = page.CreateViewController();
             return base.FinishedLaunching(app, options);
         }
     }

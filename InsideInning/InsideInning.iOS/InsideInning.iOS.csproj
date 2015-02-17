@@ -145,6 +145,144 @@
     </Reference>
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Images\Calendar\datecell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Images\Calendar\datecellmarked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Images\Calendar\datecellselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Images\Calendar\leftarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Images\Calendar\rightarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Images\Calendar\shadow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Images\Calendar\today.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Images\Calendar\todayselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Images\Calendar\topbar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Birthday.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\blur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\cover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\facebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FromDate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Gender.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\googleplus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\index.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\instagram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Joinning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\leaves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MaritalStatus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\name.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\NotePad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Notes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\notify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\persons.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ProfilePicture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\scott.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SelectedButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SelectedFemale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SelectedMale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\slideout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\summary.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ToDate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\twitter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\UnselectedButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\UnselectedFemale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\UnselectedMale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Usrename.png" />
+  </ItemGroup>
   <Import Project="..\InsideInning\InsideInning.projitems" Label="Shared" Condition="Exists('..\InsideInning\InsideInning.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

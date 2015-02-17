@@ -53,7 +53,7 @@ namespace InsideInning.Pages
         {
             var grid = new Grid()
             {
-                BackgroundColor = Xamarin.Forms.Color.Silver,
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
                 ColumnSpacing = 1,
                 RowSpacing = 1,
                 Padding = new Thickness(0, 0, 0, 3),
@@ -270,14 +270,38 @@ namespace InsideInning.Pages
             _stacker.Children.Add(_calendarView);
             _calendarView.DateSelected += (object sender, DateTime e) =>
             {
-                _stacker.Children.Add(new Label()
-                {
-                    Text = "Date Was Selected" + e.ToString("d"),
-                    VerticalOptions = LayoutOptions.Start,
-                    HorizontalOptions = LayoutOptions.CenterAndExpand,
-                });
+                
+                if (_stacker.Children.Count > 1)
+                    _stacker.Children.RemoveAt(1);
+                _stacker.Children.Add(GenTabGrid());
             };
             return _stacker;
+        }
+        #endregion
+        #region Custom Controls for CalendarView
+                private Grid GenTabGrid()
+        {
+            int i = 5;
+            var grid = new Grid()
+            {
+                ColumnSpacing = 2,
+                RowSpacing = 2,
+                Padding = new Thickness(10, 0, 10, 0),
+
+            };
+
+            grid.Children.Add(CreateLabelFor("Employee Name", LayoutOptions.Start, "2"), 0, 0);
+            grid.Children.Add(CreateLabelFor("Designation", Color.Purple, LayoutOptions.Start, "", true), 1, 0);
+            grid.Children.Add(CreateLabelFor("From", Color.Purple, LayoutOptions.Start, "", true), 2, 0);
+            grid.Children.Add(CreateLabelFor("To", LayoutOptions.Start, "3"), 3, 0);
+            for (int j = 1; j <= i; j++)
+            {
+                grid.Children.Add(CreateLabelFor("Neha", Color.Purple, LayoutOptions.Start, "", true), 0, j);
+                grid.Children.Add(CreateLabelFor("S/w Dev", Color.White, LayoutOptions.Start), 1, j);
+                grid.Children.Add(CreateLabelFor("11/02/15", Color.White, LayoutOptions.Start), 2, j);
+                grid.Children.Add(CreateLabelFor("15/02/15", Color.White, LayoutOptions.Start), 3, j);
+            }
+            return grid;
         }
         #endregion
 

@@ -26,8 +26,9 @@ namespace InsideInning.Pages
             BackgroundImage = "back";
             Content = new StackLayout
             {
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                Padding = new Thickness(5, 180, 0, 100),
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+               // Padding = new Thickness(100, 100, 100, 100),
                 Children = 
                 {      
                     CreateStackfor(),
@@ -39,42 +40,46 @@ namespace InsideInning.Pages
             var layout = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.Center,
-                Padding = new Thickness(70, 30, 70, 30),
+                VerticalOptions = LayoutOptions.Center,
+                Padding = new Thickness(30, 30, 30, 30),
                 Spacing = 10,
-                BackgroundColor = Color.Gray.ToFormsColor(),
+                BackgroundColor = Color.Green.ToFormsColor(),
                 Children = 
                 {
-                        iiControls.CreateEntryFor("Username",Color.iiTextColor,"5"),
-                        iiControls.CreateEntryFor("Password",Color.iiTextColor, "6", true),
-                    new Button
-                    {
-                        Text="Login",TextColor=Color.White.ToFormsColor(),
-                        Image="Icon",
-                        BackgroundColor=Color.Lime.ToFormsColor(),
-                        BorderWidth=1,
-                        HorizontalOptions=LayoutOptions.FillAndExpand,
-                        Command= ViewModel.LoginCommand
-                    }                   
+                        CreateEntryFor("Username",Color.iiTextColor,"5"),
+                        CreateEntryFor("Password",Color.iiTextColor, "6", true),
+                        CreateButtonFor("Login"),                             
                 }
             };
 
             return layout;
         }
-        public Button CreateButtonFor(string propertyName, string imgSrc, string _id)
+        public static View CreateEntryFor(string propertyName, Color color, string id = "", bool IsPassword = false)
+        {
+            iiTextBox iiEditTextBox = new iiTextBox
+            {
+                TextColor = color.ToFormsColor(),
+                IsPassword = IsPassword,
+                Placeholder = propertyName,
+                BackgroundColor = Xamarin.Forms.Color.Transparent, //Color.iiEditTextColor.ToFormsColor(),
+                ClassId = id,
+                TranslationY = 2,
+                WidthRequest=200,
+            };
+            return iiEditTextBox;
+        }
+        public Button CreateButtonFor(string propertyName)
         {
             Button iiButton = new Button
             {
-                Image = imgSrc,
-                ClassId = _id,
                 Text = propertyName,
-                BorderColor = Color.White.ToFormsColor(),
-                BorderWidth = 1,
-
                 TextColor = Color.White.ToFormsColor(),
-                BackgroundColor = Xamarin.Forms.Color.Transparent,
-                //Text = propertyName,
-                HeightRequest = 50,
-                Command = ViewModel.LoginCommand
+                BackgroundColor = Color.Lime.ToFormsColor(),
+                BorderWidth = 1,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                HeightRequest=50,
+                FontSize=18,
+                Command = ViewModel.LoginCommand,
             };
 
             return iiButton;

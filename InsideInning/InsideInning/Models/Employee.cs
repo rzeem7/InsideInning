@@ -6,10 +6,17 @@ using System.Text;
 namespace InsideInning
 {
    public class Employee : BaseModel
-    {    
+    {
 
         #region Full Property
+        private int _employeeID;
 
+        public int EmployeeID
+        {
+            get { return _employeeID; }
+            set { _employeeID = value; OnPropertyChanged("EmployeeID"); }
+        }
+        
         private string _firstname = string.Empty;
         public string FirstName
         {

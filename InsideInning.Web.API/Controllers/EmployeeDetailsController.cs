@@ -30,9 +30,10 @@ namespace InsideInning.Web.API.Controllers
         {
             try
             {
-                return BLLEmployee.GetEmployeeDetailsByID(id);
+                var dd=BLLEmployee.GetEmployeeDetailsByID(id);
+                return dd;
             }
-            catch (Exception )
+            catch (Exception ex)
             {
                 return new BOEmployeeList();
             }

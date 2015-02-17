@@ -11,14 +11,18 @@ namespace InsideInning.Pages
 {
     public class EmployeeDetailsPage : ContentPage
     {
+        Int32 _EmployeeID;
         private EmployeeViewModel ViewModel
         {
-            get { return new EmployeeViewModel(); } //Type cast BindingContex as HomeViewModel to access binded properties
+            get;
+            set;//Type cast BindingContex as HomeViewModel to access binded properties
         }
-        public EmployeeDetailsPage()
+        public EmployeeDetailsPage(Int32 _id, EmployeeViewModel _viewModel)
         {
+            ViewModel = _viewModel; //Passed from List or Dashboard
+            _EmployeeID = _id;
             BackgroundImage = "back";
-            BindingContext = new EmployeeDetails();
+            BindingContext = ViewModel.EmployeeDetail;
             Content = new StackLayout
            {
                HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -44,6 +48,11 @@ namespace InsideInning.Pages
                     },
                 }
            };
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ViewModel.LoadEmpDetail.Execute(_EmployeeID);
         }
         private Grid GenGrid()
         {

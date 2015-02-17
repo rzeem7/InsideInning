@@ -6,6 +6,7 @@ using System.Text;
 using Xamarin.Forms;
 
 using ImageCircle.Forms.Plugin.Abstractions;
+using InsideInning.Models;
 namespace InsideInning.Pages
 {
     public class EmployeeListViewPage : BaseViewPage
@@ -28,7 +29,7 @@ namespace InsideInning.Pages
             activity.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
 
             ViewModel = (EmployeeViewModel)BindingContext; //ViewModel ?? new EmployeeViewModel();
-            ViewModel.LoadAllEmployees.Execute(null);
+            //ViewModel.LoadAllEmployees.Execute(null);
             _iiEmpList = new iiListView()
             {
                 ItemTemplate = new DataTemplate(typeof(EmployeeViewCell))
@@ -40,12 +41,24 @@ namespace InsideInning.Pages
 					_iiEmpList
 				}
             };
+            _iiEmpList.ItemTapped += _iiEmpList_ItemTapped;
             
         }
+
+        void _iiEmpList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var _EmpID = ((Employee)e.Item).EmployeeID;
+            this.Navigation.PushAsync(new EmployeeDetailsPage(_EmpID, ViewModel));
+            ((ListView)sender).SelectedItem = null; // de-select the row
+        }
+
+        
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _iiEmpList.ItemsSource = ViewModel.EmployeeList;
+            _iiEmpList.ItemsSource = new[] { new Employee() {  EmployeeID=1, FirstName = "Naina", LastName = "Sharma", EmailAddress = "naina.sharma@gmail.com", Password = "naina" }, 
+                                             new Employee() {   EmployeeID=2, FirstName = "Mohd", LastName = "Riyaz", EmailAddress = "mRiyaz@gmail.com", Password = "Riyaz" },
+                                             new Employee() {   EmployeeID=3,FirstName = "gagan",LastName="deep",EmailAddress="gagan.deep@gmail.com", Password="gagan" }}; //ViewModel.EmployeeList;
         }
     }
 

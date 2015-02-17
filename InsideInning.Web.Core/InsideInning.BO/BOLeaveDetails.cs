@@ -10,7 +10,7 @@ namespace InsideInning.BO
   {
 
       #region Public Properties
-      public Int32 LeaveRequestID{ get; set;}
+      //public Int32 LeaveRequestID{ get; set;}
 
       public Int32 EmployeeID{ get; set;}
 

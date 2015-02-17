@@ -31,11 +31,11 @@ namespace InsideInning.Pages
                 Padding = new Thickness(30, 20, 30, 0),
                 Children = 
                 {
-                    {(CreatePickerFor("Laeve Type", LayoutOptions.FillAndExpand))},
-                    {(CreateDatePickerFor("From Date", LayoutOptions.FillAndExpand, "3"))},
-                    {(CreateDatePickerFor("To Date", LayoutOptions.FillAndExpand, "4"))},
-                    {(CreateLabelFor("No. of days", LayoutOptions.FillAndExpand,"1"))},
-                    {CreateEditorFor("Notes", LayoutOptions.FillAndExpand,"1")},                       
+                    {(CreatePickerFor("LeaveType", LayoutOptions.FillAndExpand))},
+                    {(CreateDatePickerFor("FromDate", LayoutOptions.FillAndExpand, "3"))},
+                    {(CreateDatePickerFor("ToDate", LayoutOptions.FillAndExpand, "4"))},
+                    {(CreateLabelFor("ApprovedDays", LayoutOptions.FillAndExpand,"1"))},
+                    //{CreateEditorFor("Notes", LayoutOptions.FillAndExpand,"1")},                       
                     new Button
                     {
                         Text="Send",TextColor=Color.White.ToFormsColor(),BackgroundColor=Color.Gray.ToFormsColor(),BorderWidth=1,HorizontalOptions=LayoutOptions.FillAndExpand,TranslationY=40,

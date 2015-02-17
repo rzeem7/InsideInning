@@ -30,11 +30,12 @@ namespace InsideInning.Models
 
         public DateTime CreatedOn { get; set; }
 
-        public Int32 CreatedByID { get; set; }
+        public string CreatedByID { get; set; }
+        
 
-        public DateTime ModifiedOn { get; set; }
+        public DateTime ModifiedOn { get{return System.DateTime.Now;}  }
 
-        public Int32 ModifiedByID { get; set; }
+        public string ModifiedByID { get { return "Me"; } }
         #endregion
 
         #region  INotifyPropertyChanged implementation

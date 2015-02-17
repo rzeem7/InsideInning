@@ -27,16 +27,16 @@ namespace InsideInning.Droid.Renderer
                 switch (e.NewElement.ClassId)//Set icon on datepicker through Id
                 {
                     case "1":
-                        Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.Birthday, 0, 0, 0);
-                        break;
+                       // Control.LeftView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("Birthday.png"));
+                       break;
                     case "2":
-                        Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.Joinning, 0, 0, 0);
+                      // Control.LeftView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("Joinning.png"));
                         break;
                     case "3":
-                        Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.ToDate, 0, 0, 0);
+                       // Control.LeftView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("ToDate.png"));
                         break;
                     case "4":
-                        Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.FromDate, 0, 0, 0);
+                        //Control.LeftView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("FromDate.png"));
                         break;
                     default:
                         break;

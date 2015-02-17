@@ -205,6 +205,9 @@
     <AndroidResource Include="Resources\layout\week.xml" />
     <AndroidResource Include="Resources\drawable\calendar_bg_selector.xml" />
     <AndroidResource Include="Resources\color\calendar_text_selector.xml" />
+    <AndroidResource Include="Resources\drawable\balance.png" />
+    <AndroidResource Include="Resources\drawable\holiday.png" />
+    <AndroidResource Include="Resources\drawable\iiTabBox.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="..\InsideInning\InsideInning.projitems" Label="Shared" Condition="Exists('..\InsideInning\InsideInning.projitems')" />

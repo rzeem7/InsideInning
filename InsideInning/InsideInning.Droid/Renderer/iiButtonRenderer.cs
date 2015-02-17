@@ -34,13 +34,13 @@ namespace InsideInning.Droid.Renderer
                         Control.SetBackgroundResource(Resource.Drawable.UnselectedMale);
                         break;
                     case "3":
-                        Control.SetBackgroundResource(Resource.Drawable.UnselectedMale);
+                        Control.SetBackgroundResource(Resource.Drawable.iiTabBox);
                         break;
                     case "4":
-                        Control.SetBackgroundResource(Resource.Drawable.UnselectedMale);
+                        Control.SetBackgroundResource(Resource.Drawable.iiTabBox);
                         break;
                     case "5":
-                        Control.SetBackgroundResource(Resource.Drawable.UnselectedMale);
+                        Control.SetBackgroundResource(Resource.Drawable.iiTabBox);
                         break;
                     case "6":
                         Control.SetBackgroundResource(Resource.Drawable.UnselectedMale);

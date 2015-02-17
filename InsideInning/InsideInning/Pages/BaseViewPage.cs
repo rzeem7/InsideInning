@@ -10,6 +10,13 @@ namespace InsideInning.Pages
         public BaseViewPage()
         {
             SetBinding(Page.TitleProperty, new Binding());
+
+        }
+        public enum TabView
+        {
+            Balance,
+            Calendar,
+            Holidays
         }
     }
 }

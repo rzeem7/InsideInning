@@ -7,29 +7,32 @@ using Xamarin.Forms;
 
 using ImageCircle.Forms.Plugin.Abstractions;
 using InsideInning.Models;
+using System.Threading;
 namespace InsideInning.Pages
 {
     public class EmployeeListViewPage : BaseViewPage
     {
         private EmployeeViewModel ViewModel
         {
-            get;
-            set;//Type cast BindingContex as HomeViewModel to access binded properties
+            get { return BindingContext as EmployeeViewModel; }
         }
         ListView _iiEmpList = null;
         public EmployeeListViewPage()
         {
+
             BindingContext = new EmployeeViewModel();
             var activity = new ActivityIndicator
             {
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 Color = Color.White,
-                IsEnabled = true
+                //IsEnabled = true
             };
             activity.SetBinding(ActivityIndicator.IsVisibleProperty, "IsBusy");
             activity.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
 
-            ViewModel = (EmployeeViewModel)BindingContext; //ViewModel ?? new EmployeeViewModel();
-            //ViewModel.LoadAllEmployees.Execute(null);
+            //Command
+            ViewModel.LoadAllEmployees.Execute(null);
+
             _iiEmpList = new iiListView()
             {
                 ItemTemplate = new DataTemplate(typeof(EmployeeViewCell))
@@ -42,7 +45,6 @@ namespace InsideInning.Pages
 				}
             };
             _iiEmpList.ItemTapped += _iiEmpList_ItemTapped;
-            
         }
 
         void _iiEmpList_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -51,14 +53,14 @@ namespace InsideInning.Pages
             this.Navigation.PushAsync(new EmployeeDetailsPage(_EmpID, ViewModel));
             ((ListView)sender).SelectedItem = null; // de-select the row
         }
-
         
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _iiEmpList.ItemsSource = new[] { new Employee() {  EmployeeID=1, FirstName = "Naina", LastName = "Sharma", EmailAddress = "naina.sharma@gmail.com", Password = "naina" }, 
-                                             new Employee() {   EmployeeID=2, FirstName = "Mohd", LastName = "Riyaz", EmailAddress = "mRiyaz@gmail.com", Password = "Riyaz" },
-                                             new Employee() {   EmployeeID=3,FirstName = "gagan",LastName="deep",EmailAddress="gagan.deep@gmail.com", Password="gagan" }}; //ViewModel.EmployeeList;
+            _iiEmpList.ItemsSource = ViewModel.EmployeeList;
+            //new[] { new Employee() {  EmployeeID=1, FirstName = "Naina", LastName = "Sharma", EmailAddress = "naina.sharma@gmail.com", Password = "naina" }, 
+            //                                 new Employee() {   EmployeeID=2, FirstName = "Mohd", LastName = "Riyaz", EmailAddress = "mRiyaz@gmail.com", Password = "Riyaz" },
+            //                                 new Employee() {   EmployeeID=3,FirstName = "gagan",LastName="deep",EmailAddress="gagan.deep@gmail.com", Password="gagan" }};
         }
     }
 

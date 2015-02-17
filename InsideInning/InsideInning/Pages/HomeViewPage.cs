@@ -88,14 +88,15 @@ namespace InsideInning.Pages
                 Title = "test";
                 var layout = new StackLayout { Spacing = 0 };
 
-                var listView = new ListView(); // Listview created for menu items
+                var listView = new iiListView(); // Listview created for menu items
                 var cell = new DataTemplate(typeof(ListImageCell));
                 cell.SetBinding(TextCell.TextProperty, HomeViewModel.TitlePropertyName);
-
                 listView.ItemTemplate = cell;
 
+
+                //BackgroundImage = "iiListBack.";
                 listView.ItemsSource = viewModel.MenuItems;
-                listView.BackgroundColor= Xamarin.Forms.Color.Gray;
+                listView.BackgroundColor= Xamarin.Forms.Color.Transparent;
                 if (DashBoard == null)   //Making First view page selection
                     DashBoard = new DashboardViewPage();
                 PageSelection = DashBoard;

@@ -65,9 +65,6 @@ namespace InsideInning.Data
 
         #endregion
 
-       
-
-
         #region Create Tables
 
         public void CreateTables<T>()

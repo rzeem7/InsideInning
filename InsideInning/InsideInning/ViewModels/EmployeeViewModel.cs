@@ -11,10 +11,13 @@ using System.Linq;
 using InsideInning.Service;
 using InsideInning.Helpers;
 
+
 namespace InsideInning.ViewModels
 {
     public class EmployeeViewModel : BaseViewModel
     {
+        #region Constructor
+
         public EmployeeViewModel()
         {
             App.DataBase.CreateTables<Employee>();
@@ -22,6 +25,8 @@ namespace InsideInning.ViewModels
             _employeeList = new ObservableCollection<Employee>();
             _employeeDetail = new EmployeeDetails();
         }
+
+        #endregion
 
         #region Peoperties
 
@@ -33,7 +38,6 @@ namespace InsideInning.ViewModels
         }
 
         private ObservableCollection<Employee> _employeeList;
-
         public ObservableCollection<Employee> EmployeeList
         {
             get { return _employeeList; }
@@ -42,7 +46,8 @@ namespace InsideInning.ViewModels
 
         #endregion
 
-        #region Commands
+        #region Add Update Delete Commands
+
         //Save/Update
         //Delete
         //Search
@@ -68,10 +73,14 @@ namespace InsideInning.ViewModels
                 if (EmployeeInfo == null)
                     return;
 
-                //int id = App.DataBase.SaveItem<Employee>(EmployeeInfo);
-                var dd = await ServiceHandler.PostDataAsync<int, Employee>(EmployeeInfo, Constants.Employee);
-                Console.WriteLine("Fetched ID {0}", dd);
-                return;
+                if (IsNetworkConnected)
+                {
+                    await ServiceHandler.PostDataAsync<int, Employee>(EmployeeInfo, Constants.Employee);
+                }
+                else
+                {
+                    int id = App.DataBase.SaveItem<Employee>(EmployeeInfo);
+                }
             }
             catch (Exception ex)
             {
@@ -84,11 +93,10 @@ namespace InsideInning.ViewModels
 
         public Command LoadAllEmployees
         {
-            get 
+            get
             {
-                return _LoadAllEmployees ?? (_LoadAllEmployees = new Command(async () => await ExecuteLoadCommand())); 
+                return _LoadAllEmployees ?? (_LoadAllEmployees = new Command(async () => await ExecuteLoadCommand()));
             }
-            
         }
 
         private async Task ExecuteLoadCommand()
@@ -96,9 +104,28 @@ namespace InsideInning.ViewModels
             try
             {
                 IsBusy = true;
-                //_employeeList = App.DataBase.GetItems<Employee>(); //From Local DB
-                _employeeList = await ServiceHandler.ProcessRequestAsync<Employee>(Constants.Employee); //Server Call
-                IsBusy = false;
+
+                if (IsNetworkConnected)
+                {
+                    await ServiceHandler.ProcessRequestAsync<Employee>(Constants.Employee).ContinueWith(t =>
+                    {
+                        if (t.Result != null && t.Result.Count > 0)
+                        {
+
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                EmployeeList = t.Result;
+                            });
+
+                        }
+                    }); //Server Call
+                    IsBusy = false;
+                }
+                else
+                {
+                    _employeeList = App.DataBase.GetItems<Employee>(); //From Local DB
+                    IsBusy = false;
+                }
             }
             catch (Exception ex)
             {
@@ -109,7 +136,6 @@ namespace InsideInning.ViewModels
         #endregion
 
         #region EmployeeDetails Properties
-
 
         private EmployeeDetails _employeeDetail;
 
@@ -140,11 +166,14 @@ namespace InsideInning.ViewModels
                 if (EmployeeDetail == null)
                     return;
 
-               // int id = App.DataBase.SaveItem<EmployeeDetails>(EmployeeDetail);
-                var dd = await ServiceHandler.PostDataAsync<int, EmployeeDetails>(EmployeeDetail, Constants.EmployeeDetails);
-
-                Console.WriteLine("Fetched ID {0}", dd);
-                return;
+                if (IsNetworkConnected)
+                {
+                    await ServiceHandler.PostDataAsync<int, EmployeeDetails>(EmployeeDetail, Constants.EmployeeDetails);
+                }
+                else
+                {
+                    int id = App.DataBase.SaveItem<EmployeeDetails>(EmployeeDetail);
+                }
             }
             catch (Exception ex)
             {
@@ -152,7 +181,6 @@ namespace InsideInning.ViewModels
                 return;
             }
         }
-
 
         private Command _loadEmpDetail;
 
@@ -164,34 +192,33 @@ namespace InsideInning.ViewModels
             }
         }
 
-        private async  Task ExecuteLoadEmpDataCommand(object param)
+        private async Task ExecuteLoadEmpDataCommand(object param)
         {
             try
             {
-                var _EmpID = (Int32)param;
-                //if (EmployeeDetail == null)
-                //return;
+                var _empID = (Int32)param;
 
-                // int id = App.DataBase.SaveItem<EmployeeDetails>(EmployeeDetail);
-                await ServiceHandler.ProcessRequestAsync<EmployeeDetails>(Constants.EmployeeDetails + _EmpID).ContinueWith(t =>
+                if (IsNetworkConnected)
                 {
-                    if (t.Result.Count == 1)
+                    await ServiceHandler.ProcessRequestAsync<EmployeeDetails>(string.Format("{0}{1}", Constants.EmployeeDetails, _empID)).ContinueWith(t =>
                     {
-                        _employeeDetail = t.Result[0];
-                    }
-                }); //Server Call
-
-               // Console.WriteLine("Fetched ID {0}", dd);
-                return;
+                        if (t.Result.Count == 1)
+                        {
+                            _employeeDetail = t.Result[0];
+                        }
+                    }); //Server Call
+                }
+                else
+                {
+                    _employeeDetail = App.DataBase.GetItem<EmployeeDetails>(_empID);
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("An Exception Occured During getting the Record {0}", ex.Message);
-                return;
             }
         }
-        
-        #endregion
 
+        #endregion
     }
 }

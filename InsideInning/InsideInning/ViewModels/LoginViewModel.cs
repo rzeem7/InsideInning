@@ -43,16 +43,21 @@ namespace InsideInning.ViewModels
         {
             try
             {
-
-                await iiNavigation.PushModalAsync(new HomeViewPage(), true);
-
-                //await ServiceHandler.PostDataAsync<bool, String>("", "").ContinueWith(t =>
-                //{
-                //    if (t.Result)
-                //    {
-                //        iiNavigation.PushModalAsync(new HomeViewPage(), true);
-                //    }
-                //});
+                if (!IsNetworkConnected) //Have to remove !
+                {
+                    await ServiceHandler.PostDataAsync<bool, String>("", "").ContinueWith(t =>
+                    {
+                        if (t.Result)
+                        {
+                            iiNavigation.PushModalAsync(new HomeViewPage(), true);
+                        }
+                    });
+                }
+                else
+                {
+                    //TODO : login locally
+                    await iiNavigation.PushModalAsync(new HomeViewPage(), true);
+                }
             }
             catch (Exception ex)
             {

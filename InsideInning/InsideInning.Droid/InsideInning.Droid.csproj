@@ -101,6 +101,7 @@
     <Compile Include="MonoDroid.TimesSquare\MonthCellDescriptor.cs" />
     <Compile Include="MonoDroid.TimesSquare\MonthDescriptor.cs" />
     <Compile Include="MonoDroid.TimesSquare\MonthView.cs" />
+    <Compile Include="Notwrok\NetworkConnection.cs" />
     <Compile Include="Renderer\CalendarViewRenderer.cs" />
     <Compile Include="Renderer\iiButtonRenderer.cs" />
     <Compile Include="Renderer\iiDatePickerRenderer.cs" />
@@ -208,6 +209,7 @@
     <AndroidResource Include="Resources\drawable\balance.png" />
     <AndroidResource Include="Resources\drawable\holiday.png" />
     <AndroidResource Include="Resources\drawable\iiTabBox.xml" />
+    <AndroidResource Include="Resources\drawable\iiListBack.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="..\InsideInning\InsideInning.projitems" Label="Shared" Condition="Exists('..\InsideInning\InsideInning.projitems')" />

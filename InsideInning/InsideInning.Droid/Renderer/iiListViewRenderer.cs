@@ -11,7 +11,6 @@ using Android.Views;
 using Android.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-
 using InsideInning.Droid.Renderer;
 using InsideInning;
 
@@ -25,8 +24,6 @@ namespace InsideInning.Droid.Renderer
         {
             base.OnElementChanged(e);
             Control.SetBackgroundResource(Resource.Drawable.back);
-            
-
         }
     }
 }

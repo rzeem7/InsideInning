@@ -2,11 +2,25 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Threading;
+using Xamarin.Forms;
 
 namespace InsideInning.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged, INotifyPropertyChanging
+    public class BaseViewModel : INotifyPropertyChanged
     {
+
+        public bool IsNetworkConnected
+        {
+            get
+            {
+                DependencyService.Get<INetworkConnection>().CheckNetworkConnection();
+                //TODO: Have to remove 
+                return DependencyService.Get<INetworkConnection>().IsConnected; 
+            }
+        }
+
+
         public BaseViewModel()
         {
         }
@@ -57,15 +71,11 @@ namespace InsideInning.ViewModels
             Action onChanged = null,
             Action<T> onChanging = null)
         {
-
-
             if (EqualityComparer<T>.Default.Equals(backingStore, value))
                 return;
 
             if (onChanging != null)
                 onChanging(value);
-
-            OnPropertyChanging(propertyName);
 
             backingStore = value;
 
@@ -75,29 +85,18 @@ namespace InsideInning.ViewModels
             OnPropertyChanged(propertyName);
         }
 
-        #region INotifyPropertyChanging implementation
-        public event PropertyChangingEventHandler PropertyChanging;
-        #endregion
-
-        public void OnPropertyChanging(string propertyName)
-        {
-            if (PropertyChanging == null)
-                return;
-
-            PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
-        }
-
-
         #region INotifyPropertyChanged implementation
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
         public void OnPropertyChanged(string propertyName)
         {
+
             if (PropertyChanged == null)
                 return;
-
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+
         }
+
     }
 }

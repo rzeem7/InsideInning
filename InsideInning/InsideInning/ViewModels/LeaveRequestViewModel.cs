@@ -30,7 +30,6 @@ namespace InsideInning.ViewModels
         //Save
 
         private Command addCommand;
-
         /// <summary>
         /// Command to Save Record
         /// </summary>
@@ -50,17 +49,22 @@ namespace InsideInning.ViewModels
                 if (LeaveRequestInfo == null)
                     return;
 
-                //int id = App.DataBase.SaveItem<LeaveRequest>(LeaveRequestInfo);
-                var dd =await ServiceHandler.PostDataAsync<int, LeaveRequest>(LeaveRequestInfo, Constants.LeaveRequest);
-                Console.WriteLine("Fetched ID {0}", dd);
-                return;
+
+                if (IsNetworkConnected)
+                {
+                    var dd = await ServiceHandler.PostDataAsync<int, LeaveRequest>(LeaveRequestInfo, Constants.LeaveRequest);
+                }
+                else
+                {
+                    int id = App.DataBase.SaveItem<LeaveRequest>(LeaveRequestInfo);
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("An Exception Occured During Save Record {0}", ex.Message);
-                return;
             }
         }
+
         #endregion
     }
 }

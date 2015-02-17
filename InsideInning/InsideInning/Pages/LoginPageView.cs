@@ -77,8 +77,8 @@ namespace InsideInning.Pages
                 BackgroundColor = Color.Lime.ToFormsColor(),
                 BorderWidth = 1,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                HeightRequest=50,
-                FontSize=18,
+                HeightRequest=40,
+                FontSize=16,
                 Command = ViewModel.LoginCommand,
             };
 

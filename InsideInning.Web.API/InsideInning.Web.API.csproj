@@ -147,6 +147,7 @@
     <Compile Include="Controllers\CheckLoginController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\EmployeeDetailsController.cs" />
+    <Compile Include="Controllers\ImageUploadController.cs" />
     <Compile Include="Controllers\MailSummaryController.cs" />
     <Compile Include="Controllers\LeaveDetailsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -273,6 +274,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Pics\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

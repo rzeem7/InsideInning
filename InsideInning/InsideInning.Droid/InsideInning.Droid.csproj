@@ -190,7 +190,6 @@
     <AndroidResource Include="Resources\drawable\blur.png" />
     <AndroidResource Include="Resources\drawable\LeftTopCorner.xml" />
     <AndroidResource Include="Resources\drawable\RigthTopCorner.xml" />
-    <AndroidResource Include="Resources\drawable\back.jpg" />
     <AndroidResource Include="Resources\drawable\cover.png" />
     <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\values\attrs.xml" />
@@ -208,6 +207,7 @@
     <AndroidResource Include="Resources\drawable\holiday.png" />
     <AndroidResource Include="Resources\drawable\iiTabBox.xml" />
     <AndroidResource Include="Resources\drawable\iiListBack.png" />
+    <AndroidResource Include="Resources\drawable\back.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="..\InsideInning\InsideInning.projitems" Label="Shared" Condition="Exists('..\InsideInning\InsideInning.projitems')" />

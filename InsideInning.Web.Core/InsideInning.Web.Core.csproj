@@ -46,6 +46,7 @@
     <Compile Include="Custom\InsideInning.BO\CheckLogin.cs" />
     <Compile Include="Custom\InsideInning.BLL\BLLEmployee.cs" />
     <Compile Include="Custom\InsideInning.BLL\BLLLeaveDetails.cs" />
+    <Compile Include="Custom\InsideInning.BO\EmployeeProfile.cs" />
     <Compile Include="Custom\InsideInning.DAL\DBManagers\tblEmployeeDBManager.cs" />
     <Compile Include="Custom\InsideInning.DAL\DBManagers\tblLeaveDetailsDBManager.cs" />
     <Compile Include="Custom\InsideInning.DAL\Procedures\spCheckLogin.cs" />

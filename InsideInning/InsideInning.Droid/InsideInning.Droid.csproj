@@ -116,6 +116,7 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
+    <None Include="Resources\drawable\back.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="MonoDroid.TimesSquare\License.txt" />
@@ -190,7 +191,6 @@
     <AndroidResource Include="Resources\drawable\blur.png" />
     <AndroidResource Include="Resources\drawable\LeftTopCorner.xml" />
     <AndroidResource Include="Resources\drawable\RigthTopCorner.xml" />
-    <AndroidResource Include="Resources\drawable\back.jpg" />
     <AndroidResource Include="Resources\drawable\cover.png" />
     <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\values\attrs.xml" />

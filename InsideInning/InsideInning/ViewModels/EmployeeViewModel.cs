@@ -194,13 +194,8 @@ namespace InsideInning.ViewModels
 
                 if (IsNetworkConnected)
                 {
-                    await ServiceHandler.ProcessRequestAsync<EmployeeDetails>(string.Format("{0}{1}", Constants.EmployeeDetails, _empID)).ContinueWith(t =>
-                    {
-                        if (t.Result.Count == 1)
-                        {
-                            _employeeDetail = t.Result[0];
-                        }
-                    }); //Server Call
+                    var items = await ServiceHandler.ProcessRequestAsync<EmployeeDetails>(string.Format("{0}{1}", Constants.EmployeeDetails, _empID));
+                    _employeeDetail = items[0];
                 }
                 else
                 {

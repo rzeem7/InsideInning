@@ -127,6 +127,7 @@
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\back.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ImageCircle.Forms.Plugin.Abstractions">
@@ -182,9 +183,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\Calendar\topbar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\back.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Background.png" />

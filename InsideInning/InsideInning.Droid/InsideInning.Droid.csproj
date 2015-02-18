@@ -116,6 +116,7 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
+    <None Include="Resources\drawable\back.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="MonoDroid.TimesSquare\License.txt" />

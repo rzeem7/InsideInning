@@ -23,7 +23,7 @@ namespace InsideInning.Pages
 		public LoginPageView()
 		{
 			BindingContext = new LoginViewModel(this.Navigation);
-			//BackgroundImage = "back.jpg";
+			BackgroundImage = "back.png";
 			Content = new StackLayout
 			{
 				HorizontalOptions = LayoutOptions.Center,

@@ -25,8 +25,8 @@ namespace InsideInning.Web
             //var restClient = new RestClient("http://localhost:26197/api/");
             //var req = new RestRequest("EmployeeDetails/", Method.POST);
 
-            var restClient1 = new RestClient("http://localhost:26197/api/");
-            var req1 = new RestRequest("ImageUpload/", Method.POST);
+            var Client = new RestClient("http://localhost:26197/api/");
+            var Request = new RestRequest("ImageUpload/", Method.POST);
 
 
             #region Converting the Image To Base64
@@ -36,7 +36,7 @@ namespace InsideInning.Web
 
             #endregion
 
-            #region Creating Employee Profile Data And Sending through API
+            #region Creating Employee Profile Data And Executing the Request
 
             var _employeeprofile = new EmployeeProfile();
             _employeeprofile.FileData = base64ImageRepresentation;
@@ -55,10 +55,10 @@ namespace InsideInning.Web
             //empDeatilsData.JoinningDate = JoinCal.SelectedDate;
             //empDeatilsData.IsActive = CheckIsActive.Checked;
 
-            req1.RequestFormat = RestSharp.DataFormat.Json;
-            req1.AddHeader("X-ApiKey", "XMLHttpRequest");
-            req1.AddBody(_employeeprofile);
-            restClient1.Execute<EmployeeProfile>(req1);
+            Request.RequestFormat = RestSharp.DataFormat.Json;
+            Request.AddHeader("X-ApiKey", "XMLHttpRequest");
+            Request.AddBody(_employeeprofile);
+            Client.Execute<EmployeeProfile>(Request);
 
             #endregion
         }

@@ -34,7 +34,7 @@ namespace InsideInning.Web.API.Controllers
             using (MemoryStream ms = new MemoryStream(bytes))
             {
                 image = Image.FromStream(ms);
-                var filePath = HttpContext.Current.Server.MapPath("~/Pics/ "+_EmpProfile.FileName);
+                var filePath = HttpContext.Current.Server.MapPath("~/Pics/ " + _EmpProfile.FileName);
                 image.Save(filePath, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
         }

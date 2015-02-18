@@ -107,18 +107,12 @@ namespace InsideInning.ViewModels
 
                 if (IsNetworkConnected)
                 {
-                    await ServiceHandler.ProcessRequestAsync<Employee>(Constants.Employee).ContinueWith(t =>
+                    EmployeeList.Clear();
+                    var items = await ServiceHandler.ProcessRequestAsync<Employee>(Constants.Employee);
+                    foreach (var item in items)
                     {
-                        if (t.Result != null && t.Result.Count > 0)
-                        {
-
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                EmployeeList = t.Result;
-                            });
-
-                        }
-                    }); //Server Call
+                        EmployeeList.Add(item);
+                    }  //Server Call
                     IsBusy = false;
                 }
                 else

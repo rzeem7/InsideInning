@@ -111,18 +111,12 @@ namespace InsideInning.ViewModels
 
                 if (IsNetworkConnected)
                 {
-                    await ServiceHandler.ProcessRequestAsync<Employee>(Constants.Employee).ContinueWith(t =>
+                    EmployeeList.Clear();
+                    var items = await ServiceHandler.ProcessRequestAsync<Employee>(Constants.Employee);
+                    foreach (var item in items)
                     {
-                        if (t.Result != null && t.Result.Count > 0)
-                        {
-
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                EmployeeList = t.Result;
-                            });
-
-                        }
-                    }); //Server Call
+                        EmployeeList.Add(item);
+                    }  //Server Call
                     IsBusy = false;
                 }
                 else
@@ -204,13 +198,8 @@ namespace InsideInning.ViewModels
 
                 if (IsNetworkConnected)
                 {
-                    await ServiceHandler.ProcessRequestAsync<EmployeeDetails>(string.Format("{0}{1}", Constants.EmployeeDetails, _empID)).ContinueWith(t =>
-                    {
-                        if (t.Result.Count == 1)
-                        {
-                            _employeeDetail = t.Result[0];
-                        }
-                    }); //Server Call
+                    var items = await ServiceHandler.ProcessRequestAsync<EmployeeDetails>(string.Format("{0}{1}", Constants.EmployeeDetails, _empID));
+                    _employeeDetail = items[0];
                 }
                 else
                 {

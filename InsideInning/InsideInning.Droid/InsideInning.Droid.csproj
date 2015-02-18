@@ -230,6 +230,7 @@
     <AndroidResource Include="Resources\drawable\iiTabBox.xml" />
     <AndroidResource Include="Resources\drawable\iiListBack.png" />
     <AndroidResource Include="Resources\drawable\back.png" />
+
     <AndroidResource Include="Resources\drawable\selectedFemale.png" />
     <AndroidResource Include="Resources\drawable\selectedMale.png" />
     <AndroidResource Include="Resources\drawable\iiFemaleSelectionButton.xml" />
@@ -237,6 +238,7 @@
     <AndroidResource Include="Resources\drawable\Coverpage.jpg" />
     <AndroidResource Include="Resources\drawable\Title.png" />
     <AndroidResource Include="Resources\drawable\ProfileImage.png" />
+
   </ItemGroup>
   <ItemGroup />
   <Import Project="..\InsideInning\InsideInning.projitems" Label="Shared" Condition="Exists('..\InsideInning\InsideInning.projitems')" />

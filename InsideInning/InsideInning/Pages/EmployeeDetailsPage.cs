@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 using Color = InsideInning.Helper.Color;
+using ImageCircle.Forms.Plugin.Abstractions;
 namespace InsideInning.Pages
 {
     public class EmployeeDetailsPage : ContentPage
@@ -28,10 +29,10 @@ namespace InsideInning.Pages
                HorizontalOptions = LayoutOptions.FillAndExpand,
                HeightRequest = 50,
                Padding = new Thickness(30, 0, 30, 0),
-               
+
                Children = 
                 {
-                    new Image{Source="ProfilePicture.jpg",Aspect=Aspect.Fill},
+                    {CreateRealtiveLayoutFor()},
                     GenGrid(),
                     {CreateDatePickerFor("Date of birth", "DateOfBirth","1")},
                     {CreateDatePickerFor("Date of Joining", "JoinningDate","2")},
@@ -62,7 +63,7 @@ namespace InsideInning.Pages
 
             return grid;
         }
-        public View CreateButtonFor(string propertyName, Color color, LayoutOptions layout, string id="")
+        public View CreateButtonFor(string propertyName, Color color, LayoutOptions layout, string id = "")
         {
             iiButton iiButton = new iiButton
             {
@@ -71,14 +72,14 @@ namespace InsideInning.Pages
                 TextColor = color.ToFormsColor(),
                 BackgroundColor = Xamarin.Forms.Color.Transparent,
 
-                BorderWidth=10,
-                WidthRequest=55,
-                HeightRequest=55,
+                BorderWidth = 10,
+                WidthRequest = 55,
+                HeightRequest = 55,
                 HorizontalOptions = layout,
-                ClassId=id,              
-                             
+                ClassId = id,
+
             };
-           //iiButton.SetBinding(Button.TextColorProperty, propertyName);
+            //iiButton.SetBinding(Button.TextColorProperty, propertyName);
             return iiButton;
         }
         public View CreateDatePickerFor(string propertyName, string bindProperty, string id = "")
@@ -94,6 +95,22 @@ namespace InsideInning.Pages
             iiDatePicker.SetBinding(iiDatePicker.DateProperty, bindProperty);
             return iiDatePicker;
         }
-        
+        public RelativeLayout CreateRealtiveLayoutFor()
+        {
+            RelativeLayout MainView = new RelativeLayout
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
+                HeightRequest = 100,
+
+            };
+            var CoverPage = new Image { Source = "back.png", };
+            var CircleImage = new CircleImage { Source = "ProfileImage.png" ,BorderColor=Color.White.ToFormsColor(),BorderThickness=2};
+            MainView.Children.Add(CoverPage, Constraint.Constant(0), Constraint.Constant(0),
+                Constraint.RelativeToParent(parent => { return parent.Width; }), Constraint.Constant(80));
+            MainView.Children.Add(CircleImage, Constraint.RelativeToParent(parent => { return parent.Width / 2; }),
+                Constraint.RelativeToView(CoverPage, (parent, sibling) => { return sibling.Height - 10; }), Constraint.Constant(40), Constraint.Constant(40));
+            return MainView;
+        }
     }
 }

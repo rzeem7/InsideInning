@@ -260,52 +260,55 @@ namespace InsideInning.Droid
 			public const int persons = 2130837542;
 			
 			// aapt resource value: 0x7f020027
-			public const int ProfilePicture = 2130837543;
+			public const int ProfileImage = 2130837543;
 			
 			// aapt resource value: 0x7f020028
-			public const int refresh = 2130837544;
+			public const int ProfilePicture = 2130837544;
 			
 			// aapt resource value: 0x7f020029
-			public const int RigthTopCorner = 2130837545;
+			public const int refresh = 2130837545;
 			
 			// aapt resource value: 0x7f02002a
-			public const int scott = 2130837546;
+			public const int RigthTopCorner = 2130837546;
 			
 			// aapt resource value: 0x7f02002b
-			public const int SelectedButton = 2130837547;
+			public const int scott = 2130837547;
 			
 			// aapt resource value: 0x7f02002c
-			public const int SelectedFemale = 2130837548;
+			public const int SelectedButton = 2130837548;
 			
 			// aapt resource value: 0x7f02002d
-			public const int SelectedMale = 2130837549;
+			public const int SelectedFemale = 2130837549;
 			
 			// aapt resource value: 0x7f02002e
-			public const int slideout = 2130837550;
+			public const int SelectedMale = 2130837550;
 			
 			// aapt resource value: 0x7f02002f
-			public const int summary = 2130837551;
+			public const int slideout = 2130837551;
 			
 			// aapt resource value: 0x7f020030
-			public const int ToDate = 2130837552;
+			public const int summary = 2130837552;
 			
 			// aapt resource value: 0x7f020031
-			public const int twitter = 2130837553;
+			public const int ToDate = 2130837553;
 			
 			// aapt resource value: 0x7f020032
-			public const int twitternav = 2130837554;
+			public const int twitter = 2130837554;
 			
 			// aapt resource value: 0x7f020033
-			public const int UnselectedButton = 2130837555;
+			public const int twitternav = 2130837555;
 			
 			// aapt resource value: 0x7f020034
-			public const int UnselectedFemale = 2130837556;
+			public const int UnselectedButton = 2130837556;
 			
 			// aapt resource value: 0x7f020035
-			public const int UnselectedMale = 2130837557;
+			public const int UnselectedFemale = 2130837557;
 			
 			// aapt resource value: 0x7f020036
-			public const int Usrename = 2130837558;
+			public const int UnselectedMale = 2130837558;
+			
+			// aapt resource value: 0x7f020037
+			public const int Usrename = 2130837559;
 			
 			static Drawable()
 			{

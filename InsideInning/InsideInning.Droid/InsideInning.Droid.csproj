@@ -208,6 +208,7 @@
     <AndroidResource Include="Resources\drawable\holiday.png" />
     <AndroidResource Include="Resources\drawable\iiTabBox.xml" />
     <AndroidResource Include="Resources\drawable\iiListBack.png" />
+    <AndroidResource Include="Resources\drawable\ProfileImage.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="..\InsideInning\InsideInning.projitems" Label="Shared" Condition="Exists('..\InsideInning\InsideInning.projitems')" />

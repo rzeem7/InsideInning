@@ -124,7 +124,7 @@ namespace InsideInning.Pages
                 Spacing = 30,
                 Children = { CreateButtonFor("Notification", "notify.png", "1"),
                     CreateButtonFor("ii Employee List", "leaves.png", "2"),
-                CreateButtonFor("Emplyee Details", "persons.png", "3"),
+                CreateButtonFor("Employee Details", "persons.png", "3"),
                 CreateButtonFor("Leave Request", "summary.png", "4"),
                 CreateButtonFor("Calender", "Calendar.png", "5"),
                 }

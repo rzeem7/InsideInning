@@ -13,11 +13,16 @@ namespace InsideInning.Pages
     public class EmployeeDetailsPage : ContentPage
     {
         Int32 _EmployeeID;
+
+        #region Access binded properties
         private EmployeeViewModel ViewModel
         {
             get;
             set;//Type cast BindingContex as HomeViewModel to access binded properties
-        }
+        }        
+        #endregion
+
+        #region Main stack Layout
         public EmployeeDetailsPage(Int32 _id, EmployeeViewModel _viewModel)
         {
             ViewModel = _viewModel; //Passed from List or Dashboard
@@ -25,14 +30,30 @@ namespace InsideInning.Pages
             BackgroundImage = "back";
             BindingContext = ViewModel.EmployeeDetail;
             Content = new StackLayout
-           {
-               HorizontalOptions = LayoutOptions.FillAndExpand,
-               HeightRequest = 50,
-               Padding = new Thickness(30, 0, 30, 0),
-
-               Children = 
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                Spacing = 10,
+                Padding = new Thickness(0, 0, 0, 0),
+                Children = 
                 {
                     {CreateRealtiveLayoutFor()},
+                    Layout(),
+                }
+            };
+        }       
+        #endregion
+
+        #region Stacklayout with Spacing
+        private StackLayout Layout()
+        {
+            var customLayout = new StackLayout
+            {
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
+                Padding = new Thickness(30, 0, 30, 0),
+                Spacing = 10,
+
+                Children =
+                {
                     GenGrid(),
                     {CreateDatePickerFor("Date of birth", "DateOfBirth","1")},
                     {CreateDatePickerFor("Date of Joining", "JoinningDate","2")},
@@ -48,36 +69,84 @@ namespace InsideInning.Pages
                         HorizontalOptions=LayoutOptions.FillAndExpand
                     },
                 }
-           };
+            };
+            return customLayout;
         }
-        protected override void OnAppearing()
+        
+        #endregion
+
+        #region Relative layout for coverpage and profile picture
+        public RelativeLayout CreateRealtiveLayoutFor()
         {
-            base.OnAppearing();
-            ViewModel.LoadEmpDetail.Execute(_EmployeeID);
+            RelativeLayout MainView = new RelativeLayout
+            {
+                HorizontalOptions = LayoutOptions.Start,
+                BackgroundColor = Xamarin.Forms.Color.Blue,
+                Padding = new Thickness(1, 1, 1, 1),
+                HeightRequest = 30,
+
+            };
+            var CoverPage = new Image { HorizontalOptions = LayoutOptions.CenterAndExpand, };
+
+            var CircleImage = new CircleImage
+            {
+                Source = "ProfileImage.png",
+                // BorderColor = Color.White.ToFormsColor(),
+                // BorderThickness = 2,
+                HorizontalOptions = LayoutOptions.Fill,
+
+            };
+            
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += (s, e) =>
+            {
+                Console.WriteLine("Yes Clicked");
+            };
+
+            CircleImage.GestureRecognizers.Add(tapGestureRecognizer);
+           
+
+            MainView.Children.Add(CoverPage, Constraint.Constant(0), Constraint.Constant(0),
+                Constraint.RelativeToParent(parent => { return parent.Width; }),
+                Constraint.RelativeToParent(parent => { return parent.Height; }));
+
+            MainView.Children.Add(CircleImage, Constraint.Constant(0),
+            Constraint.RelativeToView(CoverPage, (parent, sibling) => { return sibling.Height -50; }), Constraint.Constant(100), Constraint.Constant(100));
+
+            return MainView;
         }
+
+        #endregion
+
+        #region Custom control for main layout
         private Grid GenGrid()
         {
-            var grid = new Grid();
-            grid.Children.Add(CreateButtonFor("Male", Color.White, LayoutOptions.End, "1"), 0, 0);
-            grid.Children.Add(CreateButtonFor("Feamle", Color.White, LayoutOptions.Start, "2"), 1, 0);
+            var grid = new Grid
+            {
+                Padding = new Thickness(5, 5, 5, 5),
+                HorizontalOptions = LayoutOptions.End,
+                ColumnSpacing = 5,
+
+            };
+            grid.Children.Add(CreateButtonFor("Male", LayoutOptions.Start, "1"), 0, 0);
+            grid.Children.Add(CreateButtonFor("Feamle", LayoutOptions.Start, "2"), 1, 0);
 
             return grid;
         }
-        public View CreateButtonFor(string propertyName, Color color, LayoutOptions layout, string id = "")
+        public View CreateButtonFor(string propertyName, LayoutOptions layout, string id = "")
         {
+
             iiButton iiButton = new iiButton
             {
                 //HorizontalOptions = LayoutOptions.FillAndExpand,
-                //Image=(FileImageSource)ImageSource.FromFile(imgscr),
-                TextColor = color.ToFormsColor(),
+                // Image=(FileImageSource)ImageSource.FromFile(imgscr),
                 BackgroundColor = Xamarin.Forms.Color.Transparent,
-
-                BorderWidth = 10,
-                WidthRequest = 55,
-                HeightRequest = 55,
+                BorderColor = Xamarin.Forms.Color.White,
+                BorderWidth = 2,
+                WidthRequest = 70,
+                HeightRequest = 40,
                 HorizontalOptions = layout,
                 ClassId = id,
-
             };
             //iiButton.SetBinding(Button.TextColorProperty, propertyName);
             return iiButton;
@@ -94,23 +163,17 @@ namespace InsideInning.Pages
             };
             iiDatePicker.SetBinding(iiDatePicker.DateProperty, bindProperty);
             return iiDatePicker;
-        }
-        public RelativeLayout CreateRealtiveLayoutFor()
-        {
-            RelativeLayout MainView = new RelativeLayout
-            {
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                BackgroundColor = Xamarin.Forms.Color.Transparent,
-                HeightRequest = 100,
+        } 
+        #endregion
 
-            };
-            var CoverPage = new Image { Source = "back.png", };
-            var CircleImage = new CircleImage { Source = "ProfileImage.png" ,BorderColor=Color.White.ToFormsColor(),BorderThickness=2};
-            MainView.Children.Add(CoverPage, Constraint.Constant(0), Constraint.Constant(0),
-                Constraint.RelativeToParent(parent => { return parent.Width; }), Constraint.Constant(80));
-            MainView.Children.Add(CircleImage, Constraint.RelativeToParent(parent => { return parent.Width / 2; }),
-                Constraint.RelativeToView(CoverPage, (parent, sibling) => { return sibling.Height - 10; }), Constraint.Constant(40), Constraint.Constant(40));
-            return MainView;
+        #region Load employee deatil
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ViewModel.LoadEmpDetail.Execute(_EmployeeID);
         }
+
+        #endregion
+        
     }
 }

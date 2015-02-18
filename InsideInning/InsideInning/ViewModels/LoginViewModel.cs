@@ -46,7 +46,7 @@ namespace InsideInning.ViewModels
 		{
 			try
 			{
-				if (IsNetworkConnected) //Have to remove !
+				if (!IsNetworkConnected) //Have to remove !
 				{
 					await ServiceHandler.PostDataAsync<bool, String>("", "").ContinueWith(t =>
 					{

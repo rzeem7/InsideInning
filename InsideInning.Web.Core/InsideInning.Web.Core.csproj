@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom\InsideInning.BO\BOEmployee.cs" />
     <Compile Include="Custom\InsideInning.BO\CheckLogin.cs" />
     <Compile Include="Custom\InsideInning.BLL\BLLEmployee.cs" />
     <Compile Include="Custom\InsideInning.BLL\BLLLeaveDetails.cs" />

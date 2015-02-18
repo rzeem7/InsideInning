@@ -12,21 +12,21 @@ namespace InsideInning.Web.API.Controllers
     public class EmployeeDetailsController : ApiController
     {
         // GET api/employeedetails
-        public BOEmployeeDetailsList Get()
+        public BOEmployeeList Get()
         {
             try
             {
-                return BLLEmployeeDetails.GetAllList();
+                return BLLEmployee.GetEmployeeDetails();
             }
             catch (Exception )
             {
 
-                return new BOEmployeeDetailsList();
+                return new BOEmployeeList();
             }
         }
 
         // GET api/employeedetails/5
-        public BOEmployeeList Get(int id)
+        public BOEmployee Get(int id)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace InsideInning.Web.API.Controllers
             }
             catch (Exception ex)
             {
-                return new BOEmployeeList();
+                return new BOEmployee();
             }
         }
 

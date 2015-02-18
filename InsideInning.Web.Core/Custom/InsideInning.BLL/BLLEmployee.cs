@@ -31,7 +31,7 @@ namespace InsideInning.BLL
         }
 
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static BOEmployeeList GetEmployeeDetailsByID(int id)
+        public static BOEmployee GetEmployeeDetailsByID(int id)
         {
             return tblEmployeeDBManager.GetEmployeeDetailsByID(id);
         }

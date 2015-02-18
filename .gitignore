@@ -43,3 +43,4 @@
 /vs.gitignore
 /InsideInning/InsideInning.iOS/bin/iPhoneSimulator/Debug
 /InsideInning/InsideInning.iOS/obj/iPhoneSimulator/Debug
+/InsideInning/InsideInning.Droid/bin/Debug

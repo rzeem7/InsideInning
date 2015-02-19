@@ -116,7 +116,8 @@ namespace InsideInning.Pages
             ViewModel.LoadAllEmployees.Execute(null);
             listView = new iiListView()
             {
-                ItemTemplate = new DataTemplate(typeof(EmployeeViewCell))
+                ItemTemplate = new DataTemplate(typeof(EmployeeViewCell)),
+                ClassId ="2"    
             };
 
             var BalanceLeaveTabView = new StackLayout

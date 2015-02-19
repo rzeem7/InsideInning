@@ -35,7 +35,8 @@ namespace InsideInning.Pages
 
             _iiEmpList = new iiListView()
             {
-                ItemTemplate = new DataTemplate(typeof(EmployeeNameCell))
+                ItemTemplate = new DataTemplate(typeof(EmployeeNameCell)),
+                ClassId="1"           
             };
             Content = new StackLayout
             {

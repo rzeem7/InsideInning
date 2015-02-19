@@ -40,7 +40,7 @@ namespace InsideInning.Service
             }
             catch (Exception ex)
             {
-                Console.WriteLine("An error occured in Service Handler",ex.Message);
+                Console.WriteLine("An error occured in Service Handler {0}",ex.Message);
                 return null;
             }
         }

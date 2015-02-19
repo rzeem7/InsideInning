@@ -13,6 +13,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using InsideInning.Droid.Renderer;
 using InsideInning;
+using Android.Graphics.Drawables;
 
 [assembly: ExportRenderer(typeof(iiListView), typeof(iiListViewRenderer))]
 
@@ -23,7 +24,27 @@ namespace InsideInning.Droid.Renderer
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.ListView> e)
         {
             base.OnElementChanged(e);
-            Control.SetBackgroundResource(Resource.Drawable.back);
+            
+            if(Control!=null)
+            {
+                switch (e.NewElement.ClassId)
+                {
+                    case "1":
+                        Control.SetBackgroundResource(Resource.Drawable.back);
+                        Control.DividerHeight = 3;
+                       //Control.Divider = new ColorDrawable(Android.Graphics.Color.Red);
+                        break;
+                    case "2":
+                        Control.SetBackgroundColor(Android.Graphics.Color.Transparent);
+                        Control.DividerHeight = 2;
+                      //  Control.Divider = new ColorDrawable(Android.Graphics.Color.Red);
+
+
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }

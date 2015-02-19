@@ -213,6 +213,7 @@
     <AndroidResource Include="Resources\drawable\Coverpage.jpg" />
     <AndroidResource Include="Resources\drawable\Title.png" />
     <AndroidResource Include="Resources\drawable\ProfileImage.png" />
+    <AndroidResource Include="Resources\drawable\Divider.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="..\InsideInning\InsideInning.projitems" Label="Shared" Condition="Exists('..\InsideInning\InsideInning.projitems')" />

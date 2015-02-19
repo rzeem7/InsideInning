@@ -6,7 +6,6 @@ E:\Xamarin\InsideInning\InsideInning.Web.API\bin\EntityFramework.dll
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\InsideInning.Web.Core.dll
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\Microsoft.Data.Edm.dll
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\Microsoft.Data.OData.dll
-E:\Xamarin\InsideInning\InsideInning.Web.API\bin\Microsoft.Web.Infrastructure.dll
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\Newtonsoft.Json.dll
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Spatial.dll
@@ -16,10 +15,6 @@ E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.Http.Tracing.dll
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.Mvc.dll
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.Optimization.dll
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.Providers.dll
-E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.Razor.dll
-E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.WebPages.Deployment.dll
-E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.WebPages.dll
-E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.WebPages.Razor.dll
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\WebGrease.dll
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\InvertediDataOperations.dll
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\InsideInning.Web.Core.pdb
@@ -27,10 +22,6 @@ E:\Xamarin\InsideInning\InsideInning.Web.API\bin\EntityFramework.xml
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\Newtonsoft.Json.xml
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.Helpers.xml
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.Mvc.xml
-E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.Razor.xml
-E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.WebPages.xml
-E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.WebPages.Deployment.xml
-E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.WebPages.Razor.xml
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.Http.Tracing.xml
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.Http.OData.xml
 E:\Xamarin\InsideInning\InsideInning.Web.API\bin\Microsoft.Data.Edm.xml

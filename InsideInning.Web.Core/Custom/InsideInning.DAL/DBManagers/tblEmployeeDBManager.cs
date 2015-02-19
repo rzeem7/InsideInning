@@ -50,7 +50,7 @@ namespace InsideInning.DAL
                 itemObjs = new BOEmployeeList();
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
-                    itemObjs.Add(FillData(FillDataRecord(dr), ds.Tables[0].Rows[0]));
+                    itemObjs.Add(FillData(FillDataRecord(dr), dr));
                 }
             }
             return itemObjs;
@@ -58,7 +58,7 @@ namespace InsideInning.DAL
         public static BOEmployee GetEmployeeDetailsByID(int id)
         {
             BOEmployee itemObjs = null;
-            var ds = spGetEmployeeDetails.ExecuteDataset();
+            var ds = spGetEmployeeDetailsByID.ExecuteDataset(id);
             if (ds != null && ds.Tables[0].Rows.Count > 1)
                 throw new Exception("More than one row returned");
             if (ds != null && ds.Tables[0].Rows.Count == 1)

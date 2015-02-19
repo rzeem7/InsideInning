@@ -86,7 +86,7 @@ namespace InsideInning.Pages
 					this.Navigation.PushAsync(new LeaveRequestViewPage());
 					break;
 				case "5":
-					this.Navigation.PushAsync(new CalendarSummaryViewPage());
+                    this.Navigation.PushAsync(new BalanceLeaveViewPage());
 					break;
 				default:
 					break;

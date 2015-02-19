@@ -35,7 +35,7 @@ namespace InsideInning.Pages
 
             _iiEmpList = new iiListView()
             {
-                ItemTemplate = new DataTemplate(typeof(EmployeeViewCell))
+                ItemTemplate = new DataTemplate(typeof(EmployeeNameCell))
             };
             Content = new StackLayout
             {
@@ -68,9 +68,9 @@ namespace InsideInning.Pages
     /// <summary>
     /// This class is a ViewCell that will be displayed for each Employee Cell.
     /// </summary>
-    class EmployeeViewCell : ViewCell
+    class EmployeeNameCell : ViewCell
     {
-        public EmployeeViewCell()
+        public EmployeeNameCell()
         {
             var EmpImage = new CircleImage()
             {

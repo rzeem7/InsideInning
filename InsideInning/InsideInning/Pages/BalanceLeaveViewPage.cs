@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InsideInning.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
@@ -8,8 +9,29 @@ namespace InsideInning.Pages
 {
     public class BalanceLeaveViewPage : BaseViewPage
     {
+        private EmployeeViewModel ViewModel
+        {
+            get { return BindingContext as EmployeeViewModel; }
+        }
+
+        ListView listView = null;
         public BalanceLeaveViewPage()
         {
+            BindingContext = new EmployeeViewModel();
+            var activity = new ActivityIndicator
+            {
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                Color = Color.White.ToFormsColor(),
+                //IsEnabled = true
+            };
+            activity.SetBinding(ActivityIndicator.IsVisibleProperty, "IsBusy");
+            activity.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
+            ViewModel.LoadAllEmployees.Execute(null);
+            listView = new iiListView()
+            {
+                ItemTemplate = new DataTemplate(typeof(NameCell))
+            };
+
             BackgroundImage = "back";
             Content = new StackLayout
             {
@@ -18,11 +40,21 @@ namespace InsideInning.Pages
                 Spacing=20,
                 Children = 
                 {
-                  {(CreateListFor("Laeve Type"))},
+                    activity,  
+                    listView,
                     GenCalGrid(),
                 }
             };
+            listView.ItemTapped += listView_ItemTapped;
         }
+        void listView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            listView.ItemsSource = ViewModel.EmployeeList;
+         }
         private Grid GenCalGrid()
         {
             var grid = new Grid()
@@ -89,31 +121,44 @@ namespace InsideInning.Pages
             return iiLabel;
         }
         #endregion
-        #region Custom ListView
 
-        public static View CreateListFor(string propertyName)
-        {
-           
-            var listView = new ListView();
-            listView.VerticalOptions = LayoutOptions.Center;
-            listView.ItemsSource = new[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-            listView.ItemTapped += async (sender, e) =>
-            {
-                Console.WriteLine("Tapped: " + e.Item);
-                ((ListView)sender).SelectedItem = null;
-            };
-            var OuterLayout = new StackLayout()
-            {
-                HorizontalOptions=LayoutOptions.Center,
-                Padding=new Thickness(50,0,50,0),
-                Children =
-                {
-                    listView
-                }
-            };
-            return OuterLayout;
-        }
-
-        #endregion
     }
+    #region Custom View cell
+    /// <summary>
+    /// This class is a ViewCell that will be displayed for each Employee Cell.
+    /// </summary>
+    class NameCell : ViewCell
+    {
+        public NameCell()
+        {
+            var nameLabel = new Label
+            {
+                HorizontalOptions = LayoutOptions.Start,
+
+            };
+            nameLabel.FontSize = 15;
+            nameLabel.SetBinding(Label.TextProperty, "FirstName");
+
+            View = new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal,
+                HorizontalOptions = LayoutOptions.Start,
+                Padding = new Thickness(0, 1.5, 0, 1.5),
+                HeightRequest = 10,
+                Spacing = 0,
+                Children = {
+					new StackLayout {
+                        Spacing=0,
+						Orientation = StackOrientation.Vertical,
+                        VerticalOptions=LayoutOptions.Start,
+                        Padding=0,
+						Children = { nameLabel }
+					},
+					
+				}
+            };
+
+        }
+    }
+    #endregion
 }

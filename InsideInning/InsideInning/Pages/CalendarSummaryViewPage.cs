@@ -103,7 +103,22 @@ namespace InsideInning.Pages
 
         StackLayout BalanceLeaveLayout()
         {
-            BackgroundImage = "back";
+            BindingContext = new EmployeeViewModel();
+            var activity = new ActivityIndicator
+            {
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                Color = Color.White.ToFormsColor(),
+                //IsEnabled = true
+            };
+            activity.SetBinding(ActivityIndicator.IsVisibleProperty, "IsBusy");
+            activity.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
+
+            ViewModel.LoadAllEmployees.Execute(null);
+            listView = new iiListView()
+            {
+                ItemTemplate = new DataTemplate(typeof(EmployeeViewCell))
+            };
+
             var BalanceLeaveTabView = new StackLayout
             {
                 // HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -111,8 +126,9 @@ namespace InsideInning.Pages
                 //Spacing = 20,
                 Children =
 				{
-					{ (CreateListFor("Laeve Type")) },
-					GenCalGrid(),
+					activity,  
+                    listView,
+                    GenCalGrid(),
 				}
             };
             return BalanceLeaveTabView;
@@ -152,9 +168,7 @@ namespace InsideInning.Pages
 
             return grid;
         }
-
         #region Custom Label
-
         public View CreateLabelFor(string propertyName, Color color, LayoutOptions layout, string id = "", bool isHeader = false)
         {
             iiLabel iiLabel = new iiLabel
@@ -173,7 +187,6 @@ namespace InsideInning.Pages
             };
             return iiLabel;
         }
-
         public View CreateLabelFor(string propertyName, LayoutOptions layout, string id = "")
         {
             iiLabel iiLabel = new iiLabel
@@ -188,39 +201,15 @@ namespace InsideInning.Pages
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center,
             };
-            //iiLabel.SetBinding(iiLabel.TextProperty,)
             return iiLabel;
         }
-
         #endregion
-
-        #region Custom ListView
-
-        public static View CreateListFor(string propertyName)
+        protected override void OnAppearing()
         {
-
-            var listView = new ListView();
-            listView.VerticalOptions = LayoutOptions.Center;
-            //listView.ItemsSource = new[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-            //listView.ItemTapped += async (sender, e) =>
-            //{
-            //    Console.WriteLine("Tapped: " + e.Item);
-            //    ((ListView)sender).SelectedItem = null;
-            //};
-            listView.ItemTemplate = new DataTemplate(typeof(EmployeeViewCell));
-
-            var OuterLayout = new StackLayout()
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                Padding = new Thickness(50, 0, 50, 0),
-                Children =
-				{
-					listView
-				}
-            };
-            return OuterLayout;
+            base.OnAppearing();
+            listView.ItemsSource = ViewModel.EmployeeList;
         }
-        #endregion
+
 
         #endregion
 
@@ -331,7 +320,7 @@ namespace InsideInning.Pages
             grid.Children.Add(CreateLabelFor("Total Days", LayoutOptions.Start, "3"), 3, 0);
             for (int j = 1; j <= TempData.GetData().Count ; j++)
             {
-                grid.BindingContext = TempData.GetData()[i];
+               // grid.BindingContext = TempData.GetData()[i];
                 grid.Children.Add(CreateBindLabelFor("FirstName", Color.Purple, LayoutOptions.Start, "", true), 0, j);
                 grid.Children.Add(CreateBindLabelFor("FromDate", Color.White, LayoutOptions.Start), 1, j);
                 grid.Children.Add(CreateBindLabelFor("ToDate", Color.White, LayoutOptions.Start), 2, j);
@@ -420,6 +409,7 @@ namespace InsideInning.Pages
 
         #endregion 
     }
+
     #region Custom View cell
     /// <summary>
     /// This class is a ViewCell that will be displayed for each Employee Cell.
@@ -428,33 +418,48 @@ namespace InsideInning.Pages
     {
         public EmployeeViewCell()
         {
-            var nameLabel = new Label
+            var EmpImage = new CircleImage()
             {
                 HorizontalOptions = LayoutOptions.Start,
+                BorderThickness=5,
+                //Source = "Dummy.jpg",
+                BorderColor=Color.White.ToFormsColor(),
+                Aspect=Aspect.Fill,
+            };
+            //EmpImage.SetBinding(Image.SourceProperty, new Binding("ImageUri"));
+            EmpImage.WidthRequest = EmpImage.HeightRequest = 40;
+
+            var nameLabel = new Label
+            {
+                HorizontalOptions = LayoutOptions.Center,
+                XAlign=TextAlignment.Center,
+                TranslationX=5,
 
             };
-            nameLabel.FontSize = 15;
+            nameLabel.FontSize = 18;
             nameLabel.SetBinding(Label.TextProperty, "FirstName");
 
-            View = new StackLayout
+             View = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.Start,
-                Padding = new Thickness(0, 1.5, 0, 1.5),
+                Padding = new Thickness(5, 1.5, 0, 1.5),
                 HeightRequest = 10,
                 Spacing = 0,
                 Children = {
+                    EmpImage,
+                    //new Image{Source="index.jpg",HeightRequest=50,WidthRequest=50},
 					new StackLayout {
                         Spacing=0,
 						Orientation = StackOrientation.Vertical,
-                        VerticalOptions=LayoutOptions.Start,
-                        Padding=0,
+                        VerticalOptions=LayoutOptions.Center,
+                         Padding = new Thickness(5, 1.5, 0, 1.5),
+
 						Children = { nameLabel }
 					},
 					
 				}
             };
-
         }
     }
     #endregion

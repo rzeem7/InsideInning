@@ -10,6 +10,8 @@ using Xamarin.Forms;
 using System.Linq;
 using InsideInning.Service;
 using InsideInning.Helpers;
+using XLabs.Platform.Services.Media;
+using XLabs.Ioc;
 //using XLabs.Platform.Services.Media;
 //using XLabs.Ioc;
 //using XLabs.Platform.Device;
@@ -27,7 +29,8 @@ namespace InsideInning.ViewModels
             App.DataBase.CreateTables<EmployeeDetails>();
             _employeeList = new ObservableCollection<Employee>();
             _employeeDetail = new EmployeeDetails();
-            //Setup();
+            
+            Setup();
         }
 
         #endregion
@@ -198,7 +201,7 @@ namespace InsideInning.ViewModels
 
                 if (IsNetworkConnected)
                 {
-                   
+
                     var items = await ServiceHandler.ProcessRequestItemAsync<Employee>(string.Format("{0}{1}", Constants.EmployeeDetails, _empID));
                     _employeeDetail = items;
                 }
@@ -215,180 +218,172 @@ namespace InsideInning.ViewModels
 
         #endregion
 
-        //#region Functionality of profile picture
+        #region Functionality of profile picture
 
-        ///// <summary>
-        ///// The _scheduler.
-        ///// </summary>
-        //private readonly TaskScheduler _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+        /// <summary>
+        /// The _scheduler.
+        /// </summary>
+        private readonly TaskScheduler _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
 
-        ///// <summary>
-        ///// The picture chooser.
-        ///// </summary>
-        //private IMediaPicker _mediaPicker;
+        /// <summary>
+        /// The picture chooser.
+        /// </summary>
+        private IMediaPicker _mediaPicker;
 
-        ///// <summary>
-        ///// The image source.
-        ///// </summary>
-        //private ImageSource _imageSource;
-
-        ///// <summary>
-        ///// The video info.
-        ///// </summary>
-        //private string _videoInfo;
-
-        ///// <summary>
-        ///// The take picture command.
-        ///// </summary>
-        //private Command _takePictureCommand;
-
-        ///// <summary>
-        ///// The select picture command.
-        ///// </summary>
-        //private Command _selectPictureCommand;
-
-        ///// <summary>
-        ///// The select video command.
-        ///// </summary>
-        //private Command _selectVideoCommand;
-
-        //private string _status;
+        /// <summary>
+        /// The image source.
+        /// </summary>
+        private ImageSource _imageSource;
 
 
-        //////private CancellationTokenSource cancelSource;
+        /// <summary>
+        /// The take picture command.
+        /// </summary>
+        private Command _takePictureCommand;
 
-        ///// <summary>
-        ///// Initializes a new instance of the <see cref="CameraViewModel" /> class.
-        ///// </summary>
-        //private void Setup()
-        //{
-        //    if (_mediaPicker != null)
-        //    {
-        //        return;
-        //    }
+        /// <summary>
+        /// The select picture command.
+        /// </summary>
+        private Command _selectPictureCommand;
 
-        //    var device = Resolver.Resolve<IDevice>();
 
-        //    ////RM: hack for working on windows phone? 
-        //    _mediaPicker = DependencyService.Get<IMediaPicker>() ?? device.MediaPicker;
-        //}
-        ///// <summary>
-        ///// Gets or sets the image source.
-        ///// </summary>
-        ///// <value>The image source.</value>
-        //public ImageSource ImageSource
-        //{
-        //    get
-        //    {
-        //        return _imageSource;
-        //    }
-        //    set
-        //    {
-        //        _imageSource = value;
-        //        OnPropertyChanged("ImageSource");
-        //    }
-        //}
-        //// <summary>
-        ///// Gets the status.
-        ///// </summary>
-        ///// <value>
-        ///// The status.
-        ///// </value>
-        //public string Status
-        //{
-        //    get { return _status; }
-        //    private set
-        //    {
-        //        _status = value;
-        //        OnPropertyChanged("Status");
-        //    }
-        //}
+        private string _status;
 
-        ///// <summary>
-        ///// Gets the take picture command.
-        ///// </summary>
-        ///// <value>The take picture command.</value>
-        //public Command TakePictureCommand
-        //{
-        //    get
-        //    {
-        //        return _takePictureCommand ?? (_takePictureCommand = new Command(
-        //                                                               async () => await TakePicture(),
-        //                                                               () => true));
-        //    }
-        //}
 
-        ///// <summary>
-        ///// Takes the picture.
-        ///// </summary>
-        ///// <returns>Take Picture Task.</returns>
-        //private async Task<MediaFile> TakePicture()
-        //{
-        //    Setup();
+        ////private CancellationTokenSource cancelSource;
 
-        //    ImageSource = null;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CameraViewModel" /> class.
+        /// </summary>
+        private void Setup()
+        {
+            if (_mediaPicker != null)
+            {
+                return;
+            }
 
-        //    return await _mediaPicker.TakePhotoAsync(new CameraMediaStorageOptions { DefaultCamera = CameraDevice.Front, MaxPixelDimension = 400 }).ContinueWith(t =>
-        //    {
-        //        if (t.IsFaulted)
-        //        {
-        //            Status = t.Exception.InnerException.ToString();
-        //        }
-        //        else if (t.IsCanceled)
-        //        {
-        //            Status = "Canceled";
-        //        }
-        //        else
-        //        {
-        //            var mediaFile = t.Result;
+            // var device = Resolver.Resolve<IDevice>();
 
-        //            ImageSource = ImageSource.FromStream(() => mediaFile.Source);
+            ////RM: hack for working on windows phone? 
+            _mediaPicker = Resolver.Resolve<IMediaPicker>();// ?? device.MediaPicker;
+        }
+        /// <summary>
+        /// Gets or sets the image source.
+        /// </summary>
+        /// <value>The image source.</value>
+        public ImageSource ImageSource
+        {
+            get
+            {
+                return _imageSource;
+            }
+            set
+            {
+                _imageSource = value;
+                OnPropertyChanged("ImageSource");
+            }
+        }
+        // <summary>
+        /// Gets the status.
+        /// </summary>
+        /// <value>
+        /// The status.
+        /// </value>
+        public string Status
+        {
+            get { return _status; }
+            private set
+            {
+                _status = value;
+                OnPropertyChanged("Status");
+            }
+        }
 
-        //            return mediaFile;
-        //        }
+        /// <summary>
+        /// Gets the take picture command.
+        /// </summary>
+        /// <value>The take picture command.</value>
+        public Command TakePictureCommand
+        {
+            get
+            {
+                return _takePictureCommand ?? (_takePictureCommand = new Command(
+                                                                       async () => await TakePicture(),
+                                                                       () => true));
+            }
+        }
 
-        //        return null;
-        //    }, _scheduler);
-        //}
+        /// <summary>
+        /// Takes the picture.
+        /// </summary>
+        /// <returns>Take Picture Task.</returns>
+        private async Task<MediaFile> TakePicture()
+        {
+            Setup();
 
-        ///// <summary>
-        ///// Gets the select picture command.
-        ///// </summary>
-        ///// <value>The select picture command.</value>
-        //public Command SelectPictureCommand
-        //{
-        //    get
-        //    {
-        //        return _selectPictureCommand ?? (_selectPictureCommand = new Command(
-        //                                                                   async () => await SelectPicture(),
-        //                                                                   () => true));
-        //    }
-        //}
+            ImageSource = null;
 
-        ///// <summary>
-        ///// Selects the picture.
-        ///// </summary>
-        ///// <returns>Select Picture Task.</returns>
-        //private async Task SelectPicture()
-        //{
-        //    Setup();
+            return await _mediaPicker.TakePhotoAsync(new CameraMediaStorageOptions { DefaultCamera = CameraDevice.Front, MaxPixelDimension = 400 }).ContinueWith(t =>
+            {
+                if (t.IsFaulted)
+                {
+                    Status = t.Exception.InnerException.ToString();
+                }
+                else if (t.IsCanceled)
+                {
+                    Status = "Canceled";
+                }
+                else
+                {
+                    var mediaFile = t.Result;
 
-        //    ImageSource = null;
-        //    try
-        //    {
-        //        var mediaFile = await _mediaPicker.SelectPhotoAsync(new CameraMediaStorageOptions
-        //        {
-        //            DefaultCamera = CameraDevice.Front,
-        //            MaxPixelDimension = 400
-        //        });
-        //        ImageSource = ImageSource.FromStream(() => mediaFile.Source);
-        //    }
-        //    catch (System.Exception ex)
-        //    {
-        //        Status = ex.Message;
-        //    }
-        //}
+                    ImageSource = ImageSource.FromStream(() => mediaFile.Source);
 
-        //#endregion
+                    return mediaFile;
+                }
+
+                return null;
+            }, _scheduler);
+        }
+
+        /// <summary>
+        /// Gets the select picture command.
+        /// </summary>
+        /// <value>The select picture command.</value>
+        public Command SelectPictureCommand
+        {
+            get
+            {
+                return _selectPictureCommand ?? (_selectPictureCommand = new Command(
+                                                                           async () => await SelectPicture(),
+                                                                           () => true));
+            }
+        }
+
+        /// <summary>
+        /// Selects the picture.
+        /// </summary>
+        /// <returns>Select Picture Task.</returns>
+        private async Task SelectPicture()
+        {
+            Setup();
+
+            ImageSource = null;
+            try
+            {
+                var mediaFile = await _mediaPicker.SelectPhotoAsync(new CameraMediaStorageOptions
+                {
+                    DefaultCamera = CameraDevice.Front,
+                    MaxPixelDimension = 400
+                });
+                ImageSource = ImageSource.FromStream(() => mediaFile.Source);
+            }
+            catch (System.Exception ex)
+            {
+                Status = ex.Message;
+            }
+        }
+
+        #endregion
     }
 }

@@ -15,6 +15,7 @@ namespace InsideInning.ViewModels
 		public LoginViewModel(INavigation navigation)
 		{
 			this.iiNavigation = navigation;
+            EmpViewModel = new EmployeeViewModel();
 		}
 
 		#region Employee
@@ -69,5 +70,9 @@ namespace InsideInning.ViewModels
 		}
 
 		#endregion
+
+
+        //TODO : Have to remove
+        public EmployeeViewModel EmpViewModel { get; set; }
 	}
 }

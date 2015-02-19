@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms;
+using XLabs.Ioc;
+using XLabs.Platform.Services.Media;
 
 namespace InsideInning
 {
@@ -18,6 +20,9 @@ namespace InsideInning
 
         public App()
         {
+            //var resolverContainer = new SimpleContainer();
+            //resolverContainer.Register<IMediaPicker>(new MediaPicker());
+
             MainPage = homeView ?? (homeView = new LoginPageView());
         }
         

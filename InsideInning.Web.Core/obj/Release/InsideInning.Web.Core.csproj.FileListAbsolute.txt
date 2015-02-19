@@ -7,3 +7,4 @@ D:\vDoers\RZEE\Naina\InsideInning\New\InsideInning\InsideInning.Web.Core\bin\Rel
 D:\vDoers\RZEE\Naina\InsideInning\New\InsideInning\InsideInning.Web.Core\obj\Release\InsideInning.Web.Core.csprojResolveAssemblyReference.cache
 D:\vDoers\RZEE\Naina\InsideInning\New\InsideInning\InsideInning.Web.Core\obj\Release\InsideInning.Web.Core.dll
 D:\vDoers\RZEE\Naina\InsideInning\New\InsideInning\InsideInning.Web.Core\obj\Release\InsideInning.Web.Core.pdb
+E:\Xamarin\InsideInning\InsideInning.Web.Core\obj\Release\InsideInning.Web.Core.csprojResolveAssemblyReference.cache

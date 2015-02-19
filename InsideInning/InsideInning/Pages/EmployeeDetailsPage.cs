@@ -29,6 +29,7 @@ namespace InsideInning.Pages
             _EmployeeID = _id;
             BackgroundImage = "back";
             BindingContext = ViewModel.EmployeeDetail;
+            ViewModel.LoadEmpDetail.Execute(_EmployeeID);
             Content = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -59,7 +60,7 @@ namespace InsideInning.Pages
                     {CreateDatePickerFor("Date of Joining", "JoinningDate","2")},
                     { iiControls.CreateEntryFor("ContactNumber",Color.White)},
                     { iiControls.CreateEntryFor("EmailAddress",Color.White)},
-                    { iiControls.CreateEntryFor("Company Profile",Color.White)},
+                    { iiControls.CreateEntryFor("CompanyProfile",Color.White)},
                     new Button 
                     {
                         Text= "Submit",
@@ -170,6 +171,7 @@ namespace InsideInning.Pages
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            
             ViewModel.LoadEmpDetail.Execute(_EmployeeID);
         }
 

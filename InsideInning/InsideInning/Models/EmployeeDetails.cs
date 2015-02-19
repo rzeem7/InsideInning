@@ -69,7 +69,7 @@ namespace InsideInning.Models
         public string CompanyProfile
         {
             get { return _CompanyProfile; }
-            set { _CompanyProfile = value; OnPropertyChanged("Landline"); }
+            set { _CompanyProfile = value; OnPropertyChanged("CompanyProfile"); }
         }
 
         private DateTime _JoinningDate;
@@ -78,15 +78,6 @@ namespace InsideInning.Models
             get { return _JoinningDate; }
             set { _JoinningDate = value; OnPropertyChanged("JoinningDate"); }
         }
-
-        private DateTime _IsActive;
-        public DateTime IsActive
-        {
-            get { return _IsActive; }
-            set { _IsActive = value; OnPropertyChanged("IsActive"); }
-        }
-       
-
         #endregion
     }
 }

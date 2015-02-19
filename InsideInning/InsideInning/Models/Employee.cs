@@ -5,7 +5,7 @@ using System.Text;
 
 namespace InsideInning
 {
-   public class Employee : BaseModel
+   public class Employee : EmployeeDetails
     {
 
         #region Full Property

@@ -20,7 +20,7 @@ namespace InsideInning.Service
 
         #region Process Request Async : MAIN
 
-        public static async Task<ObservableCollection<T>> ProcessRequestAsync<T>(string resource, T value = default(T)) where T : class, new()
+        public static async Task<ObservableCollection<T>> ProcessRequestCollectionAsync<T>(string resource, T value = default(T)) where T : class, new()
         {
             HttpWebRequest request;
             request = (HttpWebRequest)WebRequest.Create(CreateURI(resource));
@@ -38,9 +38,35 @@ namespace InsideInning.Service
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                Console.WriteLine("An error occured in Service Handler",ex.Message);
+                return null;
+            }
+        }
+
+        public static async Task<T> ProcessRequestItemAsync<T>(string resource, T value = default(T)) where T : class, new()
+        {
+            HttpWebRequest request;
+            request = (HttpWebRequest)WebRequest.Create(CreateURI(resource));
+            request.Method = "GET";
+            string responseStr;
+            try
+            {
+                using (var response = await request.GetResponseAsync())
+                {
+                    using (Stream data = response.GetResponseStream())
+                    {
+                        responseStr = new StreamReader(data).ReadToEnd();
+                        T resData = JsonConvert.DeserializeObject<T>(responseStr);
+                        return resData;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occured in Service Handler", ex.Message);
+                return null;
             }
         }
 

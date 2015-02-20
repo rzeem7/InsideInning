@@ -8,15 +8,14 @@ using System.Text;
 using Xamarin.Forms;
 using Color = InsideInning.Helper.Color;
 using ImageCircle.Forms.Plugin.Abstractions;
-
 namespace InsideInning.Pages
 {
-    public class EmployeeDetailsPage : ContentPage
+    public class EmpDetailsViewPage : ContentPage
     {
         Int32 _EmployeeID;
 
         #region Access binded properties
-        private EmployeeViewModel ViewModel
+        private EmpDetailsViewPage ViewModel
         {
             get;
             set;//Type cast BindingContex as HomeViewModel to access binded properties
@@ -24,13 +23,13 @@ namespace InsideInning.Pages
         #endregion
 
         #region Main stack Layout
-        public EmployeeDetailsPage(Int32 _id, EmployeeViewModel _viewModel)
+        public EmpDetailsViewPage()
         {
-            ViewModel = _viewModel; //Passed from List or Dashboard
-            _EmployeeID = _id;
+            //ViewModel = viewModel; //Passed from List or Dashboard
+            //_EmployeeID = _id;
             BackgroundImage = "back";
-            BindingContext = ViewModel.EmployeeDetail;
-            ViewModel.LoadEmpDetail.Execute(_EmployeeID);
+           // BindingContext = ViewModel.EmployeeDetail;
+           // ViewModel.LoadEmpDetail.Execute(_EmployeeID);
             Content = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -57,14 +56,14 @@ namespace InsideInning.Pages
                 Children =
                 {
                     GenGrid(),
-                    { iiControls.CreateEntryFor("ContactNumber",Color.White)},
-                    { iiControls.CreateEntryFor("EmailAddress",Color.White)},
-                    { iiControls.CreateEntryFor("CompanyProfile",Color.White)},
+                    { iiControls.CreateLabelFor("ContactNumber",Color.White)},
+                    { iiControls.CreateLabelFor("EmailAddress",Color.White)},
+                    { iiControls.CreateLabelFor("CompanyProfile",Color.White)},
                     new Button 
                     {
                         Text= "Submit",
                         TextColor=Color.White.ToFormsColor(),
-                        Command=ViewModel.AddUpdateEmployeeDetailsCommand,
+                        //Command=ViewModel.AddUpdateEmployeeDetailsCommand,
                         CommandParameter=(EmployeeDetails)BindingContext,
                         HorizontalOptions=LayoutOptions.FillAndExpand
                     },
@@ -130,11 +129,11 @@ namespace InsideInning.Pages
 
             };
 
-            grid.Children.Add(iiControls.CreateEntryFor("First Name", Color.White), 0, 0);
-            grid.Children.Add(iiControls.CreateEntryFor("Last Name", Color.White), 1, 0);
+            grid.Children.Add(iiControls.CreateLabelFor("First Name", Color.White), 0, 0);
+            grid.Children.Add(iiControls.CreateLabelFor("Last Name", Color.White), 1, 0);
 
-            grid.Children.Add(CreateDatePickerFor("Date of birth", "DateOfBirth", "1"), 0, 1);
-            grid.Children.Add(CreateDatePickerFor("Date of Joining", "JoinningDate", "2"), 1, 1);
+            grid.Children.Add(iiControls.CreateLabelFor("Date of birth", Color.White), 0, 1);
+            grid.Children.Add(iiControls.CreateLabelFor("Date of Joining", Color.White), 1, 1);
 
             return grid;
         }
@@ -176,7 +175,7 @@ namespace InsideInning.Pages
         {
             base.OnAppearing();
             
-            ViewModel.LoadEmpDetail.Execute(_EmployeeID);
+            //ViewModel.LoadEmpDetail.Execute(_EmployeeID);
         }
 
         #endregion

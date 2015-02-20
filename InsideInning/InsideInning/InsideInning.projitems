@@ -38,6 +38,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\CalendarViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\CalendarSummaryViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\DummyData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\EmpDetailsViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\EmployeeListViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\HolidayViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LeaveRequestViewPage.cs" />

@@ -22,6 +22,19 @@ namespace InsideInning.Helper
             iiEditTextBox.SetBinding(iiTextBox.TextProperty, propertyName);
             return iiEditTextBox;
         }
+        public static View CreateLabelFor(string propertyName, Color color, string id = "", bool IsPassword = false)
+        {
+            iiLabel iiLabel = new iiLabel
+            {
+                TextColor = color.ToFormsColor(),
+                BackgroundColor = Xamarin.Forms.Color.Transparent, //Color.iiEditTextColor.ToFormsColor(),
+                ClassId = id,
+                TranslationY = 2,
+            };
+            iiLabel.HorizontalOptions = LayoutOptions.FillAndExpand;
+            iiLabel.SetBinding(iiLabel.TextProperty, propertyName);
+            return iiLabel;
+        }
 
     }
 }

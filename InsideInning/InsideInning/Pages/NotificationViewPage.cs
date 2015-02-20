@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Text;
 using Xamarin.Forms;
 using ImageCircle.Forms.Plugin.Abstractions;
+using InsideInning.Models;
 
 namespace InsideInning.Pages
 {
@@ -22,24 +23,31 @@ namespace InsideInning.Pages
             ViewModel.LoadAllEmployees.Execute(null);
             _iiEmpList = new iiListView()
             {
-                ItemTemplate = new DataTemplate(typeof(EmployeeViewCell))
+                ItemTemplate = new DataTemplate(typeof(NotificationViewCell)),
+                RowHeight=80,
+                ClassId="1",
+                
             };
+            
             Content = new StackLayout
             {
+
                 Children = {
 					_iiEmpList
 				}
             };
 
+            
+
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _iiEmpList.ItemsSource = ViewModel.EmployeeList;
+            _iiEmpList.ItemsSource = new[] { new LeaveRequest { FullName = "Gagandeep Singh", ToDate = Convert.ToDateTime(System.DateTime.Now.ToString("dd/MMM/yyyy")), FromDate = Convert.ToDateTime(System.DateTime.Now.ToString("dd/MMM/yyyy")), ApprovedDays = 4, Notes = "Request for Urgent peace of work" }, };//ViewModel.EmployeeList;
         }
     }
 
-    #region Custom View cell
+    #region Custom View cell 
     /// <summary>
     /// This class is a ViewCell that will be displayed for each Employee Cell.
     /// </summary>
@@ -47,7 +55,7 @@ namespace InsideInning.Pages
     {
         public NotificationViewCell()
         {
-            var EmpImage = new CircleImage()
+           var EmpImage = new CircleImage()
             {
                 HorizontalOptions = LayoutOptions.Start,
                 BorderThickness = 5,
@@ -56,46 +64,101 @@ namespace InsideInning.Pages
                 Aspect = Aspect.Fill,
             };
             //EmpImage.SetBinding(Image.SourceProperty, new Binding("ImageUri"));
-            EmpImage.WidthRequest = EmpImage.HeightRequest = 60;
-
             var nameLabel = new Label
             {
                 HorizontalOptions = LayoutOptions.Start,
-
+                FontSize=15,
             };
-            nameLabel.FontSize = 15;
-            nameLabel.SetBinding(Label.TextProperty, "FirstName");
 
-            var Designation = new Label
+            nameLabel.SetBinding(Label.TextProperty, "FullName");
+            var daysLabel = new Label
             {
                 HorizontalOptions = LayoutOptions.Start,
 
             };
-            Designation.FontSize = 15;
-            Designation.SetBinding(Label.TextProperty, "Event Status");
 
-            View = new StackLayout
+            daysLabel.SetBinding(Label.TextProperty, "ApprovedDays");
+            var subjectLabel = new Label
             {
-                Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.Start,
-                Padding = new Thickness(0, 1.5, 0, 1.5),
-                HeightRequest = 10,
-                Spacing = 0,
-                Children = {
-                    EmpImage,
-                    //new Image{Source="index.jpg",HeightRequest=50,WidthRequest=50},
-					new StackLayout {
-                        Spacing=0,
-						Orientation = StackOrientation.Vertical,
-                        VerticalOptions=LayoutOptions.Start,
-                        Padding=0,
-						Children = { nameLabel, Designation }
-					},
-					
-				}
+
             };
 
+            subjectLabel.SetBinding(Label.TextProperty, "Notes");
+            EmpImage.WidthRequest = EmpImage.HeightRequest = 60;
+
+            var toDate = new Label
+            {
+                HorizontalOptions = LayoutOptions.Start,
+
+            };
+            toDate.SetBinding(Label.TextProperty, "ToDate");
+
+            var fromDate = new Label
+            {
+                HorizontalOptions = LayoutOptions.Start,
+
+            };
+            fromDate.SetBinding(Label.TextProperty, "FromDate");
+
+            Button btnApproved = new Button { 
+                Text="Approved",
+                BackgroundColor=Color.Green,
+                FontSize = 10,
+            };
+
+            Button btnRejected = new Button
+            {
+                Text = "Reject",
+                BackgroundColor = Color.Red,
+                FontSize=10,
+            };
+            View flagView = new StackLayout { 
+
+                BackgroundColor=Color.Red,
+            };
+
+            #region Adding Context Actions To List view Cell
+
+            var actionApproved = new MenuItem { Text = "Approved" };
+            actionApproved.Clicked += async (sender, e) =>
+            {
+                
+                flagView.BackgroundColor = Color.Green;
+            };
+            var actionReject = new MenuItem { Text = "Reject",IsDestructive=true };
+            actionReject.Clicked += async (sender, e) =>
+            {
+               
+                flagView.BackgroundColor = Color.Red;
+            };
+            ContextActions.Add(actionApproved);
+            ContextActions.Add(actionReject);
+
+            #endregion
+            
+            RelativeLayout MainView = new RelativeLayout
+            {
+                HorizontalOptions = LayoutOptions.Start,
+                Padding = new Thickness(20, 10, 5, 5),
+            };
+
+            MainView.Children.Add(EmpImage, Constraint.Constant(5), Constraint.Constant(10),
+                 Constraint.Constant(60),
+                 Constraint.Constant(60));
+            MainView.Children.Add(subjectLabel, Constraint.Constant(80), Constraint.Constant(50), Constraint.RelativeToParent(parent => { return parent.Width; }), Constraint.Constant(40));
+            MainView.Children.Add(nameLabel, Constraint.Constant(80), Constraint.Constant(5), Constraint.RelativeToParent(parent => { return parent.Width; }), Constraint.Constant(20));
+            
+            MainView.Children.Add(toDate, Constraint.Constant(80), Constraint.Constant(27), Constraint.Constant(100), Constraint.Constant(40));
+            MainView.Children.Add(fromDate, Constraint.Constant(180), Constraint.Constant(27), Constraint.Constant(100), Constraint.Constant(40));
+            MainView.Children.Add(daysLabel, Constraint.Constant(290), Constraint.Constant(27), Constraint.Constant(40), Constraint.Constant(20));
+            //MainView.Children.Add(btnApproved, Constraint.Constant(290), Constraint.Constant(5), Constraint.Constant(60), Constraint.Constant(30));
+            //MainView.Children.Add(btnRejected, Constraint.Constant(290), Constraint.Constant(40), Constraint.Constant(60), Constraint.Constant(30));
+            MainView.Children.Add(flagView, Constraint.Constant(350), Constraint.Constant(2), Constraint.Constant(50), Constraint.Constant(76));
+
+            View = MainView;
         }
+        
     }
     #endregion
 }

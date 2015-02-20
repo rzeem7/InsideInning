@@ -38,8 +38,6 @@ namespace InsideInning.Droid.Renderer
                         Control.SetBackgroundColor(Android.Graphics.Color.Transparent);
                         Control.DividerHeight = 2;
                       //  Control.Divider = new ColorDrawable(Android.Graphics.Color.Red);
-
-
                         break;
                     default:
                         break;

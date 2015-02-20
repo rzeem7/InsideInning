@@ -50,8 +50,8 @@ namespace InsideInning.Pages
 
         void _iiEmpList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var _EmpID = ((Employee)e.Item).EmployeeID;
-            this.Navigation.PushAsync(new EmployeeDetailsPage(_EmpID, ViewModel));
+            //var _EmpID = ((Employee)e.Item).EmployeeID;
+            this.Navigation.PushAsync(new EmpDetailsViewPage());
             ((ListView)sender).SelectedItem = null; // de-select the row
         }
         

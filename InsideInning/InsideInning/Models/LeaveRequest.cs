@@ -27,7 +27,7 @@ namespace InsideInning.Models
         private bool _leavetype ;
         public bool LeaveType
         {
-            get { return true; }
+            get { return _leavetype; }
             set { _leavetype = value; OnPropertyChanged("LeaveType"); }
         }
 
@@ -48,7 +48,7 @@ namespace InsideInning.Models
 
         public int TotalCasualLeave
         {
-            get { return 1; }
+            get { return _totalcasualleave; }
             set { _totalcasualleave = value; OnPropertyChanged("TotalCasualLeave"); }
         }
 
@@ -56,7 +56,7 @@ namespace InsideInning.Models
 
         public int TotalSickLeave
         {
-            get { return 1; }
+            get { return _TotalSickLeave; }
             set { _TotalSickLeave = value; OnPropertyChanged("TotalSickLeave"); }
         }
 
@@ -64,7 +64,7 @@ namespace InsideInning.Models
 
         public bool IsApproved
         {
-            get { return true; }
+            get { return _IsApproved; }
             set { _IsApproved = value;OnPropertyChanged("IsApproved"); }
         }
 
@@ -79,14 +79,14 @@ namespace InsideInning.Models
 
         public DateTime ApprovedOn
         {
-            get { return System.DateTime.Now; }
+            get { return _ApprovedOn; }
             set { _ApprovedOn = value;OnPropertyChanged("ApprovedOn"); }
         }
         private int _ApprovedDays;
 
         public int ApprovedDays
         {
-            get { return 1; }
+            get { return _ApprovedDays; }
             set { _ApprovedDays = value;OnPropertyChanged("ApprovedDays"); }
         }
         private int _EmployeeID;
@@ -95,6 +95,14 @@ namespace InsideInning.Models
         {
             get { return 1; }
             set { _EmployeeID = value; OnPropertyChanged("EmployeeID");}
+        }
+
+        private string _fullName;
+
+        public string FullName
+        {
+             get { return _fullName; }
+            set { _fullName = value;OnPropertyChanged("FullName"); }
         }
         
         

@@ -3,6 +3,7 @@ using InsideInning.Models;
 using InsideInning.Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -14,6 +15,7 @@ namespace InsideInning.ViewModels
         public LeaveRequestViewModel()
         {
             App.DataBase.CreateTables<LeaveRequest>();
+            _leaveRequestList = new ObservableCollection<LeaveRequest>();
         }
 
         #region Peoperties
@@ -24,7 +26,17 @@ namespace InsideInning.ViewModels
             get { return _leaveRequestInfo; }
             set { _leaveRequestInfo = value; OnPropertyChanged("LeaveRequestInfo"); }
         }
+
+        private ObservableCollection<LeaveRequest> _leaveRequestList;
+        public ObservableCollection<LeaveRequest> LeaveRequestList
+        {
+            get { return _leaveRequestList; }
+            set { _leaveRequestList = value; OnPropertyChanged("LeaveRequestList"); }
+        }
         #endregion
+
+
+        
 
         #region Commands
         //Save
@@ -65,6 +77,43 @@ namespace InsideInning.ViewModels
             }
         }
 
+        private Command _loadAllLeaveRequests;
+
+        public Command LoadAllLeaveRequests
+        {
+            get
+            {
+                return _loadAllLeaveRequests ?? (_loadAllLeaveRequests = new Command(async () => await ExecuteLoadCommand()));
+            }
+        }
+
+        private async Task ExecuteLoadCommand()
+        {
+            try
+            {
+                IsBusy = true;
+
+                if (IsNetworkConnected)
+                {
+                    LeaveRequestList.Clear();
+                    var items = await ServiceHandler.ProcessRequestCollectionAsync<LeaveRequest>(Constants.LeaveRequest);
+                    foreach (var item in items)
+                    {
+                        LeaveRequestList.Add(item);
+                    }  //Server Call
+                    IsBusy = false;
+                }
+                else
+                {
+                    _leaveRequestList = App.DataBase.GetItems<LeaveRequest>(); //From Local DB
+                    IsBusy = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An Exception Occured During Save Record {0}", ex.Message);
+            }
+        }
         #endregion
     }
 }

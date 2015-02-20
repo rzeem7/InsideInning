@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace InsideInning.ViewModels
 {
@@ -32,6 +33,9 @@ namespace InsideInning.ViewModels
                 Title = "Logout",
                 MenuType = MenuType.Logout
             });
+
         }
+        public LoginViewModel LogViewModel { get; set; }
+
     }
 }

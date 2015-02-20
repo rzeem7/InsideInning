@@ -50,14 +50,12 @@ namespace InsideInning.Pages
             var customLayout = new StackLayout
             {
                 BackgroundColor = Xamarin.Forms.Color.Transparent,
-                Padding = new Thickness(30, 0, 30, 0),
-                Spacing = 10,
+                Padding = new Thickness(30, 60, 30, 0),
+                Spacing = 7,
 
                 Children =
                 {
                     GenGrid(),
-                    {CreateDatePickerFor("Date of birth", "DateOfBirth","1")},
-                    {CreateDatePickerFor("Date of Joining", "JoinningDate","2")},
                     { iiControls.CreateEntryFor("ContactNumber",Color.White)},
                     { iiControls.CreateEntryFor("EmailAddress",Color.White)},
                     { iiControls.CreateEntryFor("CompanyProfile",Color.White)},
@@ -84,7 +82,7 @@ namespace InsideInning.Pages
                 HorizontalOptions = LayoutOptions.Start,
                 BackgroundColor = Xamarin.Forms.Color.Blue,
                 Padding = new Thickness(1, 1, 1, 1),
-                HeightRequest = 30,
+                HeightRequest = 10,
 
             };
             var CoverPage = new Image { HorizontalOptions = LayoutOptions.CenterAndExpand, };
@@ -124,13 +122,18 @@ namespace InsideInning.Pages
         {
             var grid = new Grid
             {
-                Padding = new Thickness(5, 5, 5, 5),
-                HorizontalOptions = LayoutOptions.End,
+                Padding = new Thickness(0, -10, 0, 0),
+                HorizontalOptions = LayoutOptions.FillAndExpand,
                 ColumnSpacing = 5,
+                RowSpacing = 10,
 
             };
-            grid.Children.Add(CreateButtonFor("Male", LayoutOptions.Start, "1"), 0, 0);
-            grid.Children.Add(CreateButtonFor("Feamle", LayoutOptions.Start, "2"), 1, 0);
+
+            grid.Children.Add(iiControls.CreateEntryFor("First Name", Color.White), 0, 0);
+            grid.Children.Add(iiControls.CreateEntryFor("Last Name", Color.White), 1, 0);
+
+            grid.Children.Add(CreateDatePickerFor("Date of birth", "DateOfBirth", "1"), 0, 1);
+            grid.Children.Add(CreateDatePickerFor("Date of Joining", "JoinningDate", "2"), 1, 1);
 
             return grid;
         }

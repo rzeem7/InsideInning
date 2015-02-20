@@ -29,7 +29,7 @@ namespace InsideInning.ViewModels
             App.DataBase.CreateTables<EmployeeDetails>();
             _employeeList = new ObservableCollection<Employee>();
             _employeeDetail = new EmployeeDetails();
-            
+            _employeeInfo = new Employee();
             Setup();
         }
 

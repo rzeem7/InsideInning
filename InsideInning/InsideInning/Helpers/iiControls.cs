@@ -18,11 +18,6 @@ namespace InsideInning.Helper
                 ClassId = id,
                 TranslationY = 2,     
             };
-            if (id == "1")
-                iiEditTextBox.HorizontalOptions = LayoutOptions.EndAndExpand;
-            else if(id == "2")
-                iiEditTextBox.HorizontalOptions = LayoutOptions.StartAndExpand;
-
             iiEditTextBox.HorizontalOptions = LayoutOptions.FillAndExpand;
             iiEditTextBox.SetBinding(iiTextBox.TextProperty, propertyName);
             return iiEditTextBox;

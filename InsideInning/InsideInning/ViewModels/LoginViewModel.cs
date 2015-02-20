@@ -34,6 +34,7 @@ namespace InsideInning.ViewModels
 		#region Login Command
 
 		private Command loginCommand;
+        private Command logoutCommand;
 
 		public Command LoginCommand
 		{
@@ -42,6 +43,13 @@ namespace InsideInning.ViewModels
 				return loginCommand ?? (loginCommand = new Command(async () => await ExecuteLoginCommand()));
 			}
 		}
+        public Command LogoutCommand
+        {
+            get
+            {
+                return logoutCommand ?? (logoutCommand = new Command(async () => await ExecuteLogoutCommand()));
+            }
+        }
 
 		private async Task ExecuteLoginCommand()
 		{
@@ -49,18 +57,15 @@ namespace InsideInning.ViewModels
 			{
 				if (!IsNetworkConnected) //Have to remove !
 				{
-					await ServiceHandler.PostDataAsync<bool, String>("", "").ContinueWith(t =>
+                    await ServiceHandler.PostDataAsync<Employee, string>("", "").ContinueWith(t =>
 					{
-						if (t.Result)
-						{
-							iiNavigation.PushModalAsync(new HomeViewPage(), true);
-						}
+                        NavigationToPage(t);
 					});
 				}
 				else
 				{
-					//TODO : login locally
-					await iiNavigation.PushModalAsync(new HomeViewPage(), true);
+					//TODO : login locally forn database
+                    NavigationToPage(null);
 				}
 			}
 			catch (Exception ex)
@@ -68,6 +73,38 @@ namespace InsideInning.ViewModels
 				Console.WriteLine("An Exception Occurred : {0}", ex.Message);
 			}
 		}
+
+        private void NavigationToPage(Task<Employee> t)
+        {
+            if (t!= null  && t.Result.IsAdmin)
+            {
+                iiNavigation.PushModalAsync(new HomeViewPage(this), true);
+            }
+            else
+            {
+                //TODO : We'll remove it on fly code
+                iiNavigation.PushModalAsync(new HomeViewPage(this), true);
+
+                //var navPage=new NavigationPage(new DashboardViewPage(this)) 
+                //{
+                //    BarBackgroundColor=Xamarin.Forms.Color.Blue
+
+                //};
+                //iiNavigation.PushModalAsync(navPage, true);
+
+            }
+        }
+        private async Task ExecuteLogoutCommand()
+        {
+            try
+            {
+                await iiNavigation.PushModalAsync(new LoginPageView(), true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An Exception Occurred : {0}", ex.Message);
+            }
+        }
 
 		#endregion
 

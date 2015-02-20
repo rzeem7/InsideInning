@@ -53,11 +53,11 @@ namespace InsideInning
             set { _employeeType = value; OnPropertyChanged("EmployeeType"); }
         }
 
-        private string _isActive = string.Empty;
-        public string IsActive
+        private bool _isAdmin;
+        public bool IsAdmin
         {
-            get { return _isActive; }
-            set { _isActive = value; OnPropertyChanged("IsActive"); }
+            get { return _isAdmin; }
+            set { _isAdmin = value; OnPropertyChanged("IsAdmin"); }
         }
 
         #endregion

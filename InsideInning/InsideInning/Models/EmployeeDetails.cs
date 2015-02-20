@@ -6,7 +6,7 @@ namespace InsideInning.Models
 {
     public class EmployeeDetails : BaseModel
     {
-     #region Full Property
+        #region Full Property
 
         private string _EmpProfileImage = string.Empty;
         public string EmpProfileImage
@@ -37,7 +37,7 @@ namespace InsideInning.Models
             set { _MaritalStatus = value; OnPropertyChanged("MaritalStatus"); }
         }
 
-        private DateTime _DateOfBirth ;
+        private DateTime _DateOfBirth;
         public DateTime DateOfBirth
         {
             get { return _DateOfBirth; }
@@ -65,7 +65,7 @@ namespace InsideInning.Models
             set { _Landline = value; OnPropertyChanged("Landline"); }
         }
 
-        private string _CompanyProfile=string.Empty;
+        private string _CompanyProfile = string.Empty;
         public string CompanyProfile
         {
             get { return _CompanyProfile; }
@@ -78,6 +78,14 @@ namespace InsideInning.Models
             get { return _JoinningDate; }
             set { _JoinningDate = value; OnPropertyChanged("JoinningDate"); }
         }
+
+        private bool _isActive;
+        public bool IsActive
+        {
+            get { return _isActive; }
+            set { _isActive = value; OnPropertyChanged("IsActive"); }
+        }
+
         #endregion
     }
 }

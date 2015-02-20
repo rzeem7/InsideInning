@@ -11,18 +11,19 @@ namespace InsideInning.Pages
 {
     public class HomeViewPage : MasterDetailPage
     {
-            private HomeViewModel ViewModel
+        private HomeViewModel ViewModel
             {
                 get { return BindingContext as HomeViewModel; } //Type cast BindingContex as HomeViewModel to access binded properties
             }
 
         private Dictionary<MenuType, NavigationPage> pages;
         HomeMasterPage _master;
-
-        public HomeViewPage()
+        //LoginViewModel loginViewModel;
+        public HomeViewPage(LoginViewModel loginViewModel)
         {
             pages = new Dictionary<MenuType, NavigationPage>();
             BindingContext = new HomeViewModel();
+            ViewModel.LogViewModel = loginViewModel;
             Master = _master = new HomeMasterPage(ViewModel);
             var homeNav = new NavigationPage(_master.PageSelection)
             {
@@ -59,8 +60,8 @@ namespace InsideInning.Pages
                 IsPresented = false;
             };
             this.Icon = "slideout.png";
-
         }
+
         public class HomeMasterPage : BaseViewPage
         {
             public Action<MenuType> PageSelectionChanged;
@@ -88,7 +89,10 @@ namespace InsideInning.Pages
                 Title = "test";
                 var layout = new StackLayout { Spacing = 0 };
 
-                var listView = new iiListView(); // Listview created for menu items
+                var listView = new iiListView
+                {
+                    ClassId="2",
+                };// Listview created for menu items
                 var cell = new DataTemplate(typeof(ListImageCell));
                 cell.SetBinding(TextCell.TextProperty, HomeViewModel.TitlePropertyName);
                 listView.ItemTemplate = cell;
@@ -98,7 +102,7 @@ namespace InsideInning.Pages
                 listView.ItemsSource = viewModel.MenuItems;
                 listView.BackgroundColor= Xamarin.Forms.Color.Transparent;
                 if (DashBoard == null)   //Making First view page selection
-                    DashBoard = new DashboardViewPage();
+                    DashBoard = new DashboardViewPage( );
                 PageSelection = DashBoard;
 
                 listView.ItemSelected += (sender, args) =>

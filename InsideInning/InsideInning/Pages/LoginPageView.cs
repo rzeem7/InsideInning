@@ -87,11 +87,11 @@ namespace InsideInning.Pages
 
 			return iiButton;
 		}
-
-		void iiButton_Clicked(object sender, EventArgs e)
-		{
-			this.Navigation.PushAsync(new DashboardViewPage());
-		}
+        //void iiButton_Clicked(object sender, EventArgs e)
+        //{
+        //    this.Navigation.PushAsync(new DashboardViewPage(this));
+        //}
+		
 	}
 }
 

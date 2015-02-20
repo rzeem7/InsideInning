@@ -2,6 +2,7 @@
 using InsideInning.Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -12,10 +13,27 @@ namespace InsideInning.ViewModels
 	{
 		INavigation iiNavigation;
 
+
+        //test : RZEE
+        public ObservableCollection<string> Greetings { get; set; }
+
 		public LoginViewModel(INavigation navigation)
 		{
 			this.iiNavigation = navigation;
             EmpViewModel = new EmployeeViewModel();
+
+            //
+            Greetings = new ObservableCollection<string>();
+
+            MessagingCenter.Subscribe<LoginPageView>(this, "Hi", (sender) =>
+            {
+                Greetings.Add("Hi");
+            });
+
+            MessagingCenter.Subscribe<LoginPageView, string>(this, "Hi", (sender, arg) =>
+            {
+                Greetings.Add("Hi " + arg);
+            });
 		}
 
 		#region Employee
@@ -65,7 +83,9 @@ namespace InsideInning.ViewModels
 				else
 				{
 					//TODO : login locally forn database
-                    NavigationToPage(null);
+                    //NavigationToPage(null);
+
+                    MessagingCenter.Send<LoginPageView>(new LoginPageView(), "Hi");
 				}
 			}
 			catch (Exception ex)

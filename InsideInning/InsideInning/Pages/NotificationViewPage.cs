@@ -24,11 +24,11 @@ namespace InsideInning.Pages
             _iiEmpList = new iiListView()
             {
                 ItemTemplate = new DataTemplate(typeof(NotificationViewCell)),
-                RowHeight=80,
-                ClassId="1",
-                
+                RowHeight = 80,
+                ClassId = "1",
+
             };
-            
+
             Content = new StackLayout
             {
 
@@ -37,13 +37,13 @@ namespace InsideInning.Pages
 				}
             };
 
-            
+
 
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _iiEmpList.ItemsSource = new[] { new LeaveRequest { FullName = "Gagandeep Singh", ToDate = Convert.ToDateTime(System.DateTime.Now.ToString("dd/MMM/yyyy")), FromDate = Convert.ToDateTime(System.DateTime.Now.ToString("dd/MMM/yyyy")), ApprovedDays = 4, Notes = "Request for Urgent peace of work" }, };//ViewModel.EmployeeList;
+            _iiEmpList.ItemsSource = new[] { new LeaveRequest { FullName = "Gagandeep Singh", ToDate = System.DateTime.Now.AddDays(3), FromDate = DateTime.Now, Notes = "Request for Urgent peace of work" }, };//ViewModel.EmployeeList;
         }
     }
 
@@ -92,14 +92,14 @@ namespace InsideInning.Pages
                 HorizontalOptions = LayoutOptions.Start,
 
             };
-            toDate.SetBinding(Label.TextProperty, "ToDate");
+            toDate.SetBinding(Label.TextProperty, "LeaveDate");
 
             var fromDate = new Label
             {
                 HorizontalOptions = LayoutOptions.Start,
 
             };
-            fromDate.SetBinding(Label.TextProperty, "FromDate");
+            fromDate.SetBinding(Label.TextProperty, new Binding("FromDate") { StringFormat = "{0:dd-MMM-yyyy}" });
 
             Button btnApproved = new Button { 
                 Text="Approved",
@@ -113,10 +113,10 @@ namespace InsideInning.Pages
                 BackgroundColor = Color.Red,
                 FontSize=10,
             };
-            View flagView = new StackLayout { 
+            View flagView = new StackLayout { };
 
-                BackgroundColor=Color.Red,
-            };
+            //TODO: Have to add pending color
+            flagView.SetBinding(View.BackgroundColorProperty, new Binding("IsApproved", BindingMode.Default, LeaveFlagColorConverter.OneWay<bool, Color>((status) => status ? Color.Green : Color.Red)));
 
             #region Adding Context Actions To List view Cell
 
@@ -148,13 +148,13 @@ namespace InsideInning.Pages
                  Constraint.Constant(60));
             MainView.Children.Add(subjectLabel, Constraint.Constant(80), Constraint.Constant(50), Constraint.RelativeToParent(parent => { return parent.Width; }), Constraint.Constant(40));
             MainView.Children.Add(nameLabel, Constraint.Constant(80), Constraint.Constant(5), Constraint.RelativeToParent(parent => { return parent.Width; }), Constraint.Constant(20));
-            
-            MainView.Children.Add(toDate, Constraint.Constant(80), Constraint.Constant(27), Constraint.Constant(100), Constraint.Constant(40));
-            MainView.Children.Add(fromDate, Constraint.Constant(180), Constraint.Constant(27), Constraint.Constant(100), Constraint.Constant(40));
-            MainView.Children.Add(daysLabel, Constraint.Constant(290), Constraint.Constant(27), Constraint.Constant(40), Constraint.Constant(20));
+
+            MainView.Children.Add(toDate, Constraint.Constant(80), Constraint.Constant(27), Constraint.RelativeToParent(parent => { return parent.Width- daysLabel.Width; }), Constraint.Constant(40));
+            //MainView.Children.Add(fromDate, Constraint.Constant(180), Constraint.Constant(27), Constraint.Constant(100), Constraint.Constant(40));
+            MainView.Children.Add(daysLabel, Constraint.Constant(290), Constraint.Constant(27), Constraint.Constant(50), Constraint.Constant(20));
             //MainView.Children.Add(btnApproved, Constraint.Constant(290), Constraint.Constant(5), Constraint.Constant(60), Constraint.Constant(30));
             //MainView.Children.Add(btnRejected, Constraint.Constant(290), Constraint.Constant(40), Constraint.Constant(60), Constraint.Constant(30));
-            MainView.Children.Add(flagView, Constraint.Constant(350), Constraint.Constant(2), Constraint.Constant(50), Constraint.Constant(76));
+            MainView.Children.Add(flagView, Constraint.RelativeToParent(parent => { return parent.Width-flagView.Width; }), Constraint.Constant(2), Constraint.Constant(7), Constraint.Constant(76));
 
             View = MainView;
         }

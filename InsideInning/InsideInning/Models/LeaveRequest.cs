@@ -82,12 +82,14 @@ namespace InsideInning.Models
             get { return _ApprovedOn; }
             set { _ApprovedOn = value;OnPropertyChanged("ApprovedOn"); }
         }
-        private int _ApprovedDays;
+        private string _ApprovedDays;
 
-        public int ApprovedDays
+        public string ApprovedDays
         {
-            get { return _ApprovedDays; }
-            set { _ApprovedDays = value;OnPropertyChanged("ApprovedDays"); }
+            get
+            {
+                return string.Format("{0} Days", Math.Ceiling((ToDate - FromDate).TotalDays));
+            }
         }
         private int _EmployeeID;
 
@@ -104,8 +106,9 @@ namespace InsideInning.Models
              get { return _fullName; }
             set { _fullName = value;OnPropertyChanged("FullName"); }
         }
-        
-        
+
+        public string LeaveDate { get { return string.Format("{0} - {1}", ToDate.ToString("dd-MMM-yyyy"), FromDate.ToString("dd-MMM-yyyy")); } }
+
      #endregion
         
     }

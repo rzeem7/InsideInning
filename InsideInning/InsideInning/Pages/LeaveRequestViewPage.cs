@@ -35,7 +35,7 @@ namespace InsideInning.Pages
                     {(CreateDatePickerFor("FromDate", LayoutOptions.FillAndExpand, "3"))},
                     {(CreateDatePickerFor("ToDate", LayoutOptions.FillAndExpand, "4"))},
                     {(CreateLabelFor("ApprovedDays", LayoutOptions.FillAndExpand,"1"))},
-                    //{CreateEditorFor("Notes", LayoutOptions.FillAndExpand,"1")},                       
+                    {CreateEditorFor("Notes", LayoutOptions.FillAndExpand,"1")},                       
                     new Button
                     {
                         Text="Send",TextColor=Color.White.ToFormsColor(),BackgroundColor=Color.Gray.ToFormsColor(),BorderWidth=1,HorizontalOptions=LayoutOptions.FillAndExpand,TranslationY=40,

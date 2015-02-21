@@ -100,7 +100,7 @@ namespace InsideInning.Pages
             var tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += (s, e) =>
             {
-                Console.WriteLine("Yes Clicked");
+               ViewModel.SelectPictureCommand.Execute(null);
             };
 
             CircleImage.GestureRecognizers.Add(tapGestureRecognizer);

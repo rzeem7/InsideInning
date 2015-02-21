@@ -93,7 +93,7 @@ namespace InsideInning.ViewModels
 		{
 			try
 			{
-				if (IsNetworkConnected) //Have to remove !
+				if (!IsNetworkConnected) //Have to remove !
 				{
                     await ServiceHandler.PostDataAsync<Employee, CheckLogin>(CheckLogin, Constants.CheckLogin).ContinueWith(t =>
 					{

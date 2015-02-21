@@ -36,14 +36,14 @@ namespace InsideInning.Web.API.Controllers
         }
 
         // POST api/checklogin
-        public BOEmployee Post([FromBody]BOEmployee userDetail)
+        public BOEmployee Post([FromBody]CheckLogin userDetail)
         {
             try
             {
                 if (userDetail == null)
                    return new BOEmployee();
                
-              return BLLEmployee.CheckLogin(userDetail.EmailAddress, userDetail.Password);
+              return BLLEmployee.CheckLogin(userDetail.Username, userDetail.Password);
             }
             catch(Exception ex)
             {

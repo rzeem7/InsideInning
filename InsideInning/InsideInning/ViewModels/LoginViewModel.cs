@@ -1,4 +1,6 @@
-﻿using InsideInning.Pages;
+﻿using InsideInning.Helpers;
+using InsideInning.Models;
+using InsideInning.Pages;
 using InsideInning.Service;
 using System;
 using System.Collections.Generic;
@@ -35,18 +37,38 @@ namespace InsideInning.ViewModels
 
 		#endregion
 
-		#region Login Command
 
-		private Command loginCommand;
+
+        #region CheckLogin Properties
+
+        public CheckLogin CheckLogin
+        {
+            get { return CheckLogin ?? new CheckLogin { UserName = this.Username, Password = this.Password }; }
+        }
+
+        private string _userName;
+
+        public string Username
+        {
+            get { return _userName; }
+            set { _userName = value; }
+        }
+
+        private string _password;
+
+        public string Password
+        {
+            get { return _password; }
+            set { _password = value; }
+        }
+
+
+
+        #endregion  
+
+        #region Login Command
+
 		private Command logoutCommand;
-
-		public Command LoginCommand
-		{
-			get
-			{
-				return loginCommand ?? (loginCommand = new Command(async () => await ExecuteLoginCommand()));
-			}
-		}
 
 		public Command LogoutCommand
 		{
@@ -56,13 +78,24 @@ namespace InsideInning.ViewModels
 			}
 		}
 
-		private async Task ExecuteLoginCommand()
+
+        private Command loginCommand;
+
+        public Command LoginCommand
+        {
+            get
+            {
+                return loginCommand ?? (loginCommand = new Command(async () => await ExecuteLoginCommand()));
+            }
+        }
+
+        private async Task ExecuteLoginCommand()
 		{
 			try
 			{
 				if (IsNetworkConnected) //Have to remove !
 				{
-					await ServiceHandler.PostDataAsync<Employee, string>("", "").ContinueWith(t =>
+                    await ServiceHandler.PostDataAsync<Employee, CheckLogin>(CheckLogin, Constants.CheckLogin).ContinueWith(t =>
 					{
 						NavigationToPage(t);
 					});

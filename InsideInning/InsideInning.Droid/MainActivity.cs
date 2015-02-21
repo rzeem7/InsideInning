@@ -12,7 +12,6 @@ using Xamarin.Forms;
 using ImageCircle.Forms.Plugin.Abstractions;
 using XLabs.Ioc;
 using XLabs.Platform.Services.Media;
-using XLabs.Platform.Mvvm;
 
 namespace InsideInning.Droid
 {
@@ -22,32 +21,21 @@ namespace InsideInning.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-           //Forms.Init(this, bundle);
-           //
+            //Forms.Init(this, bundle);
+            //
 
             if (!Resolver.IsSet)
             {
                 this.SetIoc();
             }
-            else
-            {
-                var app = Resolver.Resolve<IXFormsApp>() as IXFormsApp<FormsApplicationActivity>;
-                app.AppContext = this;
-            }
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new InsideInning.App());
-            //SetPage(InsideInning.App.RootPage);
-           // SetPage(App.GetMainPage());
-            
         }
 
         private void SetIoc()
         {
-
             var resolverContainer = new SimpleContainer();
-
             resolverContainer.Register<IMediaPicker>(new MediaPicker());
-
             Resolver.SetResolver(resolverContainer.GetResolver());
         }
     }

@@ -81,21 +81,22 @@ namespace InsideInning.Pages
             RelativeLayout MainView = new RelativeLayout
             {
                 HorizontalOptions = LayoutOptions.Start,
-                BackgroundColor = Xamarin.Forms.Color.Blue,
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
                 Padding = new Thickness(1, 1, 1, 1),
                 HeightRequest = 10,
 
             };
-            var CoverPage = new Image { HorizontalOptions = LayoutOptions.CenterAndExpand, };
+            var CoverPage = new Image { VerticalOptions = LayoutOptions.FillAndExpand, Source = "iiListBack.png" };
 
             var CircleImage = new CircleImage
             {
-                Source = "ProfileImage.png",
+                Source = ViewModel.ImageSource,
                 // BorderColor = Color.White.ToFormsColor(),
                 // BorderThickness = 2,
-                HorizontalOptions = LayoutOptions.Fill,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
 
             };
+            
             
             var tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += (s, e) =>
@@ -104,7 +105,7 @@ namespace InsideInning.Pages
             };
 
             CircleImage.GestureRecognizers.Add(tapGestureRecognizer);
-           
+            //CircleImage.SetBinding(Image.SourceProperty, "ImageSource");
 
             MainView.Children.Add(CoverPage, Constraint.Constant(0), Constraint.Constant(0),
                 Constraint.RelativeToParent(parent => { return parent.Width; }),

@@ -7,7 +7,6 @@ using UIKit;
 using Xamarin.Forms;
 using XLabs.Ioc;
 using XLabs.Platform.Services.Media;
-using XLabs.Platform.Mvvm;
 using Xamarin.Forms.Platform.iOS;
 
 namespace InsideInning.iOS
@@ -27,15 +26,7 @@ namespace InsideInning.iOS
 		//
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
-			if (!Resolver.IsSet)
-			{
-				this.SetIoc();
-			}
-			else
-			{
-				var apps = Resolver.Resolve<IXFormsApp>() as IXFormsApp<FormsApplicationDelegate>;
-				apps.AppContext = this;
-			}
+			
 			global::Xamarin.Forms.Forms.Init();
 			LoadApplication(new InsideInning.App());
 			//  page = InsideInning.App.RootPage;
@@ -46,11 +37,7 @@ namespace InsideInning.iOS
 		private void SetIoc()
 		{
 
-			var resolverContainer = new SimpleContainer();
-
-			resolverContainer.Register<IMediaPicker>(new MediaPicker());
-
-			Resolver.SetResolver(resolverContainer.GetResolver());
+			
 		}
     
 	}

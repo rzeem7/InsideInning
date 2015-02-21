@@ -249,7 +249,7 @@ namespace InsideInning.ViewModels
 		/// <summary>
 		/// The image source.
 		/// </summary>
-		private ImageSource _imageSource;
+        private ImageSource _imageSource = "rzee.png";
 
 
 		/// <summary>
@@ -297,7 +297,7 @@ namespace InsideInning.ViewModels
 			set
 			{
 				_imageSource = value;
-				OnPropertyChanged("ImageSource");
+                OnPropertyChanged("ImageSource");
 			}
 		}
 		// <summary>
@@ -377,29 +377,31 @@ namespace InsideInning.ViewModels
 			}
 		}
 
+        public MediaFile m_ediaFile { get; set; }
+
 		/// <summary>
 		/// Selects the picture.
 		/// </summary>
 		/// <returns>Select Picture Task.</returns>
-		private async Task SelectPicture()
-		{
-			Setup();
+        private async Task SelectPicture()
+        {
+            Setup();
 
-			ImageSource = null;
-			try
-			{
-				var mediaFile = await _mediaPicker.SelectPhotoAsync(new CameraMediaStorageOptions
-				{
-					DefaultCamera = CameraDevice.Front,
-					MaxPixelDimension = 400
-				});
-				ImageSource = ImageSource.FromStream(() => mediaFile.Source);
-			}
-			catch (System.Exception ex)
-			{
-				Status = ex.Message;
-			}
-		}
+            //ImageSource = null;
+            try
+            {
+                var mediaFile = await _mediaPicker.SelectPhotoAsync(new CameraMediaStorageOptions
+                {
+                    DefaultCamera = CameraDevice.Front,
+                    MaxPixelDimension = 400
+                });
+                ImageSource = ImageSource.FromStream(() => mediaFile.Source);
+            }
+            catch (System.Exception ex)
+            {
+                Status = ex.Message;
+            }
+        }
 
 		#endregion
 	}

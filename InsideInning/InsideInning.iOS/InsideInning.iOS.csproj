@@ -29,6 +29,7 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchI18n>
     </MtouchI18n>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -97,8 +98,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Controls\CalendarMonthView.cs" />
+    <Compile Include="Extension\NSDataStream.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Media\MediaPicker.cs" />
+    <Compile Include="Media\MediaPickerController.cs" />
+    <Compile Include="Media\MediaPickerDelegate.cs" />
+    <Compile Include="Media\MediaPickerPopoverDelegate.cs" />
     <Compile Include="Network\NetworkConnection.cs" />
     <Compile Include="Renderer\CalendarViewRenderer.cs" />
     <Compile Include="Renderer\iiButtonRenderer.cs" />
@@ -135,6 +141,9 @@
     <BundleResource Include="Resources\back.png" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="ExifLib">
+      <HintPath>..\..\Lib\ExifLib.dll</HintPath>
+    </Reference>
     <Reference Include="ImageCircle.Forms.Plugin.Abstractions">
       <HintPath>..\..\packages\Xam.Plugins.Forms.ImageCircle.1.0.7\lib\Xamarin.iOS10\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>
     </Reference>
@@ -161,17 +170,8 @@
     <Reference Include="Xamarin.Mobile">
       <HintPath>..\..\packages\Acr.XamForms.Mobile.2.0.2\lib\Xamarin.iOS10\Xamarin.Mobile.dll</HintPath>
     </Reference>
-    <Reference Include="XLabs.Platform">
-      <HintPath>..\..\packages\XLabs.Platform.2.0.5520\lib\Xamarin.iOS10\XLabs.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Platform.iOS">
-      <HintPath>..\..\packages\XLabs.Platform.2.0.5520\lib\Xamarin.iOS10\XLabs.Platform.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="XLabs.Ioc">
       <HintPath>..\..\packages\XLabs.IoC.2.0.5520\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Ioc.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Core">
-      <HintPath>..\..\packages\XLabs.Core.2.0.5520\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -311,6 +311,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\iiListBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rzee.png" />
   </ItemGroup>
   <Import Project="..\InsideInning\InsideInning.projitems" Label="Shared" Condition="Exists('..\InsideInning\InsideInning.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

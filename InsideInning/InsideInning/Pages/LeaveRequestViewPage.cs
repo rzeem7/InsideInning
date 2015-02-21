@@ -73,12 +73,12 @@ namespace InsideInning.Pages
                 Title = "Leave Type",
                 HeightRequest = 50,
                 WidthRequest = 50,
+                
             };
-            iiPicker.Items.Add("Leave Type");
             iiPicker.Items.Add("Casual Leave");
             iiPicker.Items.Add("Medical Leave");
             iiPicker.Items.Add("Paid Leave");
-            iiPicker.SetBinding(Picker.TitleProperty, propertyName);
+            //iiPicker.SetBinding(Picker.TitleProperty, propertyName);
             iiPicker.SelectedIndex = 0;
             return iiPicker;
         }
@@ -132,6 +132,7 @@ namespace InsideInning.Pages
             return iiEditTextBox;
         }
         #endregion
+
     }
 }
 

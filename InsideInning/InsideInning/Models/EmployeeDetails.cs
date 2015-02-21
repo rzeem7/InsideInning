@@ -11,7 +11,7 @@ namespace InsideInning.Models
         private string _EmpProfileImage = string.Empty;
         public string EmpProfileImage
         {
-            get { return _EmpProfileImage; }
+            get { return "http://192.168.236.1:8080/Pics/%205b571de8-5e8c-4991-9bcb-113348e66d69.jpeg"; }
             set { _EmpProfileImage = value; OnPropertyChanged("EmpProfileImage"); }
         }
 

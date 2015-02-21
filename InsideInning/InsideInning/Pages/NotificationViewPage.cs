@@ -59,11 +59,11 @@ namespace InsideInning.Pages
             {
                 HorizontalOptions = LayoutOptions.Start,
                 BorderThickness = 5,
-                Source = "Dummy.jpg",
+             
                 BorderColor = Color.White,
                 Aspect = Aspect.Fill,
             };
-            //EmpImage.SetBinding(Image.SourceProperty, new Binding("ImageUri"));
+           // EmpImage.SetBinding(Image.SourceProperty, new Binding("ImageUri"));
             var nameLabel = new Label
             {
                 HorizontalOptions = LayoutOptions.Start,

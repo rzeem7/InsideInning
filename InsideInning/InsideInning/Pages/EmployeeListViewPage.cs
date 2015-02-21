@@ -76,12 +76,12 @@ namespace InsideInning.Pages
             var EmpImage = new CircleImage()
             {
                 HorizontalOptions = LayoutOptions.Start,
-                BorderThickness=5,
-                //Source = "Dummy.jpg",
-                BorderColor=Color.White,
+                //BorderThickness=5,
+                //Source = "Pics/ 5b571de8-5e8c-4991-9bcb-113348e66d69.jpeg",
+                //BorderColor=Color.White,
                 Aspect=Aspect.Fill,
             };
-            //EmpImage.SetBinding(Image.SourceProperty, new Binding("ImageUri"));
+            EmpImage.SetBinding(Image.SourceProperty, new Binding("EmpProfileImage"));
             EmpImage.WidthRequest = EmpImage.HeightRequest = 60;
 
             var nameLabel = new Label

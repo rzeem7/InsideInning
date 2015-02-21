@@ -22,6 +22,8 @@ namespace InsideInning.Web.API.Controllers
         // GET api/ImageUpload/5
         public string Get(int id)
         {
+
+
             return "value";
         }
 

@@ -190,3 +190,5 @@ E:\Projects\InsideInning\InsideInning.Web.API\bin\zh-Hant\System.Spatial.resourc
 E:\Projects\InsideInning\InsideInning.Web.API\obj\Release\InsideInning.Web.API.csprojResolveAssemblyReference.cache
 E:\Projects\InsideInning\InsideInning.Web.API\obj\Release\InsideInning.Web.API.dll
 E:\Projects\InsideInning\InsideInning.Web.API\obj\Release\InsideInning.Web.API.pdb
+E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.Http.WebHost.dll
+E:\Xamarin\InsideInning\InsideInning.Web.API\bin\System.Web.Http.WebHost.xml

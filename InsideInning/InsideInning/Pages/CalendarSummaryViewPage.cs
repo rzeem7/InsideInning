@@ -147,10 +147,10 @@ namespace InsideInning.Pages
                 RowSpacing = 2,
             };
 
-            grid.Children.Add(CreateLabelFor("Leave Type", LayoutOptions.Start, "2"), 0, 0);
+            grid.Children.Add(CreateLabelFor("Leave Type",25,120, LayoutOptions.Start, "2"), 0, 0);
             grid.Children.Add(CreateLabelFor("Total", Color.Purple, LayoutOptions.Start, "", true), 1, 0);
             grid.Children.Add(CreateLabelFor("Used", Color.Purple, LayoutOptions.Start, "", true), 2, 0);
-            grid.Children.Add(CreateLabelFor("Pending", LayoutOptions.Start, "3"), 3, 0);
+            grid.Children.Add(CreateLabelFor("Pending", 25, 120, LayoutOptions.Start, "3"), 3, 0);
 
             grid.Children.Add(CreateLabelFor("Casual Leave", Color.Purple, LayoutOptions.Start, "", true), 0, 1);
             grid.Children.Add(CreateLabelFor("0", Color.White, LayoutOptions.Start), 1, 1);
@@ -188,15 +188,15 @@ namespace InsideInning.Pages
             };
             return iiLabel;
         }
-        public View CreateLabelFor(string propertyName, LayoutOptions layout, string id = "")
+        public View CreateLabelFor(string propertyName,int height,int width, LayoutOptions layout, string id = "")
         {
             iiLabel iiLabel = new iiLabel
             {
                 TextColor = Color.White.ToFormsColor(),
                 Text = propertyName,
                 HorizontalOptions = layout,
-                HeightRequest = 25,
-                WidthRequest = 120,
+                HeightRequest = height,
+                WidthRequest = width,
                 FontSize = 10,
                 ClassId = id,
                 XAlign = TextAlignment.Center,
@@ -262,9 +262,13 @@ namespace InsideInning.Pages
             {
                 ColumnSpacing = 2,
                 RowSpacing = 2,
+                VerticalOptions=LayoutOptions.Center,
+                Padding = new Thickness(0, 70, 0, 0),
+
             };
-            grid.Children.Add(CreateGridLabelFor("Event ", Color.Purple, LayoutOptions.Start, "", true), 0, 0);
-            grid.Children.Add(CreateGridLabelFor("Details ", Color.Purple, LayoutOptions.Start, "", true), 1, 0);
+
+            grid.Children.Add(CreateLabelFor("Event ", 35, 140,  LayoutOptions.Start, "2" ), 0, 0);
+            grid.Children.Add(CreateLabelFor("Details ", 35, 140,  LayoutOptions.Start, "3"), 1, 0);
             for (int j = 1; j <= i; j++)
             {
                 grid.Children.Add(CreateGridLabelFor("Event {0}" + j, Color.Pink, LayoutOptions.Start, "", true), 0, j);
@@ -315,10 +319,10 @@ namespace InsideInning.Pages
 
             };
 
-            grid.Children.Add(CreateLabelFor("Name", LayoutOptions.Start, "2"), 0, 0);
+            grid.Children.Add(CreateLabelFor("Name",25,120, LayoutOptions.Start, "2"), 0, 0);
             grid.Children.Add(CreateLabelFor("From", Color.Purple, LayoutOptions.Start, "", true), 1, 0);
             grid.Children.Add(CreateLabelFor("To", Color.Purple, LayoutOptions.Start, "", true), 2, 0);
-            grid.Children.Add(CreateLabelFor("Total Days", LayoutOptions.Start, "3"), 3, 0);
+            grid.Children.Add(CreateLabelFor("Total Days", 25, 120, LayoutOptions.Start, "3"), 3, 0);
             for (int j = 1; j <= TempData.GetData().Count ; j++)
             {
                // grid.BindingContext = TempData.GetData()[i];

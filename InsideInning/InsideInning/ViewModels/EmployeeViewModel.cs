@@ -12,6 +12,7 @@ using InsideInning.Service;
 using InsideInning.Helpers;
 using XLabs.Platform.Services.Media;
 using XLabs.Ioc;
+
 //using XLabs.Platform.Services.Media;
 //using XLabs.Ioc;
 //using XLabs.Platform.Device;
@@ -19,371 +20,387 @@ using XLabs.Ioc;
 
 namespace InsideInning.ViewModels
 {
-    public class EmployeeViewModel : BaseViewModel
-    {
-        #region Constructor
+	public class EmployeeViewModel : BaseViewModel
+	{
+		#region Constructor
 
-        public EmployeeViewModel()
-        {
-            App.DataBase.CreateTables<Employee>();
-            App.DataBase.CreateTables<EmployeeDetails>();
-            _employeeList = new ObservableCollection<Employee>();
-            _employeeDetail = new EmployeeDetails();
-            _employeeInfo = new Employee();
-            Setup();
-        }
+		public EmployeeViewModel()
+		{
+			App.DataBase.CreateTables<Employee>();
+			App.DataBase.CreateTables<EmployeeDetails>();
+			_employeeList = new ObservableCollection<Employee>();
+			_employeeDetail = new EmployeeDetails();
+			_employeeInfo = new Employee();
+			Setup();
+		}
 
-        #endregion
+		#endregion
 
-        #region Peoperties
+		#region Peoperties
 
-        private Employee _employeeInfo;
-        public Employee EmployeeInfo
-        {
-            get { return _employeeInfo; }
-            set { _employeeInfo = value; OnPropertyChanged("EmployeeInfo"); }
-        }
+		private Employee _employeeInfo;
 
-        private ObservableCollection<Employee> _employeeList;
-        public ObservableCollection<Employee> EmployeeList
-        {
-            get { return _employeeList; }
-            set { _employeeList = value; OnPropertyChanged("EmployeeList"); }
-        }
+		public Employee EmployeeInfo
+		{
+			get { return _employeeInfo; }
+			set
+			{
+				_employeeInfo = value;
+				OnPropertyChanged("EmployeeInfo");
+			}
+		}
 
-        #endregion
+		private ObservableCollection<Employee> _employeeList;
 
-        #region Add Update Delete Commands
+		public ObservableCollection<Employee> EmployeeList
+		{
+			get { return _employeeList; }
+			set
+			{
+				_employeeList = value;
+				OnPropertyChanged("EmployeeList");
+			}
+		}
 
-        //Save/Update
-        //Delete
-        //Search
+		#endregion
 
-        private Command addUpdateCommand;
+		#region Add Update Delete Commands
 
-        /// <summary>
-        /// Command to Save/Update items
-        /// </summary>
-        public Command AddUpdateCommand
-        {
-            get
-            {
-                return addUpdateCommand ?? (addUpdateCommand = new Command(async (param) => await ExecuteAddUpdateCommand(param)));
-            }
-        }
+		//Save/Update
+		//Delete
+		//Search
 
-        private async Task ExecuteAddUpdateCommand(object param)
-        {
-            try
-            {
-                EmployeeInfo = (Employee)param;
-                if (EmployeeInfo == null)
-                    return;
+		private Command addUpdateCommand;
 
-                if (IsNetworkConnected)
-                {
-                    await ServiceHandler.PostDataAsync<int, Employee>(EmployeeInfo, Constants.Employee);
-                }
-                else
-                {
-                    int id = App.DataBase.SaveItem<Employee>(EmployeeInfo);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("An Exception Occured During Save Record {0}", ex.Message);
-                return;
-            }
-        }
+		/// <summary>
+		/// Command to Save/Update items
+		/// </summary>
+		public Command AddUpdateCommand
+		{
+			get
+			{
+				return addUpdateCommand ?? (addUpdateCommand = new Command(async (param) => await ExecuteAddUpdateCommand(param)));
+			}
+		}
 
-        private Command _LoadAllEmployees;
+		private async Task ExecuteAddUpdateCommand(object param)
+		{
+			try
+			{
+				EmployeeInfo = (Employee)param;
+				if (EmployeeInfo == null)
+					return;
 
-        public Command LoadAllEmployees
-        {
-            get
-            {
-                return _LoadAllEmployees ?? (_LoadAllEmployees = new Command(async () => await ExecuteLoadCommand()));
-            }
-        }
+				if (IsNetworkConnected)
+				{
+					await ServiceHandler.PostDataAsync<int, Employee>(EmployeeInfo, Constants.Employee);
+				}
+				else
+				{
+					int id = App.DataBase.SaveItem<Employee>(EmployeeInfo);
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("An Exception Occured During Save Record {0}", ex.Message);
+				return;
+			}
+		}
 
-        private async Task ExecuteLoadCommand()
-        {
-            try
-            {
-                IsBusy = true;
+		private Command _LoadAllEmployees;
 
-                if (IsNetworkConnected)
-                {
-                    EmployeeList.Clear();
-                    var items = await ServiceHandler.ProcessRequestCollectionAsync<Employee>(Constants.Employee);
-                    foreach (var item in items)
-                    {
-                        EmployeeList.Add(item);
-                    }  //Server Call
-                    IsBusy = false;
-                }
-                else
-                {
-                    _employeeList = App.DataBase.GetItems<Employee>(); //From Local DB
-                    IsBusy = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("An Exception Occured During Save Record {0}", ex.Message);
-            }
-        }
+		public Command LoadAllEmployees
+		{
+			get
+			{
+				return _LoadAllEmployees ?? (_LoadAllEmployees = new Command(async () => await ExecuteLoadCommand()));
+			}
+		}
 
-        #endregion
+		private async Task ExecuteLoadCommand()
+		{
+			try
+			{
+				IsBusy = true;
 
-        #region EmployeeDetails Properties
+				if (IsNetworkConnected)
+				{
+					EmployeeList.Clear();
+					var items = await ServiceHandler.ProcessRequestCollectionAsync<Employee>(Constants.Employee);
+					foreach (var item in items)
+					{
+						EmployeeList.Add(item);
+					}  //Server Call
+					IsBusy = false;
+				}
+				else
+				{
+					_employeeList = App.DataBase.GetItems<Employee>(); //From Local DB
+					IsBusy = false;
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("An Exception Occured During Save Record {0}", ex.Message);
+			}
+		}
 
-        private EmployeeDetails _employeeDetail;
+		#endregion
 
-        public EmployeeDetails EmployeeDetail
-        {
-            get { return _employeeDetail; }
-            set { _employeeDetail = value; OnPropertyChanged("EmployeeDetail"); }
-        }
+		#region EmployeeDetails Properties
 
-        #endregion
+		private EmployeeDetails _employeeDetail;
 
-        #region EmployeeDetails Command
+		public EmployeeDetails EmployeeDetail
+		{
+			get { return _employeeDetail; }
+			set
+			{
+				_employeeDetail = value;
+				OnPropertyChanged("EmployeeDetail");
+			}
+		}
 
-        private Command _addUpdateCommand;
-        public Command AddUpdateEmployeeDetailsCommand
-        {
-            get
-            {
-                return _addUpdateCommand ?? (_addUpdateCommand = new Command(async (param) => await ExecuteAddUpdateEmployeeDetailsCommand(param)));
-            }
-        }
+		#endregion
 
-        private async Task ExecuteAddUpdateEmployeeDetailsCommand(object param)
-        {
-            try
-            {
-                EmployeeDetail = (EmployeeDetails)param;
-                if (EmployeeDetail == null)
-                    return;
+		#region EmployeeDetails Command
 
-                if (IsNetworkConnected)
-                {
-                    await ServiceHandler.PostDataAsync<int, EmployeeDetails>(EmployeeDetail, Constants.EmployeeDetails);
-                }
-                else
-                {
-                    int id = App.DataBase.SaveItem<EmployeeDetails>(EmployeeDetail);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("An Exception Occured During Save Record {0}", ex.Message);
-                return;
-            }
-        }
+		private Command _addUpdateCommand;
 
-        private Command _loadEmpDetail;
+		public Command AddUpdateEmployeeDetailsCommand
+		{
+			get
+			{
+				return _addUpdateCommand ?? (_addUpdateCommand = new Command(async (param) => await ExecuteAddUpdateEmployeeDetailsCommand(param)));
+			}
+		}
 
-        public Command LoadEmpDetail
-        {
-            get
-            {
-                return _loadEmpDetail ?? (_loadEmpDetail = new Command(async (param) => await ExecuteLoadEmpDataCommand(param)));
-            }
-        }
+		private async Task ExecuteAddUpdateEmployeeDetailsCommand(object param)
+		{
+			try
+			{
+				EmployeeDetail = (EmployeeDetails)param;
+				if (EmployeeDetail == null)
+					return;
 
-        private async Task ExecuteLoadEmpDataCommand(object param)
-        {
-            try
-            {
-                var _empID = (Int32)param;
+				if (IsNetworkConnected)
+				{
+					await ServiceHandler.PostDataAsync<int, EmployeeDetails>(EmployeeDetail, Constants.EmployeeDetails);
+				}
+				else
+				{
+					int id = App.DataBase.SaveItem<EmployeeDetails>(EmployeeDetail);
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("An Exception Occured During Save Record {0}", ex.Message);
+				return;
+			}
+		}
 
-                if (IsNetworkConnected)
-                {
+		private Command _loadEmpDetail;
 
-                    var items = await ServiceHandler.ProcessRequestItemAsync<Employee>(string.Format("{0}{1}", Constants.EmployeeDetails, _empID));
-                    _employeeDetail = items;
-                }
-                else
-                {
-                    _employeeDetail = App.DataBase.GetItem<EmployeeDetails>(_empID);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("An Exception Occured During getting the Record {0}", ex.Message);
-            }
-        }
+		public Command LoadEmpDetail
+		{
+			get
+			{
+				return _loadEmpDetail ?? (_loadEmpDetail = new Command(async (param) => await ExecuteLoadEmpDataCommand(param)));
+			}
+		}
 
-        #endregion
+		private async Task ExecuteLoadEmpDataCommand(object param)
+		{
+			try
+			{
+				var _empID = (Int32)param;
 
-        #region Functionality of profile picture
+				if (IsNetworkConnected)
+				{
 
-        /// <summary>
-        /// The _scheduler.
-        /// </summary>
-        private readonly TaskScheduler _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+					var items = await ServiceHandler.ProcessRequestItemAsync<Employee>(string.Format("{0}{1}", Constants.EmployeeDetails, _empID));
+					_employeeDetail = items;
+				}
+				else
+				{
+					_employeeDetail = App.DataBase.GetItem<EmployeeDetails>(_empID);
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("An Exception Occured During getting the Record {0}", ex.Message);
+			}
+		}
 
-        /// <summary>
-        /// The picture chooser.
-        /// </summary>
-        private IMediaPicker _mediaPicker;
+		#endregion
 
-        /// <summary>
-        /// The image source.
-        /// </summary>
-        private ImageSource _imageSource;
+		#region Functionality of profile picture
 
+		/// <summary>
+		/// The _scheduler.
+		/// </summary>
+		private readonly TaskScheduler _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
 
-        /// <summary>
-        /// The take picture command.
-        /// </summary>
-        private Command _takePictureCommand;
+		/// <summary>
+		/// The picture chooser.
+		/// </summary>
+		private IMediaPicker _mediaPicker;
 
-        /// <summary>
-        /// The select picture command.
-        /// </summary>
-        private Command _selectPictureCommand;
+		/// <summary>
+		/// The image source.
+		/// </summary>
+		private ImageSource _imageSource;
 
 
-        private string _status;
+		/// <summary>
+		/// The take picture command.
+		/// </summary>
+		private Command _takePictureCommand;
+
+		/// <summary>
+		/// The select picture command.
+		/// </summary>
+		private Command _selectPictureCommand;
 
 
-        ////private CancellationTokenSource cancelSource;
+		private string _status;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CameraViewModel" /> class.
-        /// </summary>
-        private void Setup()
-        {
-            if (_mediaPicker != null)
-            {
-                return;
-            }
 
-            // var device = Resolver.Resolve<IDevice>();
+		////private CancellationTokenSource cancelSource;
 
-            ////RM: hack for working on windows phone? 
-            _mediaPicker = Resolver.Resolve<IMediaPicker>();// ?? device.MediaPicker;
-        }
-        /// <summary>
-        /// Gets or sets the image source.
-        /// </summary>
-        /// <value>The image source.</value>
-        public ImageSource ImageSource
-        {
-            get
-            {
-                return _imageSource;
-            }
-            set
-            {
-                _imageSource = value;
-                OnPropertyChanged("ImageSource");
-            }
-        }
-        // <summary>
-        /// Gets the status.
-        /// </summary>
-        /// <value>
-        /// The status.
-        /// </value>
-        public string Status
-        {
-            get { return _status; }
-            private set
-            {
-                _status = value;
-                OnPropertyChanged("Status");
-            }
-        }
+		/// <summary>
+		/// Initializes a new instance of the <see cref="CameraViewModel" /> class.
+		/// </summary>
+		private void Setup()
+		{
+			if (_mediaPicker != null)
+			{
+				return;
+			}
 
-        /// <summary>
-        /// Gets the take picture command.
-        /// </summary>
-        /// <value>The take picture command.</value>
-        public Command TakePictureCommand
-        {
-            get
-            {
-                return _takePictureCommand ?? (_takePictureCommand = new Command(
-                                                                       async () => await TakePicture(),
-                                                                       () => true));
-            }
-        }
+			// var device = Resolver.Resolve<IDevice>();
 
-        /// <summary>
-        /// Takes the picture.
-        /// </summary>
-        /// <returns>Take Picture Task.</returns>
-        private async Task<MediaFile> TakePicture()
-        {
-            Setup();
+			////RM: hack for working on windows phone? 
+			_mediaPicker = Resolver.Resolve<IMediaPicker>();// ?? device.MediaPicker;
+		}
 
-            ImageSource = null;
+		/// <summary>
+		/// Gets or sets the image source.
+		/// </summary>
+		/// <value>The image source.</value>
+		public ImageSource ImageSource
+		{
+			get
+			{
+				return _imageSource;
+			}
+			set
+			{
+				_imageSource = value;
+				OnPropertyChanged("ImageSource");
+			}
+		}
+		// <summary>
+		/// Gets the status.
+		/// </summary>
+		/// <value>
+		/// The status.
+		/// </value>
+		public string Status
+		{
+			get { return _status; }
+			private set
+			{
+				_status = value;
+				OnPropertyChanged("Status");
+			}
+		}
 
-            return await _mediaPicker.TakePhotoAsync(new CameraMediaStorageOptions { DefaultCamera = CameraDevice.Front, MaxPixelDimension = 400 }).ContinueWith(t =>
-            {
-                if (t.IsFaulted)
-                {
-                    Status = t.Exception.InnerException.ToString();
-                }
-                else if (t.IsCanceled)
-                {
-                    Status = "Canceled";
-                }
-                else
-                {
-                    var mediaFile = t.Result;
+		/// <summary>
+		/// Gets the take picture command.
+		/// </summary>
+		/// <value>The take picture command.</value>
+		public Command TakePictureCommand
+		{
+			get
+			{
+				return _takePictureCommand ?? (_takePictureCommand = new Command(
+					async () => await TakePicture(),
+					() => true));
+			}
+		}
 
-                    ImageSource = ImageSource.FromStream(() => mediaFile.Source);
+		/// <summary>
+		/// Takes the picture.
+		/// </summary>
+		/// <returns>Take Picture Task.</returns>
+		private async Task<MediaFile> TakePicture()
+		{
+			Setup();
 
-                    return mediaFile;
-                }
+			ImageSource = null;
 
-                return null;
-            }, _scheduler);
-        }
+			return await _mediaPicker.TakePhotoAsync(new CameraMediaStorageOptions { DefaultCamera = CameraDevice.Front, MaxPixelDimension = 400 }).ContinueWith(t =>
+			{
+				if (t.IsFaulted)
+				{
+					Status = t.Exception.InnerException.ToString();
+				}
+				else if (t.IsCanceled)
+				{
+					Status = "Canceled";
+				}
+				else
+				{
+					var mediaFile = t.Result;
 
-        /// <summary>
-        /// Gets the select picture command.
-        /// </summary>
-        /// <value>The select picture command.</value>
-        public Command SelectPictureCommand
-        {
-            get
-            {
-                return _selectPictureCommand ?? (_selectPictureCommand = new Command(
-                                                                           async () => await SelectPicture(),
-                                                                           () => true));
-            }
-        }
+					ImageSource = ImageSource.FromStream(() => mediaFile.Source);
 
-        /// <summary>
-        /// Selects the picture.
-        /// </summary>
-        /// <returns>Select Picture Task.</returns>
-        private async Task SelectPicture()
-        {
-            Setup();
+					return mediaFile;
+				}
 
-            ImageSource = null;
-            try
-            {
-                var mediaFile = await _mediaPicker.SelectPhotoAsync(new CameraMediaStorageOptions
-                {
-                    DefaultCamera = CameraDevice.Front,
-                    MaxPixelDimension = 400
-                });
-                ImageSource = ImageSource.FromStream(() => mediaFile.Source);
-            }
-            catch (System.Exception ex)
-            {
-                Status = ex.Message;
-            }
-        }
+				return null;
+			}, _scheduler);
+		}
 
-        #endregion
-    }
+		/// <summary>
+		/// Gets the select picture command.
+		/// </summary>
+		/// <value>The select picture command.</value>
+		public Command SelectPictureCommand
+		{
+			get
+			{
+				return _selectPictureCommand ?? (_selectPictureCommand = new Command(
+					async () => await SelectPicture(),
+					() => true));
+			}
+		}
+
+		/// <summary>
+		/// Selects the picture.
+		/// </summary>
+		/// <returns>Select Picture Task.</returns>
+		private async Task SelectPicture()
+		{
+			Setup();
+
+			ImageSource = null;
+			try
+			{
+				var mediaFile = await _mediaPicker.SelectPhotoAsync(new CameraMediaStorageOptions
+				{
+					DefaultCamera = CameraDevice.Front,
+					MaxPixelDimension = 400
+				});
+				ImageSource = ImageSource.FromStream(() => mediaFile.Source);
+			}
+			catch (System.Exception ex)
+			{
+				Status = ex.Message;
+			}
+		}
+
+		#endregion
+	}
 }

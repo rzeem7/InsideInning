@@ -18,12 +18,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\iiListView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\iiPicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\iiTextBox.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converter\LeaveFlagColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\InsideInningData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\SQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Color.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Constants.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DateTimeExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\iiControls.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListImageCell.cs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interface\INetworkConnection.cs" />
@@ -37,8 +35,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\BalanceLeaveViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\CalendarViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\CalendarSummaryViewPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\DummyData.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\EmpDetailsViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\EmployeeListViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\HolidayViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LeaveRequestViewPage.cs" />
@@ -57,5 +53,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LoginPageView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LeaveRequestViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converter\LeaveFlagColorConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Converter\" />
   </ItemGroup>
 </Project>

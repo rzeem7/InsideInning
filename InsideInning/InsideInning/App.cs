@@ -5,41 +5,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms;
-using XLabs.Ioc;
-using XLabs.Platform.Services.Media;
 
 namespace InsideInning
 {
-    public class App : Application
-    {
-        private static Page homeView;
-        public static Page RootPage
-        {
-            get { return homeView ?? (homeView = new LoginPageView()); }
-        }
+	public class App : Application
+	{
+		private static Page homeView;
 
-        public App()
-        {
-            //var resolverContainer = new SimpleContainer();
-            //resolverContainer.Register<IMediaPicker>(new MediaPicker());
+		public static Page RootPage
+		{
+			get { return homeView ?? (homeView = new LoginPageView()); }
+		}
 
-            MainPage = homeView ?? (homeView = new LoginPageView());
-        }
-        
-        #region Database Instance
+		public App()
+		{
+			//var resolverContainer = new SimpleContainer();
+			//resolverContainer.Register<IMediaPicker>(new MediaPicker());
 
-        private static InsideInningData _database;
+			MainPage = homeView ?? (homeView = new LoginPageView());
+		}
 
-        public static InsideInningData DataBase
-        {
-            get
-            {
-                if (_database == null)
-                    _database = new InsideInningData();
-                return _database;
-            }
-        }
+		#region Database Instance
 
-        #endregion
-    }
+		private static InsideInningData _database;
+
+		public static InsideInningData DataBase
+		{
+			get
+			{
+				if (_database == null)
+					_database = new InsideInningData();
+				return _database;
+			}
+		}
+
+		#endregion
+	}
 }

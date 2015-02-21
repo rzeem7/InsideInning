@@ -9,16 +9,17 @@ using Xamarin.Forms;
 using InsideInning;
 using InsideInning.iOS.Renderer;
 using Xamarin.Forms.Platform.iOS;
+
 [assembly: ExportRenderer(typeof(iiListView), typeof(iiListViewRenderer))]
 
 namespace InsideInning.iOS.Renderer
 {
-    public class iiListViewRenderer : ListViewRenderer
-    {
-        protected override void OnElementChanged(ElementChangedEventArgs<ListView> e)
-        {
-            base.OnElementChanged(e);
-            Control.BackgroundColor = UIColor.Black;
-        }
-    }
+	public class iiListViewRenderer : ListViewRenderer
+	{
+		protected override void OnElementChanged(ElementChangedEventArgs<ListView> e)
+		{
+			base.OnElementChanged(e);
+			Control.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("back.png"));
+		}
+	}
 }

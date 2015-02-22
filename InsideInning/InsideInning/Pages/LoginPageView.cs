@@ -43,7 +43,7 @@ namespace InsideInning.Pages
 				VerticalOptions = LayoutOptions.Center,
 				Padding = new Thickness(30, 30, 30, 30),
 				Spacing = 10,
-				BackgroundColor = Color.Green.ToFormsColor(),
+				BackgroundColor = Color.LightRed.ToFormsColor(),
 				Children =
 				{
 					CreateEntryFor("Username", Color.iiTextColor, "5"),
@@ -76,9 +76,10 @@ namespace InsideInning.Pages
 			Button iiButton = new Button
 			{
 				Text = propertyName,
-				TextColor = Color.White.ToFormsColor(),
+				TextColor = Color.LightRed.ToFormsColor(),
 				BackgroundColor = Color.LightGreen.ToFormsColor(),
 				BorderWidth = 1,
+                //BorderColor = Color.LightGreen.ToFormsColor(),
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				HeightRequest = 40,
 				FontSize = 16,

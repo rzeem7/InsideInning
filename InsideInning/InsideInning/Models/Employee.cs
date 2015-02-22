@@ -7,8 +7,23 @@ namespace InsideInning
 {
    public class Employee : EmployeeDetails
     {
+       public override string EmpProfileImage
+       {
+           get
+           {
+               //TODO : Have to remove just for demo
+               return string.Format("https://raw.githubusercontent.com/rzeem7/InsideInning/master/InsideInning/InsideInning.Droid/Resources/Drawable/{0}{1}.jpg", FirstName, LastName);
+           }
+           set
+           {
+               base.EmpProfileImage = value;
+           }
+       }
 
         #region Full Property
+
+       public string FullName { get { return string.Format("{0} {1}", FirstName, LastName); } }
+
         private int _employeeID;
 
         public int EmployeeID
@@ -21,14 +36,14 @@ namespace InsideInning
         public string FirstName
         {
             get { return _firstname; }
-            set { _firstname = value; OnPropertyChanged("FirstName"); }
+            set { _firstname = value; OnPropertyChanged("FirstName"); OnPropertyChanged("FullName"); }
         }
 
         private string _lastname = string.Empty;
         public string LastName
         {
             get { return _lastname; }
-            set { _lastname = value; OnPropertyChanged("LastName"); }
+            set { _lastname = value; OnPropertyChanged("LastName"); OnPropertyChanged("FullName"); }
         }
 
         private string _emailAddress = string.Empty;

@@ -81,7 +81,7 @@ namespace InsideInning.Pages
             };
 
             subjectLabel.SetBinding(Label.TextProperty, "Notes");
-            EmpImage.WidthRequest = EmpImage.HeightRequest = 60;
+            EmpImage.WidthRequest = EmpImage.HeightRequest = 70;
 
             var toDate = new Label
             {

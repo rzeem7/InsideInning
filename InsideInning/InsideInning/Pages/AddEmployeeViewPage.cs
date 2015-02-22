@@ -36,8 +36,9 @@ namespace InsideInning.Pages
                     GenGridForSwitch(),
                     new Button
                     {
-                        Text="Submit",TextColor=Color.White.ToFormsColor(),BackgroundColor=Color.Gray.ToFormsColor(),BorderWidth=2,HorizontalOptions=LayoutOptions.Center,TranslationY=40,
+                        Text="Submit",TextColor=Color.LightRed.ToFormsColor(),BackgroundColor=Color.LightGreen.ToFormsColor(),BorderWidth=2,HorizontalOptions=LayoutOptions.Center,TranslationY=40,
                         HeightRequest=40,
+                        WidthRequest=100,
                         Command=ViewModel.AddUpdateCommand, CommandParameter=(Employee)BindingContext
                     }                   
                 }

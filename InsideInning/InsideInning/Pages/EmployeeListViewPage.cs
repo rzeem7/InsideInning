@@ -36,7 +36,8 @@ namespace InsideInning.Pages
             _iiEmpList = new iiListView()
             {
                 ItemTemplate = new DataTemplate(typeof(EmployeeNameCell)),
-                ClassId="1"           
+                ClassId="1",    
+                RowHeight=70
             };
             Content = new StackLayout
             {
@@ -51,7 +52,7 @@ namespace InsideInning.Pages
         void _iiEmpList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             //var _EmpID = ((Employee)e.Item).EmployeeID;
-           // this.Navigation.PushAsync(new EmpDetailsViewPage());
+            this.Navigation.PushAsync(new EmpDetailsViewPage((Employee)e.Item, ViewModel));
             ((ListView)sender).SelectedItem = null; // de-select the row
         }
         
@@ -73,29 +74,30 @@ namespace InsideInning.Pages
     {
         public EmployeeNameCell()
         {
+            
             var EmpImage = new CircleImage()
             {
                 HorizontalOptions = LayoutOptions.Start,
                 //BorderThickness=5,
                 //Source = "Pics/ 5b571de8-5e8c-4991-9bcb-113348e66d69.jpeg",
                 //BorderColor=Color.White,
-                Aspect=Aspect.Fill,
+                Aspect = Aspect.Fill,
             };
             EmpImage.SetBinding(Image.SourceProperty, new Binding("EmpProfileImage"));
-            EmpImage.WidthRequest = EmpImage.HeightRequest = 60;
+            EmpImage.WidthRequest = EmpImage.HeightRequest = 70;
 
             var nameLabel = new Label
             {
                 HorizontalOptions = LayoutOptions.Start,
-
+                TextColor = Color.White
             };
             nameLabel.FontSize = 15;
-            nameLabel.SetBinding(Label.TextProperty, "FirstName");
+            nameLabel.SetBinding(Label.TextProperty, "FullName");
 
             var Designation = new Label
             {
                 HorizontalOptions = LayoutOptions.Start,
-
+                TextColor = Color.White
             };
             Designation.FontSize = 15;
             Designation.SetBinding(Label.TextProperty, "EmailAddress");
@@ -104,9 +106,9 @@ namespace InsideInning.Pages
             {
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.Start,
-                Padding = new Thickness(0,1.5,0,1.5),
-                HeightRequest=10,
-                Spacing=0,
+                Padding = new Thickness(0, 2.5, 0, 1.5),
+                HeightRequest = 10,
+                Spacing = 0,
                 Children = {
                     EmpImage,
                     //new Image{Source="index.jpg",HeightRequest=50,WidthRequest=50},
@@ -120,7 +122,6 @@ namespace InsideInning.Pages
 					
 				}
             };
-            
         }
     }
     #endregion

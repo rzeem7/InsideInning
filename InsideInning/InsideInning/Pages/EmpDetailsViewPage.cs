@@ -15,7 +15,7 @@ namespace InsideInning.Pages
         Int32 _EmployeeID;
 
         #region Access binded properties
-        private EmpDetailsViewPage ViewModel
+        private EmployeeViewModel ViewModel
         {
             get;
             set;//Type cast BindingContex as HomeViewModel to access binded properties
@@ -23,10 +23,13 @@ namespace InsideInning.Pages
         #endregion
 
         #region Main stack Layout
-        public EmpDetailsViewPage()
+        public EmpDetailsViewPage(Employee emp ,EmployeeViewModel empViewModel)
         {
+            ViewModel = empViewModel;
+            ViewModel.EmployeeDetail = emp;
+            BindingContext = ViewModel.EmployeeDetail;
             //ViewModel = viewModel; //Passed from List or Dashboard
-            //_EmployeeID = _id;
+            _EmployeeID = emp.EmployeeID;
             BackgroundImage = "back";
            // BindingContext = ViewModel.EmployeeDetail;
            // ViewModel.LoadEmpDetail.Execute(_EmployeeID);
@@ -58,15 +61,7 @@ namespace InsideInning.Pages
                     GenGrid(),
                     { iiControls.CreateLabelFor("ContactNumber",Color.White)},
                     { iiControls.CreateLabelFor("EmailAddress",Color.White)},
-                    { iiControls.CreateLabelFor("CompanyProfile",Color.White)},
-                    new Button 
-                    {
-                        Text= "Submit",
-                        TextColor=Color.White.ToFormsColor(),
-                        //Command=ViewModel.AddUpdateEmployeeDetailsCommand,
-                        CommandParameter=(EmployeeDetails)BindingContext,
-                        HorizontalOptions=LayoutOptions.FillAndExpand
-                    },
+                    { iiControls.CreateLabelFor("CompanyProfile",Color.White)}
                 }
             };
             return customLayout;
@@ -75,7 +70,7 @@ namespace InsideInning.Pages
         #endregion
 
         #region Relative layout for coverpage and profile picture
-        public RelativeLayout CreateRealtiveLayoutFor()
+        public StackLayout CreateRealtiveLayoutFor()
         {
             RelativeLayout MainView = new RelativeLayout
             {
@@ -83,18 +78,17 @@ namespace InsideInning.Pages
                 BackgroundColor = Xamarin.Forms.Color.Blue,
                 Padding = new Thickness(1, 1, 1, 1),
                 HeightRequest = 10,
-
             };
-            var CoverPage = new Image { HorizontalOptions = LayoutOptions.CenterAndExpand, };
+            var CoverPage = new iiImage { HorizontalOptions = LayoutOptions.CenterAndExpand };
 
             var CircleImage = new CircleImage
             {
-                Source = "ProfileImage.png",
                 // BorderColor = Color.White.ToFormsColor(),
                 // BorderThickness = 2,
                 HorizontalOptions = LayoutOptions.Fill,
 
             };
+            CircleImage.SetBinding(Image.SourceProperty, "EmpProfileImage");
             
             var tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += (s, e) =>
@@ -112,7 +106,12 @@ namespace InsideInning.Pages
             MainView.Children.Add(CircleImage, Constraint.Constant(0),
             Constraint.RelativeToView(CoverPage, (parent, sibling) => { return sibling.Height -50; }), Constraint.Constant(100), Constraint.Constant(100));
 
-            return MainView;
+            var st = new StackLayout
+            {
+                HeightRequest=150,
+                Children = { MainView }
+            };
+            return st;
         }
 
         #endregion
@@ -129,11 +128,14 @@ namespace InsideInning.Pages
 
             };
 
-            grid.Children.Add(iiControls.CreateLabelFor("First Name", Color.White), 0, 0);
-            grid.Children.Add(iiControls.CreateLabelFor("Last Name", Color.White), 1, 0);
-
-            grid.Children.Add(iiControls.CreateLabelFor("Date of birth", Color.White), 0, 1);
-            grid.Children.Add(iiControls.CreateLabelFor("Date of Joining", Color.White), 1, 1);
+            grid.Children.Add(iiControls.CreateLabelFor("FullName", Color.White), 0, 0);
+            //grid.Children.Add(iiControls.CreateLabelFor("LastName", Color.White), 1, 0);
+            var birthLabel = iiControls.CreateLabelFor("DateOfBirth", Color.White);
+            birthLabel.SetBinding(Label.TextProperty, new Binding("DateOfBirth") { StringFormat = "{0:dd-MMM-yyyy}" });
+            grid.Children.Add(birthLabel, 0, 1);
+            var joinLabel = iiControls.CreateLabelFor("JoinningDate", Color.White);
+            joinLabel.SetBinding(Label.TextProperty, new Binding("JoinningDate") { StringFormat = "{0:dd-MMM-yyyy}" });
+            grid.Children.Add(joinLabel, 1, 1);
 
             return grid;
         }
@@ -175,7 +177,8 @@ namespace InsideInning.Pages
         {
             base.OnAppearing();
             
-            //ViewModel.LoadEmpDetail.Execute(_EmployeeID);
+            //TODO : Have to get from local no more second API call
+            ViewModel.LoadEmpDetail.Execute(_EmployeeID);
         }
 
         #endregion

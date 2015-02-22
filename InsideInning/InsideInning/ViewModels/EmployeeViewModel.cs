@@ -217,13 +217,12 @@ namespace InsideInning.ViewModels
 
 				if (IsNetworkConnected)
 				{
-
 					var items = await ServiceHandler.ProcessRequestItemAsync<Employee>(string.Format("{0}{1}", Constants.EmployeeDetails, _empID));
-					_employeeDetail = items;
+					EmployeeDetail = items;
 				}
 				else
 				{
-					_employeeDetail = App.DataBase.GetItem<EmployeeDetails>(_empID);
+                    EmployeeDetail = App.DataBase.GetItem<EmployeeDetails>(_empID);
 				}
 			}
 			catch (Exception ex)

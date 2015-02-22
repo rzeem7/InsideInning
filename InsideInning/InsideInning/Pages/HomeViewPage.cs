@@ -85,14 +85,14 @@ namespace InsideInning.Pages
             private LoginPageView Logout;
             public HomeMasterPage(HomeViewModel viewModel)
             {
-
+                BackgroundImage = "back.png";
                 this.Icon = "slideout.png";
                 Title = "test";
                 var layout = new StackLayout { Spacing = 0 };
 
                 var listView = new iiListView
                 {
-                    ClassId="2",
+                    ClassId="1",
                 };// Listview created for menu items
                 var cell = new DataTemplate(typeof(ListImageCell));
                 cell.SetBinding(TextCell.TextProperty, HomeViewModel.TitlePropertyName);

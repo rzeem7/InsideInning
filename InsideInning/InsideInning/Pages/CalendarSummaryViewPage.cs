@@ -436,7 +436,7 @@ namespace InsideInning.Pages
                 BorderColor=Color.White.ToFormsColor(),
                 Aspect=Aspect.Fill,
             };
-            //EmpImage.SetBinding(Image.SourceProperty, new Binding("ImageUri"));
+            EmpImage.SetBinding(Image.SourceProperty, new Binding("EmpProfileImage"));
             EmpImage.WidthRequest = EmpImage.HeightRequest = 40;
 
             var nameLabel = new Label
@@ -447,7 +447,7 @@ namespace InsideInning.Pages
                 TextColor=Xamarin.Forms.Color.White
             };
             nameLabel.FontSize = 18;
-            nameLabel.SetBinding(Label.TextProperty, "FirstName");
+            nameLabel.SetBinding(Label.TextProperty, "FullName");
 
              View = new StackLayout
             {

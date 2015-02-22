@@ -4,5 +4,5 @@ We have done lots of things inside ii. We almost ready to launch our new app bui
 
 ![alt tag](https://raw.githubusercontent.com/rzeem7/InsideInning/master/InsideInning/InsideInning.iOS/Resources/Default.png)
 
-Powerd By : ![alt tag](https://raw.githubusercontent.com/rzeem7/InsideInning/master/InsideInning/InsideInning.Droid/Resources/Drawable/cover.png)
+Screencast here : http://screencast.com/t/AJF1tHjGtB
 

@@ -27,7 +27,7 @@ namespace InsideInning.iOS.Renderer
                 Control.ClipsToBounds = true;
                 if (e.NewElement.ClassId == "1")
                 {
-                   // Control.LeftView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("notes.png"));
+                    //Control.LeftView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("notes.png"));
 
                 }
             }

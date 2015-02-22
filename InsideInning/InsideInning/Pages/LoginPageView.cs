@@ -24,12 +24,10 @@ namespace InsideInning.Pages
 		{
 			BindingContext = new LoginViewModel(this.Navigation);
 			BackgroundImage = "back.png";
-            //Content = CreateRealtiveLayoutFor();
             Content = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
-                // Padding = new Thickness(100, 100, 100, 100),
                 Children =
                 {      
                     CreateStackfor(),

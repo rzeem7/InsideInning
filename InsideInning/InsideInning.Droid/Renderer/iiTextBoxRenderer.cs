@@ -30,7 +30,7 @@ namespace InsideInning.Droid.Renderer
                 switch (e.NewElement.ClassId)
                 {
                     case "1":
-                        Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.name, 0, 0, 0);
+                        Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.persons, 0, 0, 0);
                         break;
                     case "3":
                         Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.email, 0, 0, 0);
@@ -39,7 +39,7 @@ namespace InsideInning.Droid.Renderer
                         Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.password, 0, 0, 0);
                         break;
                     case "5":
-                        Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.Usrename, 0, 0, 0);
+                        Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.persons, 0, 0, 0);
                         break;
                     case "6":
                         Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(Resource.Drawable.password, 0, 0, 0);

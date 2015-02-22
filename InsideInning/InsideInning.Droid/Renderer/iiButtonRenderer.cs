@@ -28,10 +28,10 @@ namespace InsideInning.Droid.Renderer
                 switch (e.NewElement.ClassId)
                 {
                     case "1":
-                        Control.SetBackgroundResource(Resource.Drawable.iiMaleSelectionButton);
+                       // Control.SetBackgroundResource(Resource.Drawable.iiMaleSelectionButton);
                         break;
                     case "2":
-                        Control.SetBackgroundResource(Resource.Drawable.iiFemaleSelectionButton);     
+                      //  Control.SetBackgroundResource(Resource.Drawable.iiFemaleSelectionButton);     
                         break;
                     case "3":
                         Control.SetBackgroundResource(Resource.Drawable.iiTabBox);
@@ -43,10 +43,10 @@ namespace InsideInning.Droid.Renderer
                         Control.SetBackgroundResource(Resource.Drawable.iiTabBox);
                         break;
                     case "6":
-                        Control.SetBackgroundResource(Resource.Drawable.UnselectedMale);
+                        //Control.SetBackgroundResource(Resource.Drawable.UnselectedMale);
                         break;
                     case "7":
-                        Control.SetBackgroundResource(Resource.Drawable.UnselectedMale);
+                      //  Control.SetBackgroundResource(Resource.Drawable.UnselectedMale);
                         break;
                      default:
                         break;

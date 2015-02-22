@@ -23,25 +23,25 @@ namespace InsideInning.iOS.Renderer
                 switch (e.NewElement.ClassId)
                 {
                     case "1":
-                        Control.SetBackgroundImage(UIImage.FromFile("SelectedFemale.png"), UIControlState.Normal);
+                       // Control.SetBackgroundImage(UIImage.FromFile("SelectedFemale.png"), UIControlState.Normal);
                         break;
                     case "2":
-                        Control.SetBackgroundImage(UIImage.FromFile("UnselectedMale.png"), UIControlState.Normal);
+                        //Control.SetBackgroundImage(UIImage.FromFile("UnselectedMale.png"), UIControlState.Normal);
                         break;
                     case "3":
-                        Control.SetBackgroundImage(UIImage.FromFile("UnselectedMale.png"), UIControlState.Normal);
+                        //Control.SetBackgroundImage(UIImage.FromFile("UnselectedMale.png"), UIControlState.Normal);
                         break;
                     case "4":
-                        Control.SetBackgroundImage(UIImage.FromFile("UnselectedMale.png"), UIControlState.Normal);
+                       // Control.SetBackgroundImage(UIImage.FromFile("UnselectedMale.png"), UIControlState.Normal);
                         break;
                     case "5":
-                        Control.SetBackgroundImage(UIImage.FromFile("UnselectedMale.png"), UIControlState.Normal);
+                       // Control.SetBackgroundImage(UIImage.FromFile("UnselectedMale.png"), UIControlState.Normal);
                         break;
                     case "6":
-                        Control.SetBackgroundImage(UIImage.FromFile("UnselectedMale.png"), UIControlState.Normal);
+                        //Control.SetBackgroundImage(UIImage.FromFile("UnselectedMale.png"), UIControlState.Normal);
                         break;
                     case "7":
-                        Control.SetBackgroundImage(UIImage.FromFile("UnselectedMale.png"), UIControlState.Normal);
+                       // Control.SetBackgroundImage(UIImage.FromFile("UnselectedMale.png"), UIControlState.Normal);
                         break;
                     default:
                         break;

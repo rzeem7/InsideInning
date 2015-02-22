@@ -16,20 +16,20 @@ namespace InsideInning.Pages
                 get { return BindingContext as HomeViewModel; } //Type cast BindingContex as HomeViewModel to access binded properties
             }
 
-        private Dictionary<MenuType, NavigationPage> pages;
+        private Dictionary<MenuType, iiNavigationPage> pages;
         HomeMasterPage _master;
         //LoginViewModel loginViewModel;
         public HomeViewPage(LoginViewModel loginViewModel)
         {
-            pages = new Dictionary<MenuType, NavigationPage>();
+            pages = new Dictionary<MenuType, iiNavigationPage>();
             BindingContext = new HomeViewModel();
             ViewModel.LogViewModel = loginViewModel;
             Master = _master = new HomeMasterPage(ViewModel);
-            var homeNav = new NavigationPage(_master.PageSelection)
+            var homeNav = new iiNavigationPage(_master.PageSelection)
             {
-                BackgroundColor = Helper.Color.Pink.ToFormsColor(),
-                BarTextColor = Helper.Color.White.ToFormsColor(),
-                BarBackgroundColor= Helper.Color.iiGreen.ToFormsColor()
+                // BackgroundColor = Helper.Color.Pink.ToFormsColor(),
+                // BarTextColor = Helper.Color.White.ToFormsColor(),
+                //BarBackgroundColor= Helper.Color.iiGreen.ToFormsColor()
             };
             Detail = homeNav;
             pages.Add(MenuType.Dashboard, homeNav);
@@ -41,17 +41,18 @@ namespace InsideInning.Pages
                     await Detail.Navigation.PopToRootAsync();
                 }
 
-                NavigationPage newPage;
+                iiNavigationPage newPage;
                 if (pages.ContainsKey(menuType))
                 {
                     newPage = pages[menuType];
                 }
                 else
                 {
-                    newPage = new NavigationPage(_master.PageSelection)
+                    newPage = new iiNavigationPage(_master.PageSelection)
                     {
-                        BarBackgroundColor = Helper.Color.iiPurple.ToFormsColor(),
-                        BarTextColor = Xamarin.Forms.Color.White
+                        // BarBackgroundColor = Helper.Color.iiPurple.ToFormsColor(),
+                        //BarTextColor = Xamarin.Forms.Color.White
+                        //GO inside iiNavigaton Constructor
                     };
                     pages.Add(menuType, newPage);
                 }

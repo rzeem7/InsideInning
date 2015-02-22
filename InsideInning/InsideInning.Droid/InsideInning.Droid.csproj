@@ -110,6 +110,7 @@
     <Compile Include="Renderer\iiButtonRenderer.cs" />
     <Compile Include="Renderer\iiDatePickerRenderer.cs" />
     <Compile Include="Renderer\iiEditTextRenderer.cs" />
+    <Compile Include="Renderer\iiImageRenderer.cs" />
     <Compile Include="Renderer\iiLabelRenderer.cs" />
     <Compile Include="Renderer\iiListViewRenderer.cs" />
     <Compile Include="Renderer\iiPickerRenderer.cs" />
@@ -119,18 +120,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\Media\MediaPicker.cs" />
     <Compile Include="Service\Media\MediaPickerActivity.cs" />
+    <Compile Include="SplashScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\drawable\back.png" />
+    <AndroidResource Include="Resources\drawable\backO.png" />
+    <AndroidResource Include="Resources\layout\SplashScreen.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MonoDroid.TimesSquare\License.txt" />
     <Content Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Resources\drawable\index.jpg" />
-    <AndroidResource Include="Resources\drawable\slideout.png" />
     <AndroidResource Include="Resources\drawable\facebook.png" />
     <AndroidResource Include="Resources\drawable\googleplus.png" />
     <AndroidResource Include="Resources\drawable\instagram.png" />
@@ -140,25 +144,21 @@
     <AndroidResource Include="Resources\drawable-hdpi\blog.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-hdpi\refresh.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\slideout.png" />
     <AndroidResource Include="Resources\drawable-hdpi\twitternav.png" />
     <AndroidResource Include="Resources\drawable-mdpi\about.png" />
     <AndroidResource Include="Resources\drawable-mdpi\blog.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-mdpi\refresh.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\slideout.png" />
     <AndroidResource Include="Resources\drawable-mdpi\twitternav.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\about.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\blog.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\refresh.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\slideout.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\twitternav.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\about.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\blog.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\refresh.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\slideout.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\twitternav.png" />
     <AndroidResource Include="Resources\drawable-hdpi\NotePad.png" />
     <AndroidResource Include="Resources\drawable-mdpi\NotePad.png" />
@@ -171,7 +171,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\Balance128.png" />
     <AndroidResource Include="Resources\drawable\image.png" />
     <AndroidResource Include="Resources\drawable\Background.png" />
-    <AndroidResource Include="Resources\drawable\iiTextBox.xml" />
     <AndroidResource Include="Resources\drawable\email.png" />
     <AndroidResource Include="Resources\drawable\name.png" />
     <AndroidResource Include="Resources\drawable\MaritalStatus.png" />
@@ -197,7 +196,6 @@
     <AndroidResource Include="Resources\drawable\LeftTopCorner.xml" />
     <AndroidResource Include="Resources\drawable\RigthTopCorner.xml" />
     <AndroidResource Include="Resources\drawable\cover.png" />
-    <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\values\attrs.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\dimens.xml" />
@@ -219,6 +217,12 @@
     <AndroidResource Include="Resources\drawable\iiFemaleSelectionButton.xml" />
     <AndroidResource Include="Resources\drawable\iiMaleSelectionButton.xml" />
     <AndroidResource Include="Resources\drawable\rzee.png" />
+    <AndroidResource Include="Resources\drawable\slideout.png" />
+    <AndroidResource Include="Resources\drawable\menuIcon.png" />
+    <AndroidResource Include="Resources\drawable\iiTextBox.xml" />
+    <AndroidResource Include="Resources\drawable\back.png" />
+    <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="..\InsideInning\InsideInning.projitems" Label="Shared" Condition="Exists('..\InsideInning\InsideInning.projitems')" />

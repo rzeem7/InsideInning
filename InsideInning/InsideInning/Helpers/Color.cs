@@ -4,7 +4,7 @@ using System.Text;
 
 namespace InsideInning.Helper
 {
-       public struct Color
+    public struct Color
     {
         public static readonly Color Purple = 0xB455B6;
         public static readonly Color Blue = 0x3498DB;
@@ -20,7 +20,8 @@ namespace InsideInning.Helper
         public static readonly Color iiTextColor = 0x86a183;
         public static readonly Color Transparent = 0x00000000;
         public static readonly Color Lime = 0x6bf215;
-
+        public static readonly Color LightRed = 0x0ff6666; // 0x00d4bb;
+        public static readonly Color LightGreen = 0x00d4bb; 
 
         public double R, G, B;
 
@@ -40,7 +41,7 @@ namespace InsideInning.Helper
             return FromHex(hex);
         }
 
-       public Xamarin.Forms.Color ToFormsColor()
+        public Xamarin.Forms.Color ToFormsColor()
         {
             return Xamarin.Forms.Color.FromRgb((int)(255 * R), (int)(255 * G), (int)(255 * B));
         }

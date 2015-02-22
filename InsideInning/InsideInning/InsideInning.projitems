@@ -46,6 +46,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\EmpDetailsViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\EmployeeListViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\HolidayViewPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\iiNavigationPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LeaveRequestViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\NotificationViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Setting.cs" />

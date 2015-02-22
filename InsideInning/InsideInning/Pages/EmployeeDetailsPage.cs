@@ -86,15 +86,14 @@ namespace InsideInning.Pages
                 HeightRequest = 10,
 
             };
-            var CoverPage = new Image { VerticalOptions = LayoutOptions.FillAndExpand, Source = "iiListBack.png" };
+            var CoverPage = new iiImage { VerticalOptions = LayoutOptions.FillAndExpand};
 
             var CircleImage = new CircleImage
             {
                 Source = ViewModel.ImageSource,
-                // BorderColor = Color.White.ToFormsColor(),
-                // BorderThickness = 2,
+                BorderColor = Color.White.ToFormsColor(),
+                BorderThickness = 2,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-
             };
             
             
@@ -182,5 +181,10 @@ namespace InsideInning.Pages
 
         #endregion
         
+    }
+
+    public class iiImage :Image
+    {
+
     }
 }

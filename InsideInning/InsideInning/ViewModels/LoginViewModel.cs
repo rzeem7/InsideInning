@@ -43,23 +43,23 @@ namespace InsideInning.ViewModels
 
         public CheckLogin CheckLogin
         {
-            get { return CheckLogin ?? new CheckLogin { UserName = this.Username, Password = this.Password }; }
+            get { return  new CheckLogin { UserName = this.Username, Password = this.Password }; }
         }
 
-        private string _userName;
+        private string _userName="m.riyaz@invertedi.com";
 
         public string Username
         {
             get { return _userName; }
-            set { _userName = value; }
+            set { _userName = value; OnPropertyChanged("Username"); }
         }
 
-        private string _password;
+        private string _password="IAm7MOM";
 
         public string Password
         {
             get { return _password; }
-            set { _password = value; }
+            set { _password = value; OnPropertyChanged("Password"); }
         }
 
 
@@ -95,10 +95,8 @@ namespace InsideInning.ViewModels
 			{
 				if (!IsNetworkConnected) //Have to remove !
 				{
-                    await ServiceHandler.PostDataAsync<Employee, CheckLogin>(CheckLogin, Constants.CheckLogin).ContinueWith(t =>
-					{
-						NavigationToPage(t);
-					});
+                 var data=   await ServiceHandler.PostDataAsync<Employee, CheckLogin>(CheckLogin, Constants.CheckLogin);//.ContinueWith(t =>
+                    NavigationToPage(data);
 				}
 				else
 				{
@@ -112,9 +110,9 @@ namespace InsideInning.ViewModels
 			}
 		}
 
-		private void NavigationToPage(Task<Employee> t)
+		private void NavigationToPage(Employee t)
 		{
-			if (t != null && t.Result.IsAdmin)
+			if (t != null && t.IsAdmin)
 			{
 				iiNavigation.PushModalAsync(new HomeViewPage(this), true);
 			}
@@ -123,12 +121,8 @@ namespace InsideInning.ViewModels
 				//TODO : We'll remove it on fly code
 				iiNavigation.PushModalAsync(new HomeViewPage(this), true);
 
-				//var navPage=new NavigationPage(new DashboardViewPage(this)) 
-				//{
-				//    BarBackgroundColor=Xamarin.Forms.Color.Blue
-
-				//};
-				//iiNavigation.PushModalAsync(navPage, true);
+                //var navPage = new iiNavigationPage(new DashboardViewPage(this));
+                //iiNavigation.PushModalAsync(navPage, true);
 
 			}
 		}

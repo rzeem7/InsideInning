@@ -68,6 +68,7 @@ namespace InsideInning.Pages
 				TranslationY = 2,
 				WidthRequest = 200,
 			};
+            iiEditTextBox.SetBinding(Entry.TextProperty,propertyName);
 			return iiEditTextBox;
 		}
 

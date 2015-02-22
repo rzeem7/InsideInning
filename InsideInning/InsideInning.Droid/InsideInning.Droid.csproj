@@ -197,6 +197,17 @@
     <AndroidResource Include="Resources\drawable\password.png" />
     <AndroidResource Include="Resources\drawable\Notes.png" />
     <AndroidResource Include="Resources\drawable\summary.png" />
+    <AndroidResource Include="Resources\drawable\balance.png" />
+    <AndroidResource Include="Resources\drawable\KetanSharma.jpg" />
+    <AndroidResource Include="Resources\drawable\MohdRiyaz.jpg" />
+    <AndroidResource Include="Resources\drawable\NainaSharma.jpg" />
+    <AndroidResource Include="Resources\drawable\NehaGupta.jpg" />
+    <AndroidResource Include="Resources\drawable\RupreetGujral.jpg" />
+    <AndroidResource Include="Resources\drawable\ShagunBawa.jpg" />
+    <AndroidResource Include="Resources\drawable\AmanWalia.jpg" />
+    <AndroidResource Include="Resources\drawable\AnilSethi.jpg" />
+    <AndroidResource Include="Resources\drawable\BhavnaPruthi.jpg" />
+    <AndroidResource Include="Resources\drawable\GagandeepSingh.jpg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="..\InsideInning\InsideInning.projitems" Label="Shared" Condition="Exists('..\InsideInning\InsideInning.projitems')" />

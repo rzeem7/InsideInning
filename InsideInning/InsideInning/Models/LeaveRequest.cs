@@ -7,7 +7,6 @@ namespace InsideInning.Models
 {
     public class LeaveRequest : BaseModel
     {
-
         #region Public Properties
 
         private DateTime _fromdate = DateTime.Now;
@@ -110,6 +109,5 @@ namespace InsideInning.Models
         public string LeaveDate { get { return string.Format("{0} - {1}", ToDate.ToString("dd-MMM-yyyy"), FromDate.ToString("dd-MMM-yyyy")); } }
 
      #endregion
-        
     }
 }

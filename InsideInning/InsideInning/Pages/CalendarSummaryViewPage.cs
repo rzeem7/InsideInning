@@ -32,7 +32,7 @@ namespace InsideInning.Pages
         }
         public CalendarSummaryViewPage()
         {
-            BackgroundImage = "back";
+            BackgroundImage = "back.png";
             parent = BalanceLeaveLayout();
             Content = MainLayout();
         }
@@ -75,7 +75,7 @@ namespace InsideInning.Pages
             };
             grid.Children.Add(CreateButtonFor("Balance ", "balance.png", "3"), 0, 0);
             grid.Children.Add(CreateButtonFor("Calendar", "Calendar.png", "4"), 1, 0);
-            grid.Children.Add(CreateButtonFor("Holidays", "holiday.png", "5"), 2, 0);
+            grid.Children.Add(CreateButtonFor("Holidays", "leaves.png", "5"), 2, 0);
             return grid;
         }
 
@@ -86,10 +86,10 @@ namespace InsideInning.Pages
                 Image = imgSrc,
                 ClassId = _id,
                 Text = propertyName,
-                FontSize = 16,
+                FontSize = 15,
                 HorizontalOptions = LayoutOptions.Fill,
                 TextColor = Color.White.ToFormsColor(),
-                //BackgroundColor=Color.Blue.ToFormsColor(),
+                //BackgroundColor = Color.LightGreen.ToFormsColor(),
                 HeightRequest = 50,
             };
             iiButton.Clicked += TabBtn_Clicked;
@@ -117,9 +117,13 @@ namespace InsideInning.Pages
             listView = new iiListView()
             {
                 ItemTemplate = new DataTemplate(typeof(EmployeeViewCell)),
-                ClassId ="2"    
+                ClassId = "2"
             };
-
+            var listStack = new StackLayout
+            {
+                Padding = new Thickness(50, 0, 50,0),
+                Children = { listView }
+            };
             var BalanceLeaveTabView = new StackLayout
             {
                 // HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -128,7 +132,7 @@ namespace InsideInning.Pages
                 Children =
 				{
 					activity,  
-                    listView,
+                    listStack,
                     GenCalGrid(),
 				}
             };
@@ -148,21 +152,21 @@ namespace InsideInning.Pages
             };
 
             grid.Children.Add(CreateLabelFor("Leave Type",25,120, LayoutOptions.Start, "2"), 0, 0);
-            grid.Children.Add(CreateLabelFor("Total", Color.Purple, LayoutOptions.Start, "", true), 1, 0);
-            grid.Children.Add(CreateLabelFor("Used", Color.Purple, LayoutOptions.Start, "", true), 2, 0);
+            grid.Children.Add(CreateLabelFor("Total", Color.LightRed, LayoutOptions.Start, "", true), 1, 0);
+            grid.Children.Add(CreateLabelFor("Used", Color.LightRed, LayoutOptions.Start, "", true), 2, 0);
             grid.Children.Add(CreateLabelFor("Pending", 25, 120, LayoutOptions.Start, "3"), 3, 0);
 
-            grid.Children.Add(CreateLabelFor("Casual Leave", Color.Purple, LayoutOptions.Start, "", true), 0, 1);
+            grid.Children.Add(CreateLabelFor("Casual Leave", Color.LightRed, LayoutOptions.Start, "", true), 0, 1);
             grid.Children.Add(CreateLabelFor("0", Color.White, LayoutOptions.Start), 1, 1);
             grid.Children.Add(CreateLabelFor("0", Color.White, LayoutOptions.Start), 2, 1);
             grid.Children.Add(CreateLabelFor("0", Color.White, LayoutOptions.Start), 3, 1);
 
-            grid.Children.Add(CreateLabelFor("Medical Leave", Color.Purple, LayoutOptions.Start, "", true), 0, 2);
+            grid.Children.Add(CreateLabelFor("Medical Leave", Color.LightRed, LayoutOptions.Start, "", true), 0, 2);
             grid.Children.Add(CreateLabelFor("0", Color.White, LayoutOptions.Start), 1, 2);
             grid.Children.Add(CreateLabelFor("0", Color.White, LayoutOptions.Start), 2, 2);
             grid.Children.Add(CreateLabelFor("0", Color.White, LayoutOptions.Start), 3, 2);
 
-            grid.Children.Add(CreateLabelFor("Paid Leave", Color.Purple, LayoutOptions.Start, "", true), 0, 3);
+            grid.Children.Add(CreateLabelFor("Paid Leave", Color.LightRed, LayoutOptions.Start, "", true), 0, 3);
             grid.Children.Add(CreateLabelFor("0", Color.White, LayoutOptions.Start), 1, 3);
             grid.Children.Add(CreateLabelFor("0", Color.White, LayoutOptions.Start), 2, 3);
             grid.Children.Add(CreateLabelFor("0", Color.White, LayoutOptions.Start), 3, 3);
@@ -271,8 +275,8 @@ namespace InsideInning.Pages
             grid.Children.Add(CreateLabelFor("Details ", 35, 140,  LayoutOptions.Start, "3"), 1, 0);
             for (int j = 1; j <= i; j++)
             {
-                grid.Children.Add(CreateGridLabelFor("Event {0}" + j, Color.Pink, LayoutOptions.Start, "", true), 0, j);
-                grid.Children.Add(CreateGridLabelFor("Detail{0}" + j, Color.Pink, LayoutOptions.Start, "", true), 1, j);
+                grid.Children.Add(CreateGridLabelFor("Event {0}" + j, Color.White, LayoutOptions.Start, "", true), 0, j);
+                grid.Children.Add(CreateGridLabelFor("Detail{0}" + j, Color.White, LayoutOptions.Start, "", true), 1, j);
             }
             return grid;
         }
@@ -320,13 +324,13 @@ namespace InsideInning.Pages
             };
 
             grid.Children.Add(CreateLabelFor("Name",25,120, LayoutOptions.Start, "2"), 0, 0);
-            grid.Children.Add(CreateLabelFor("From", Color.Purple, LayoutOptions.Start, "", true), 1, 0);
-            grid.Children.Add(CreateLabelFor("To", Color.Purple, LayoutOptions.Start, "", true), 2, 0);
+            grid.Children.Add(CreateLabelFor("From", Color.LightRed, LayoutOptions.Start, "", true), 1, 0);
+            grid.Children.Add(CreateLabelFor("To", Color.LightRed, LayoutOptions.Start, "", true), 2, 0);
             grid.Children.Add(CreateLabelFor("Total Days", 25, 120, LayoutOptions.Start, "3"), 3, 0);
             for (int j = 1; j <= TempData.GetData().Count ; j++)
             {
                // grid.BindingContext = TempData.GetData()[i];
-                grid.Children.Add(CreateBindLabelFor("FirstName", Color.Purple, LayoutOptions.Start, "", true), 0, j);
+                grid.Children.Add(CreateBindLabelFor("FirstName", Color.LightRed, LayoutOptions.Start, "", true), 0, j);
                 grid.Children.Add(CreateBindLabelFor("FromDate", Color.White, LayoutOptions.Start), 1, j);
                 grid.Children.Add(CreateBindLabelFor("ToDate", Color.White, LayoutOptions.Start), 2, j);
                 grid.Children.Add(CreateBindLabelFor("NoOfDays", Color.White, LayoutOptions.Start), 3, j);
@@ -371,6 +375,7 @@ namespace InsideInning.Pages
                         parent = BalanceLeaveLayout();
                         layoutContent.Children.Clear();
                         layoutContent.Children.Add(parent);
+                        listView.ItemsSource = ViewModel.EmployeeList;
                     }
                     catch (Exception ex)
                     {
@@ -439,7 +444,7 @@ namespace InsideInning.Pages
                 HorizontalOptions = LayoutOptions.Center,
                 XAlign=TextAlignment.Center,
                 TranslationX=5,
-
+                TextColor=Xamarin.Forms.Color.White
             };
             nameLabel.FontSize = 18;
             nameLabel.SetBinding(Label.TextProperty, "FirstName");

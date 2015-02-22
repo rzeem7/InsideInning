@@ -59,7 +59,7 @@ namespace InsideInning.Pages
 		{
 			iiTextBox iiEditTextBox = new iiTextBox
 			{
-				TextColor = color.ToFormsColor(),
+                TextColor = Xamarin.Forms.Color.White,
 				IsPassword = IsPassword,
 				Placeholder = propertyName,
 				BackgroundColor = Xamarin.Forms.Color.Transparent, //Color.iiEditTextColor.ToFormsColor(),
@@ -77,7 +77,7 @@ namespace InsideInning.Pages
 			{
 				Text = propertyName,
 				TextColor = Color.White.ToFormsColor(),
-				BackgroundColor = Color.Lime.ToFormsColor(),
+				BackgroundColor = Color.LightGreen.ToFormsColor(),
 				BorderWidth = 1,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				HeightRequest = 40,

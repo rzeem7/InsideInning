@@ -26,24 +26,19 @@ namespace InsideInning.Pages
                 ItemTemplate = new DataTemplate(typeof(NotificationViewCell)),
                 RowHeight = 80,
                 ClassId = "1",
-
             };
 
             Content = new StackLayout
             {
-
                 Children = {
 					_iiEmpList
 				}
             };
-
-
-
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _iiEmpList.ItemsSource = new[] { new LeaveRequest { FullName = "Gagandeep Singh", ToDate = System.DateTime.Now.AddDays(3), FromDate = DateTime.Now, Notes = "Request for Urgent peace of work" }, };//ViewModel.EmployeeList;
+            _iiEmpList.ItemsSource = new[] { new LeaveRequest { FullName = "Gagandeep Singh", ToDate = System.DateTime.Now.AddDays(3), FromDate = DateTime.Now, Notes = "Request for Urgent peace of work", IsApproved=true }, };//ViewModel.EmployeeList;
         }
     }
 
@@ -55,33 +50,34 @@ namespace InsideInning.Pages
     {
         public NotificationViewCell()
         {
-           var EmpImage = new CircleImage()
-            {
-                HorizontalOptions = LayoutOptions.Start,
-                BorderThickness = 5,
-             
-                BorderColor = Color.White,
-                Aspect = Aspect.Fill,
-            };
+            var EmpImage = new CircleImage()
+             {
+                 HorizontalOptions = LayoutOptions.Start,
+                 BorderThickness = 5,
+                 Source = "NainaSharma.png",
+                 BorderColor = Color.White,
+                 Aspect = Aspect.Fill,
+             };
            // EmpImage.SetBinding(Image.SourceProperty, new Binding("ImageUri"));
             var nameLabel = new Label
             {
                 HorizontalOptions = LayoutOptions.Start,
                 FontSize=15,
+                TextColor=Xamarin.Forms.Color.White
             };
 
             nameLabel.SetBinding(Label.TextProperty, "FullName");
             var daysLabel = new Label
             {
                 HorizontalOptions = LayoutOptions.Start,
-
+                TextColor = Xamarin.Forms.Color.White
             };
 
             daysLabel.SetBinding(Label.TextProperty, "ApprovedDays");
             var subjectLabel = new Label
             {
                 HorizontalOptions = LayoutOptions.Start,
-
+                TextColor = Xamarin.Forms.Color.White
             };
 
             subjectLabel.SetBinding(Label.TextProperty, "Notes");
@@ -90,14 +86,14 @@ namespace InsideInning.Pages
             var toDate = new Label
             {
                 HorizontalOptions = LayoutOptions.Start,
-
+                TextColor = Xamarin.Forms.Color.White
             };
             toDate.SetBinding(Label.TextProperty, "LeaveDate");
 
             var fromDate = new Label
             {
                 HorizontalOptions = LayoutOptions.Start,
-
+                TextColor = Xamarin.Forms.Color.White
             };
             fromDate.SetBinding(Label.TextProperty, new Binding("FromDate") { StringFormat = "{0:dd-MMM-yyyy}" });
 
@@ -113,10 +109,10 @@ namespace InsideInning.Pages
                 BackgroundColor = Color.Red,
                 FontSize=10,
             };
-            View flagView = new StackLayout { };
+            View flagView = new StackLayout {  };
 
             //TODO: Have to add pending color
-            flagView.SetBinding(View.BackgroundColorProperty, new Binding("IsApproved", BindingMode.Default, LeaveFlagColorConverter.OneWay<bool, Color>((status) => status ? Color.Green : Color.Red)));
+            flagView.SetBinding(View.BackgroundColorProperty, new Binding("IsApproved", BindingMode.Default, LeaveFlagColorConverter.OneWay<bool, Color>((status) => status ? InsideInning.Helper.Color.LightGreen.ToFormsColor() : InsideInning.Helper.Color.LightRed.ToFormsColor())));
 
             #region Adding Context Actions To List view Cell
 
@@ -154,7 +150,7 @@ namespace InsideInning.Pages
             MainView.Children.Add(daysLabel, Constraint.Constant(290), Constraint.Constant(27), Constraint.Constant(50), Constraint.Constant(20));
             //MainView.Children.Add(btnApproved, Constraint.Constant(290), Constraint.Constant(5), Constraint.Constant(60), Constraint.Constant(30));
             //MainView.Children.Add(btnRejected, Constraint.Constant(290), Constraint.Constant(40), Constraint.Constant(60), Constraint.Constant(30));
-            MainView.Children.Add(flagView, Constraint.RelativeToParent(parent => { return parent.Width-flagView.Width; }), Constraint.Constant(2), Constraint.Constant(7), Constraint.Constant(76));
+            MainView.Children.Add(flagView, Constraint.RelativeToParent(parent => { return parent.Width-7; }), Constraint.Constant(2), Constraint.Constant(7), Constraint.Constant(76));
 
             View = MainView;
         }

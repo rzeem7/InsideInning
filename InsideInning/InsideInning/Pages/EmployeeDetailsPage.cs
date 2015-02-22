@@ -63,7 +63,8 @@ namespace InsideInning.Pages
                     new Button 
                     {
                         Text= "Submit",
-                        TextColor=Color.White.ToFormsColor(),
+                        TextColor=Color.LightRed.ToFormsColor(),
+                        BackgroundColor=Color.LightGreen.ToFormsColor(),
                         Command=ViewModel.AddUpdateEmployeeDetailsCommand,
                         CommandParameter=(EmployeeDetails)BindingContext,
                         HorizontalOptions=LayoutOptions.FillAndExpand

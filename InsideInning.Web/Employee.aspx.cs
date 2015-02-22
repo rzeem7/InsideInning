@@ -34,7 +34,7 @@ namespace InsideInning.Web
             //empData.EmailAddress = EmployeeEmail.Text;
             //empData.Password=EmployeePassword.Text;
             var LoginData = new CheckLogin();
-            LoginData.Username = "test@test.com";
+            LoginData.UserName = "test@test.com";
             LoginData.Password = "test";
             request.RequestFormat = RestSharp.DataFormat.Json;
             request.AddHeader("X-ApiKey", "XMLHttpRequest");

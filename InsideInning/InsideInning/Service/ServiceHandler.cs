@@ -89,10 +89,8 @@ namespace InsideInning.Service
         /// <returns></returns>
         public static async Task<Tr> PostDataAsync<Tr, T>(T data, string resource, T value = default(T)) //where T : class, new()
         {
-            var ser = new DataContractJsonSerializer(data.GetType());
             string reqUrl = CreateURI(resource);
             var jData = JsonConvert.SerializeObject(data);
-            // global::System.Diagnostics.Debug.WriteLine("JsonData : " + jData);
             byte[] postdata = Encoding.UTF8.GetBytes(jData);
             HttpWebRequest request;
             request = (HttpWebRequest)WebRequest.Create(reqUrl);
@@ -105,6 +103,7 @@ namespace InsideInning.Service
                 myStream.Write(postdata, 0, postdata.Length);
                 myStream.Dispose();
             }
+
             // Get response
             Tr responseStr = default(Tr);
             try

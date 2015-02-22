@@ -24,16 +24,17 @@ namespace InsideInning.Pages
 		{
 			BindingContext = new LoginViewModel(this.Navigation);
 			BackgroundImage = "back.png";
-			Content = new StackLayout
-			{
-				HorizontalOptions = LayoutOptions.Center,
-				VerticalOptions = LayoutOptions.Center,
-				// Padding = new Thickness(100, 100, 100, 100),
-				Children =
-				{      
-					CreateStackfor(),
-				}
-			};
+            //Content = CreateRealtiveLayoutFor();
+            Content = new StackLayout
+            {
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+                // Padding = new Thickness(100, 100, 100, 100),
+                Children =
+                {      
+                    CreateStackfor(),
+                }
+            };
 		}
 
 		private StackLayout CreateStackfor()
@@ -88,11 +89,44 @@ namespace InsideInning.Pages
 
 			return iiButton;
 		}
+
         //void iiButton_Clicked(object sender, EventArgs e)
         //{
         //    this.Navigation.PushAsync(new DashboardViewPage(this));
         //}
-		
-	}
+
+
+        //rzee
+        #region Login View
+
+        public RelativeLayout CreateRealtiveLayoutFor()
+        {
+            RelativeLayout MainView = new RelativeLayout
+            {
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+                BackgroundColor = Xamarin.Forms.Color.Transparent,
+                Padding = new Thickness(1, 1, 1, 1),
+                HeightRequest = WidthRequest = 250,
+
+            };
+            var backView = new iiImage { VerticalOptions = LayoutOptions.Center, Source="loginBack.png" , BackgroundColor=Xamarin.Forms.Color.Transparent};
+
+            MainView.Children.Add(backView, Constraint.Constant(0), Constraint.Constant(0),
+                Constraint.Constant(250),
+                 Constraint.Constant(250));
+
+            //MainView.Children.Add(CreateStackfor(), Constraint.Constant(0), Constraint.Constant(0),
+            //   Constraint.Constant(250),
+            //    Constraint.Constant(250));
+
+            //MainView.Children.Add(CreateStackfor(), Constraint.Constant(0),
+            //Constraint.RelativeToView(backView, (parent, sibling) => { return sibling.Height; }), Constraint.Constant(100), Constraint.Constant(100));
+
+            return MainView;
+        }
+        
+        #endregion
+    }
 }
 

@@ -41,9 +41,6 @@
 		<string>Default@2x.png</string>
 		<string>Default-568h@2x.png</string>
 		<string>Default-Portrait.png</string>
-		<string>Default-Portrait@2x.png</string>
-		<string>Icon-Small-40.png</string>
-		<string>Icon-Small-40@2x.png</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen.storyboard</string>

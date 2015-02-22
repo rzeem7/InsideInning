@@ -90,25 +90,25 @@ namespace InsideInning.ViewModels
         }
 
         private async Task ExecuteLoginCommand()
-		{
-			try
-			{
-				if (!IsNetworkConnected) //Have to remove !
-				{
-                 var data=   await ServiceHandler.PostDataAsync<Employee, CheckLogin>(CheckLogin, Constants.CheckLogin);//.ContinueWith(t =>
+        {
+            try
+            {
+                if (!IsNetworkConnected) //Have to remove !
+                {
+                    var data = await ServiceHandler.PostDataAsync<Employee, CheckLogin>(CheckLogin, Constants.CheckLogin);//.ContinueWith(t =>
                     NavigationToPage(data);
-				}
-				else
-				{
-					//TODO : login locally forn database
-					NavigationToPage(null);
-				}
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine("An Exception Occurred : {0}", ex.Message);
-			}
-		}
+                }
+                else
+                {
+                    //TODO : login locally forn database
+                    NavigationToPage(null);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An Exception Occurred : {0}", ex.Message);
+            }
+        }
 
 		private void NavigationToPage(Employee t)
 		{

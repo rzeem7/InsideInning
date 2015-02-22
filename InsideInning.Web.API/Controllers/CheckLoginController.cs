@@ -43,7 +43,7 @@ namespace InsideInning.Web.API.Controllers
                 if (userDetail == null)
                    return new BOEmployee();
                
-              return BLLEmployee.CheckLogin(userDetail.Username, userDetail.Password);
+              return BLLEmployee.CheckLogin(userDetail.UserName, userDetail.Password);
             }
             catch(Exception ex)
             {

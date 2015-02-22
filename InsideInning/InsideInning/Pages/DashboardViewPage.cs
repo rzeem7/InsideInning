@@ -87,7 +87,7 @@ namespace InsideInning.Pages
                 BorderColor = Color.White.ToFormsColor(),
                 BorderWidth = 1,
 
-                TextColor = Color.LightGreen.ToFormsColor(),
+                TextColor = Color.White.ToFormsColor(),
                 BackgroundColor = Xamarin.Forms.Color.Transparent,
                 //Text = propertyName,
                 HeightRequest = 50

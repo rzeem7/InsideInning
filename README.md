@@ -4,5 +4,9 @@ We have done lots of things inside ii. We almost ready to launch our new app bui
 
 ![alt tag](https://raw.githubusercontent.com/rzeem7/InsideInning/master/InsideInning/InsideInning.iOS/Resources/Default.png)
 
+What my team has built : Great Going Guys!
+
+![InningInside](http://cdn.makeagif.com/media/2-22-2015/Vp2LY-.gif)
+
 Screencast here : http://screencast.com/t/AJF1tHjGtB
 

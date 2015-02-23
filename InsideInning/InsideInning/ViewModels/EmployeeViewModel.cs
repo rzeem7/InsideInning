@@ -31,6 +31,7 @@ namespace InsideInning.ViewModels
 			_employeeList = new ObservableCollection<Employee>();
 			_employeeDetail = new EmployeeDetails();
 			_employeeInfo = new Employee();
+            _holidayDetails = new ObservableCollection<HolidayDetails>();
 			Setup();
 		}
 
@@ -49,6 +50,17 @@ namespace InsideInning.ViewModels
 				OnPropertyChanged("EmployeeInfo");
 			}
 		}
+
+        private ObservableCollection<HolidayDetails> _holidayDetails;
+        public ObservableCollection<HolidayDetails> HolidayDetail
+        {
+            get { return _holidayDetails; }
+            set
+            {
+                _holidayDetails = value;
+                OnPropertyChanged("HolidayDetails");
+            }
+        }
 
 		private ObservableCollection<Employee> _employeeList;
 
@@ -232,6 +244,47 @@ namespace InsideInning.ViewModels
 		}
 
 		#endregion
+        
+        #region HolidayDetails Command
+        private Command _loadHolidayDetail;
+
+        public Command LoadHolidayDetail
+        {
+            get
+            {
+                return _loadHolidayDetail ?? (_loadHolidayDetail = new Command(async () => await ExecuteLoadHolidayDataCommand()));
+            }
+        }
+        private async Task ExecuteLoadHolidayDataCommand()
+        {
+            IsBusy = true;
+            try
+            {
+
+                if (IsNetworkConnected)
+                {
+                    var items = await ServiceHandler.ProcessRequestCollectionAsync<HolidayDetails>(Constants.HolidayDetails);
+
+                    foreach (var item in items)
+                    {
+                        HolidayDetail.Add(item);
+                    }  //Server Call
+                    IsBusy = false;
+                }
+                else
+                {
+                    HolidayDetail = App.DataBase.GetItems<HolidayDetails>();
+                    //App.DataBase.GetItems<HolidayDetails>(); //From Local DB
+                    IsBusy = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An Exception Occured During getting the Record {0}", ex.Message);
+            }
+        }
+
+        #endregion
 
 		#region Functionality of profile picture
 

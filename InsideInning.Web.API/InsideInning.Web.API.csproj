@@ -152,6 +152,7 @@
     <Compile Include="Controllers\CheckLoginController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\EmployeeDetailsController.cs" />
+    <Compile Include="Controllers\HolidayDetailsController.cs" />
     <Compile Include="Controllers\ImageUploadController.cs" />
     <Compile Include="Controllers\MailSummaryController.cs" />
     <Compile Include="Controllers\LeaveDetailsController.cs" />
@@ -304,7 +305,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>26197</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

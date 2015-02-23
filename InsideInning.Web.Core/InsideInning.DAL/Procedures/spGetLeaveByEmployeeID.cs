@@ -32,7 +32,6 @@ namespace InsideInning.DAL.Procedures
 
       public static DataSet ExecuteDataset(Int32 empid)
       {
-          _sqlHelper = new IISQLHelper(InsideInningDB.InsideInning_CONNECTIONSTRING);
           SqlParameter[] param = new SqlParameter[1];
           SqlParameter p1 = new SqlParameter(PARAM1NAME, empid);
 			 param[0] = p1;

@@ -114,6 +114,7 @@ namespace InsideInning.Pages
             activity.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
 
             ViewModel.LoadAllEmployees.Execute(null);
+            ViewModel.LoadHolidayDetail.Execute(null);
             listView = new iiListView()
             {
                 ItemTemplate = new DataTemplate(typeof(EmployeeViewCell)),

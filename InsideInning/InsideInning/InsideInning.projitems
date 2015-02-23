@@ -36,6 +36,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\CheckLogin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Employee.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\EmployeeDetails.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\HolidayDetails.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\HomeMenuItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\IBusinessBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LeaveDetails.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Service\ServiceHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EmployeeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\HolidayDetailsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\HomeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\BaseViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\DashboardViewPage.cs" />

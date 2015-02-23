@@ -31,7 +31,6 @@ namespace InsideInning.DAL.Procedures
 
       public static DataSet ExecuteDataset()
       {
-          _sqlHelper = new IISQLHelper(InsideInningDB.InsideInning_CONNECTIONSTRING);
           return _sqlHelper.ExecuteDataset(PROCEDURE_NAME, null);
       }
 

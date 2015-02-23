@@ -37,8 +37,6 @@ namespace InsideInning.ViewModels
 
 		#endregion
 
-
-
         #region CheckLogin Properties
 
         public CheckLogin CheckLogin
